@@ -14,7 +14,7 @@ class MessagesDAO:
     #Get Info on the Post by the users on the app
     def getAllMessages(self):
         cursor = self.conn.cursor()
-        query = "select msg_id, user_id1, user_id2, msg_content, msg_time from messages;"
+        query = "select * from messages;"
         cursor.execute(query)
         result = []
         for row in cursor:

@@ -14,7 +14,7 @@ class SearchersDAO:
     #Get Info on Users Job Searchers
     def getAllSearchers(self):
         cursor = self.conn.cursor()
-        query = "select user_id, user_region, schedule, user_address from searchers;"
+        query = "select * from searchers;"
         cursor.execute(query)
         result = []
         for row in cursor:
