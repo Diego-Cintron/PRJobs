@@ -40,7 +40,11 @@ def searchByPostID(post_id):
         return PostingsHandler().deletePosting(post_id)
     else: 
         return jsonify(Error="Method not allowed!!!"), 405
-    
+
+# Get all Postings by user_id
+@app.route('/postings/user/<int:user_id>', methods=['GET'])
+def user_postings(user_id):
+    return PostingsHandler().getPostingByUserId(user_id)
 
 @app.route('/searchers', methods=["GET", "PUT"])
 def getSearchers(user_id):
@@ -51,11 +55,6 @@ def getSearchers(user_id):
         return SearchersHandler().updateSearchers(user_id, args)
     else:
         return jsonify("Not supported"), 405
-
-# Get all Postings by user_id
-@app.route('/postings/user/<int:user_id>', methods=['GET'])
-def user_postings(user_id):
-    return PostingsHandler().getPostingByUserId(user_id)
 
 if __name__ == '__main__':
     app.run(debug=True)
