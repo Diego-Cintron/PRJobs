@@ -1,5 +1,5 @@
 from flask import jsonify
-from BackEnd.dao.posters import PosterDAO
+from dao.posters import PosterDAO
 
 class PosterHandler:
 
