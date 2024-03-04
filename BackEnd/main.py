@@ -1,6 +1,7 @@
 from flask import Flask, jsonify, request
 from handlers.postings import PostingsHandler 
 from handlers.searchers import SearchersHandler
+from handlers.users import UserHandler
 # Import Cross-Origin Resource Sharing to enable
 # services on other ports on this machine or on other
 # machines to access this app
@@ -16,6 +17,34 @@ CORS(app)
 def greeting():
     return 'Hello, this is PRJobs!'
 
+
+# ----- Users -----
+# Insert a new User or get all Users
+@app.route('/users', methods=['GET', 'POST'])
+def getAllUsers():
+    if request.method == 'GET':
+        return UserHandler().getAllUsers()
+    elif request.method == 'POST':
+        data = request.json
+        return UserHandler().insertUser(data)
+    else:
+        return jsonify(Error="Method not allowed."), 405
+    
+# Get User by ID, Update a User, or Delete a User
+@app.route('/users/<int:user_id>', methods=['GET', 'PUT', 'DELETE'])
+def searchByUserID(user_id):
+    if request.method == 'GET':
+        return UserHandler().getUserById(user_id)
+    elif request.method == 'PUT':
+        data = request.json
+        return UserHandler().updateUser(user_id, data)
+    elif request.method == 'DELETE':
+        return UserHandler().deleteUser(user_id)
+    else: 
+        return jsonify(Error="Method not allowed!!!"), 405
+
+
+# ----- POSTINGS -----
 # Insert a new Posting or get all Postings
 @app.route('/postings', methods=['GET', 'POST'])
 def getAllPostings():
@@ -46,6 +75,9 @@ def searchByPostID(post_id):
 def user_postings(user_id):
     return PostingsHandler().getPostingByUserId(user_id)
 
+
+# ----- Searchers -----
+# Insert a new Searcher or get all Searchers
 @app.route('/searchers', methods=["GET", "PUT"])
 def getSearchers(user_id):
     if request.method == "GET":
