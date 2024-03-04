@@ -3,7 +3,7 @@ import psycopg2
 
 class MessagesDAO: 
     def __init__(self):
-        connection_url = "name=%s user=%s password=%s port=%s host=%s" % (
+        connection_url = "dbname=%s user=%s password=%s port=%s host=%s" % (
             prjobs_config['name'],
             prjobs_config['user'],
             prjobs_config['password'],
