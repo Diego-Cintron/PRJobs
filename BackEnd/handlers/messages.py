@@ -111,7 +111,7 @@ class MessagesHandler:
         else:
             return jsonify(Error="Unexpected attributes in post request"), 400
 
-    def deletePart(self, msg_id):
+    def deleteMessage(self, msg_id):
         dao = MessagesDAO()
         if not dao.getMessagesById(msg_id):
             return jsonify(Error = "Message not found."), 404
@@ -119,7 +119,7 @@ class MessagesHandler:
             dao.delete(msg_id)
             return jsonify(DeleteStatus = "OK"), 200
 
-    def updatePart(self, msg_id, form):
+    def updateMessage(self, msg_id, form):
         dao = MessagesDAO()
         if not dao.getMessagesById(msg_id):
             return jsonify(Error = "Message not found."), 404

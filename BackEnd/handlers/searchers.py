@@ -58,7 +58,7 @@ class SearchersHandler:
     
     # def searchSearchers(self, args):
     #     user = args.get("user_id")
-    #     dao = MessagesDAO()
+    #     dao = SearchersDAO()
     #     searchers_list = []
     #     if (len(args) == 1) and user:
     #         searchers_list = dao.getSearchersByUserId(user)
@@ -68,9 +68,9 @@ class SearchersHandler:
     #     for row in searchers_list:
     #         result = self.build_searchers_dict(row)
     #         result_list.append(result)
-    #     return jsonify(Message=result_list)
+    #     return jsonify(Searchers=result_list)
 
-    def insertMessage(self, form):
+    def insertSearchers(self, form):
         print("form: ", form)
         if len(form) != 3:
             return jsonify(Error = "Malformed post request"), 400
@@ -98,7 +98,7 @@ class SearchersHandler:
         else:
             return jsonify(Error="Unexpected attributes in post request"), 400
 
-    def deletePart(self, user_id):
+    def deleteSearchers(self, user_id):
         dao = SearchersDAO()
         if not dao.getSearchersByUserId(user_id):
             return jsonify(Error = "User not found."), 404
@@ -106,7 +106,7 @@ class SearchersHandler:
             dao.delete(user_id)
             return jsonify(DeleteStatus = "OK"), 200
 
-    def updatePart(self, user_id, form):
+    def updateSearchers(self, user_id, form):
         dao = SearchersDAO()
         if not dao.getSearchersByUserId(user_id):
             return jsonify(Error = "User not found."), 404

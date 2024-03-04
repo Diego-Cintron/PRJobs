@@ -1,5 +1,6 @@
 from flask import Flask, jsonify, request
-from handlers.postings import PostingsHandler
+from handlers.postings import PostingsHandler 
+from handlers.searchers import SearchersHandler
 # Import Cross-Origin Resource Sharing to enable
 # services on other ports on this machine or on other
 # machines to access this app
@@ -39,6 +40,17 @@ def searchByPostID(post_id):
         return PostingsHandler().deletePosting(post_id)
     else: 
         return jsonify(Error="Method not allowed!!!"), 405
+    
+
+@app.route('/searchers', methods=["GET", "PUT"])
+def getSearchers(user_id):
+    if request.method == "GET":
+        return SearchersHandler().getAllSearchers(user_id)
+    elif request.method == "PUT":
+        args = request.json
+        return SearchersHandler().updateSearchers(user_id, args)
+    else:
+        return jsonify("Not supported"), 405
 
 # Get all Postings by user_id
 @app.route('/postings/user/<int:user_id>', methods=['GET'])
