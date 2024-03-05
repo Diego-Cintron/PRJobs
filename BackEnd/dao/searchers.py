@@ -62,7 +62,7 @@ class SearchersDAO:
      
     def insert(self, user_region, schedule, user_address):
         cursor = self.conn.cursor()
-        query = "insert into searchers(user_region, schedule, user_address,) values (%s, %s, %s, %s, %s) returning user_id;"
+        query = "insert into searchers(user_region, schedule, user_address) values (%s, %s, %s) returning user_id;"
         cursor.execute(query, (user_region, schedule, user_address,))
         user_id = cursor.fetchone()[0]
         self.conn.commit()
