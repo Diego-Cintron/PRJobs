@@ -11,8 +11,7 @@ class MessagesHandler:
         result['msg_content'] = row[3]
         result['msg_time'] = row[4]
         return result
-
-
+    
     def build_messages_attributes(self, msg_id, user_id1, user_id2, msg_content, msg_time):
         result = {}
         result['msg_id'] = msg_id
@@ -66,20 +65,7 @@ class MessagesHandler:
         else:
             message = self.build_messages_dict(row)
             return jsonify(Message=message)
-    
-    # def searchMessages(self, args):
-    #     sender = args.get("user_id1")
-    #     dao = MessagesDAO()
-    #     messages_list = []
-    #     if (len(args) == 1) and sender:
-    #         messages_list = dao.getMessagesbySender(sender)
-    #     else:
-    #         return jsonify(Error = "Malformed query string"), 400
-    #     result_list = []
-    #     for row in messages_list:
-    #         result = self.build_messages_dict(row)
-    #         result_list.append(result)
-    #     return jsonify(Message=result_list)
+
 
     def insertMessage(self, form):
         print("form: ", form)
@@ -97,19 +83,6 @@ class MessagesHandler:
                 return jsonify(Message=result), 201
             else:
                 return jsonify(Error="Unexpected attributes in post request"), 400
-
-    def insertMessageJson(self, json):
-        user_id1 = json['user_id1']
-        user_id2 = json['user_id2']
-        msg_content = json['msg_content']
-        msg_time = json['msg_time']
-        if user_id1 and user_id2 and msg_content and msg_time:
-            dao = MessagesDAO()
-            msg_id = dao.insert(user_id1, user_id2, msg_content, msg_time)
-            result = self.build_messages_attributes(msg_id, user_id1, user_id2, msg_content, msg_time)
-            return jsonify(Message=result), 201
-        else:
-            return jsonify(Error="Unexpected attributes in post request"), 400
 
     def deleteMessage(self, msg_id):
         dao = MessagesDAO()

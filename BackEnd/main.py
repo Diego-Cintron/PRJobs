@@ -1,6 +1,6 @@
 from flask import Flask, jsonify, request
 from handlers.postings import PostingsHandler 
-from handlers.searchers import SearchersHandler
+from handlers.messages import MessagesHandler
 from handlers.users import UserHandler
 # Import Cross-Origin Resource Sharing to enable
 # services on other ports on this machine or on other
@@ -78,13 +78,13 @@ def user_postings(user_id):
 
 # ----- Searchers -----
 # Insert a new Searcher or get all Searchers
-@app.route('/searchers', methods=["GET", "PUT"])
-def getSearchers(user_id):
+@app.route('/messages', methods=["GET", "POST"])
+def getMessage():
     if request.method == "GET":
-        return SearchersHandler().getAllSearchers(user_id)
-    elif request.method == "PUT":
-        args = request.json
-        return SearchersHandler().updateSearchers(user_id, args)
+        return MessagesHandler().getAllMessages()
+    elif request.method == "POST":
+        data = request.json
+        return MessagesHandler().insertMessage(data)
     else:
         return jsonify("Not supported"), 405
 
