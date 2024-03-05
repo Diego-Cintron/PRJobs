@@ -52,9 +52,9 @@ class PostingsHandler:
     
     def getPostingByUserId(self, user_id):
         dao = PostingsDAO()
-        postings = dao.getPostingsByUserId(user_id)
+        postings_list = dao.getPostingsByUserId(user_id)
         result_list = []
-        for row in result_list:
+        for row in postings_list:
             result = self.build_posting_dict(row)
             result_list.append(result)
         return jsonify(Postings=result_list)    

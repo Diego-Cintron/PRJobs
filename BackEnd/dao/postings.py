@@ -34,7 +34,7 @@ class PostingsDAO:
     def getPostingsByUserId(self, user_id):
         cursor = self.conn.cursor()
         query = "select * from postings where user_id = %s;"
-        cursor.execute(query)
+        cursor.execute(query, (user_id,))
         result = []
         for row in cursor:
             result.append(row)
