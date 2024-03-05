@@ -78,13 +78,13 @@ def user_postings(user_id):
 
 # ----- Searchers -----
 # Insert a new Searcher or get all Searchers
-@app.route('/searchers', methods=["GET", "PUT"])
-def getSearchers(user_id):
+@app.route('/searchers', methods=["GET", "POST"])
+def getSearchers():
     if request.method == "GET":
-        return SearchersHandler().getAllSearchers(user_id)
-    elif request.method == "PUT":
+        return SearchersHandler().getAllSearchers()
+    elif request.method == "POST":
         args = request.json
-        return SearchersHandler().updateSearchers(user_id, args)
+        return SearchersHandler().insertSearchers(args)
     else:
         return jsonify("Not supported"), 405
 

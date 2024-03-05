@@ -72,7 +72,7 @@ class SearchersHandler:
 
     def insertSearchers(self, form):
         print("form: ", form)
-        if len(form) != 3:
+        if len(form) != 4:
             return jsonify(Error = "Malformed post request"), 400
         else:
             user_region = form['user_region']
@@ -86,17 +86,17 @@ class SearchersHandler:
             else:
                 return jsonify(Error="Unexpected attributes in post request"), 400
 
-    def insertMessageJson(self, json):
-        user_region = json['user_region']
-        schedule = json['schedule']
-        user_address = json['user_address']
-        if user_region and schedule and user_address:
-            dao = SearchersDAO()
-            user_id = dao.insert(user_region, schedule, user_address)
-            result = self.build_searchers_attributes(user_id, user_region, schedule, user_address)
-            return jsonify(Searcher=result), 201
-        else:
-            return jsonify(Error="Unexpected attributes in post request"), 400
+    # def insertMessageJson(self, json):
+    #     user_region = json['user_region']
+    #     schedule = json['schedule']
+    #     user_address = json['user_address']
+    #     if user_region and schedule and user_address:
+    #         dao = SearchersDAO()
+    #         user_id = dao.insert(user_region, schedule, user_address)
+    #         result = self.build_searchers_attributes(user_id, user_region, schedule, user_address)
+    #         return jsonify(Searcher=result), 201
+    #     else:
+    #         return jsonify(Error="Unexpected attributes in post request"), 400
 
     def deleteSearchers(self, user_id):
         dao = SearchersDAO()
