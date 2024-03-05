@@ -37,6 +37,15 @@ class MessagesDAO:
             result.append(row)
          return result    
     
+    def getMessagesbyReciever(self, user_id2):
+         cursor = self.conn.cursor()
+         query = "select * from messages where user_id2 = %s;"
+         cursor.execute(query, (user_id2,))
+         result = []
+         for row in cursor:
+            result.append(row)
+         return result    
+    
     def getMessagesbyContent(self, msg_content):
          cursor = self.conn.cursor()
          query = "select * from messages where msg_content = %s;"
@@ -71,7 +80,7 @@ class MessagesDAO:
      
     def insert(self, user_id1, user_id2, msg_content, msg_time):
         cursor = self.conn.cursor()
-        query = "insert into messages(user_id1, user_id2, msg_content, msg_time,) values (%s, %s, %s, %s, %s) returning msg_id;"
+        query = "insert into messages(user_id1, user_id2, msg_content, msg_time) values (%s, %s, %s, %s) returning msg_id;"
         cursor.execute(query, (user_id1, user_id2, msg_content, msg_time,))
         msg_id = cursor.fetchone()[0]
         self.conn.commit()
