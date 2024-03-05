@@ -58,9 +58,9 @@ class PostingsDAO:
         return post_id
     
 
-    def delete(self, user_id):
+    def delete(self, post_id):
         cursor = self.conn.cursor()
         query = "delete from postings where post_id = %s;"
-        cursor.execute(query)
+        cursor.execute(query, (post_id,))
         self.conn.commit()
-        return user_id
+        return post_id
