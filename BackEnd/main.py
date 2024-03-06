@@ -107,10 +107,10 @@ def searchByMessagesSender(user_id1):
     else: 
         return jsonify("Not supported"), 405
     
-@app.route('/messages/reciever/<int:user_id2>', methods=["GET", 'DELETE'])
-def searchByMessagesReciever(user_id2):
+@app.route('/messages/receiver/<int:user_id2>', methods=["GET", 'DELETE'])
+def searchByMessagesReceiver(user_id2):
     if request.method == 'GET':
-        return MessagesHandler().getMessagesbyReciever(user_id2)
+        return MessagesHandler().getMessagesbyReceiver(user_id2)
     elif request.method == 'DELETE':
         return MessagesHandler().deleteMessage(user_id2)
     else: 
