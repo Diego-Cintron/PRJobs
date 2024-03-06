@@ -1,5 +1,6 @@
 from flask import Flask, jsonify, request
 from handlers.postings import PostingsHandler 
+from handlers.company import CompanyHandler
 from handlers.messages import MessagesHandler
 from handlers.users import UserHandler
 # Import Cross-Origin Resource Sharing to enable
@@ -76,16 +77,57 @@ def user_postings(user_id):
     return PostingsHandler().getPostingByUserId(user_id)
 
 
-# ----- Searchers -----
-# Insert a new Searcher or get all Searchers
-@app.route('/messages', methods=["GET", "POST"])
-def getMessage():
-    if request.method == "GET":
-        return MessagesHandler().getAllMessages()
-    elif request.method == "POST":
+# ----- Companies -----
+# Insert a new Company or get all Companies
+@app.route('/companies', methods=['GET', 'POST'])
+def getAllCompanies():
+    if request.method == 'GET':
+        return CompanyHandler().getAllCompanies()
+    elif request.method == 'POST':
         data = request.json
-        return MessagesHandler().insertMessage(data)
+        return CompanyHandler().insertCompany(data)
     else:
+        return jsonify(Error="Method not allowed."), 405
+    
+# Get User by ID, Update a User, or Delete a User
+@app.route('/companies/<int:cm_id>', methods=['GET', 'PUT', 'DELETE'])
+def searchByCompanyID(cm_id):
+    if request.method == 'GET':
+        return CompanyHandler().getCompanyByID(cm_id)
+    elif request.method == 'PUT':
+        data = request.json
+        return CompanyHandler().updateCompany(cm_id, data)
+    elif request.method == 'DELETE':
+        return CompanyHandler().deleteCompany(cm_id)
+    else: 
+        return jsonify(Error="Method not allowed."), 405
+
+# ----- Messages -----
+@app.route('/messages/ID/<int:msg_id>', methods=["GET", 'DELETE'])
+def searchByMessagesID(msg_id):
+    if request.method == 'GET':
+        return MessagesHandler().getMessagesById(msg_id)
+    elif request.method == 'DELETE':
+        return MessagesHandler().deleteMessage(msg_id)
+    else: 
+        return jsonify("Not supported"), 405
+    
+@app.route('/messages/sender/<int:user_id1>', methods=["GET", 'DELETE'])
+def searchByMessagesSender(user_id1):
+    if request.method == 'GET':
+        return MessagesHandler().getMessagesbySender(user_id1)
+    elif request.method == 'DELETE':
+        return MessagesHandler().deleteMessage(user_id1)
+    else: 
+        return jsonify("Not supported"), 405
+    
+@app.route('/messages/receiver/<int:user_id2>', methods=["GET", 'DELETE'])
+def searchByMessagesReceiver(user_id2):
+    if request.method == 'GET':
+        return MessagesHandler().getMessagesbyReceiver(user_id2)
+    elif request.method == 'DELETE':
+        return MessagesHandler().deleteMessage(user_id2)
+    else: 
         return jsonify("Not supported"), 405
 
 if __name__ == '__main__':

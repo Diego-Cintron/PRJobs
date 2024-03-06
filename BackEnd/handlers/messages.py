@@ -41,12 +41,21 @@ class MessagesHandler:
         
     def getMessagesbySender(self, user_id1):
         dao = MessagesDAO()
-        row = dao.getMessagesbySender(user_id1)
-        if not row:
-            return jsonify(Error="Message Not Found"), 404
-        else:
-            message = self.build_messages_dict(row)
-            return jsonify(Message=message)
+        messages = dao.getMessagesbySender(user_id1)
+        result_list = []
+        for row in messages:
+            result = self.build_messages_dict(row)
+            result_list.append(result)
+        return jsonify(Message=result_list) 
+        
+    def getMessagesbyReceiver(self, user_id2):
+        dao = MessagesDAO()
+        messages = dao.getMessagesbyReceiver(user_id2)
+        result_list = []
+        for row in messages:
+            result = self.build_messages_dict(row)
+            result_list.append(result)
+        return jsonify(Message=result_list) 
         
     def getMessagesbyContent(self, msg_content):
         dao = MessagesDAO()

@@ -41,26 +41,36 @@ class PostingsDAO:
         return result
     
 
-    def update(self, post_id, user_id, post_title, post_description, post_address, post_municipality, post_uploaded, post_expires):
+    def getPostingsByCompanyId(self, cm_id):
         cursor = self.conn.cursor()
-        query = "update postings set user_id = %s, post_title = %s, post_description = %s, post_address = %s, post_municipality = %s, post_uploaded = %s, post_expires = %s where post_id = %s;"
-        cursor.execute(query, (user_id, post_title, post_description, post_address, post_municipality, post_uploaded, post_expires, post_id,))
+        query = "select * from postings where cm_id = %s;"
+        cursor.execute(query, (cm_id,))
+        result = []
+        for row in cursor:
+            result.append(row)
+        return result
+
+
+    def update(self, post_id, user_id, cm_id, post_title, post_description, post_address, post_municipality, post_uploaded, post_expires):
+        cursor = self.conn.cursor()
+        query = "update postings set user_id = %s, cm_id = %s, post_title = %s, post_description = %s, post_address = %s, post_municipality = %s, post_uploaded = %s, post_expires = %s where post_id = %s;"
+        cursor.execute(query, (user_id, cm_id, post_title, post_description, post_address, post_municipality, post_uploaded, post_expires, post_id,))
         self.conn.commit()
         return post_id
     
 
-    def insert(self, user_id, post_title, post_description, post_address, post_municipality, post_uploaded, post_expires):
+    def insert(self, user_id, cm_id, post_title, post_description, post_address, post_municipality, post_uploaded, post_expires):
         cursor = self.conn.cursor()
-        query = "insert into postings(user_id, post_title, post_description, post_address, post_municipality, post_uploaded, post_expires) values (%s, %s, %s, %s, %s, %s, %s) returning post_id;"
-        cursor.execute(query, (user_id, post_title, post_description, post_address, post_municipality, post_uploaded, post_expires,))
+        query = "insert into postings(user_id, cm_id, post_title, post_description, post_address, post_municipality, post_uploaded, post_expires) values (%s, %s, %s, %s, %s, %s, %s, %s) returning post_id;"
+        cursor.execute(query, (user_id, cm_id, post_title, post_description, post_address, post_municipality, post_uploaded, post_expires,))
         post_id = cursor.fetchone()[0]
         self.conn.commit()
         return post_id
     
 
-    def delete(self, user_id):
+    def delete(self, post_id):
         cursor = self.conn.cursor()
         query = "delete from postings where post_id = %s;"
-        cursor.execute(query)
+        cursor.execute(query, (post_id,))
         self.conn.commit()
-        return user_id
+        return post_id
