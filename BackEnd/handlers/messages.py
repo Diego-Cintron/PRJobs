@@ -46,7 +46,7 @@ class MessagesHandler:
         for row in messages:
             result = self.build_messages_dict(row)
             result_list.append(result)
-        return jsonify(Messages=result_list) 
+        return jsonify(Message=result_list) 
         
     def getMessagesbyReceiver(self, user_id2):
         dao = MessagesDAO()
@@ -55,7 +55,7 @@ class MessagesHandler:
         for row in messages:
             result = self.build_messages_dict(row)
             result_list.append(result)
-        return jsonify(Messages=result_list) 
+        return jsonify(Message=result_list) 
         
     def getMessagesbyContent(self, msg_content):
         dao = MessagesDAO()
