@@ -48,6 +48,15 @@ class MessagesHandler:
             message = self.build_messages_dict(row)
             return jsonify(Message=message)
         
+    def getMessagesbyReciever(self, user_id2):
+        dao = MessagesDAO()
+        row = dao.getMessagesbyReciever(user_id2)
+        if not row:
+            return jsonify(Error="Message Not Found"), 404
+        else:
+            message = self.build_messages_dict(row)
+            return jsonify(Message=message)
+        
     def getMessagesbyContent(self, msg_content):
         dao = MessagesDAO()
         row = dao.getMessagesbyContent(msg_content)
