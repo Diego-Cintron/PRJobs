@@ -1,6 +1,6 @@
 from flask import jsonify
 from dao.messages import MessagesDAO
-
+from datetime import datetime
 
 class MessagesHandler:
     def build_messages_dict(self, row):
@@ -84,7 +84,7 @@ class MessagesHandler:
             user_id1 = form['user_id1']
             user_id2 = form['user_id2']
             msg_content = form['msg_content']
-            msg_time = form['msg_time']
+            msg_time = datetime.now()
             if user_id1 and user_id2 and msg_content and msg_time:
                 dao = MessagesDAO()
                 msg_id = dao.insert(user_id1, user_id2, msg_content, msg_time)
@@ -112,7 +112,7 @@ class MessagesHandler:
                 user_id1 = form['user_id1']
                 user_id2 = form['user_id2']
                 msg_content = form['msg_content']
-                msg_time = form['msg_time']
+                msg_time = datetime.now()
                 if user_id1 and user_id2 and msg_content and msg_time:
                     dao = MessagesDAO()
                     msg_id = dao.insert(user_id1, user_id2, msg_content, msg_time)
