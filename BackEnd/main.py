@@ -103,6 +103,17 @@ def searchByCompanyID(cm_id):
         return jsonify(Error="Method not allowed."), 405
 
 # ----- Messages -----
+@app.route('/messages', methods=["GET", "POST"])
+def getMessage():
+    if request.method == "GET":
+        return MessagesHandler().getAllMessages()
+    elif request.method == "POST":
+        data = request.json
+        return MessagesHandler().insertMessage(data)
+    else:
+        return jsonify("Not supported"), 405   
+
+ 
 @app.route('/messages/ID/<int:msg_id>', methods=["GET", 'DELETE'])
 def searchByMessagesID(msg_id):
     if request.method == 'GET':

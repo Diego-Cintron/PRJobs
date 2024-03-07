@@ -37,7 +37,7 @@ class MessagesDAO:
             result.append(row)
          return result    
     
-    def getMessagesbyReciever(self, user_id2):
+    def getMessagesbyReceiver(self, user_id2):
          cursor = self.conn.cursor()
          query = "select * from messages where user_id2 = %s;"
          cursor.execute(query, (user_id2,))
