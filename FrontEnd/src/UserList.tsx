@@ -13,7 +13,7 @@ const UserList: React.FC = () => {
                     throw new Error('Failed to fetch users');
                 }
                 const data = await response.json();
-                setUsers(data.Users); 
+                setUsers(data.Users);
             } catch (error) {
                 console.error(error);
             }
@@ -24,23 +24,31 @@ const UserList: React.FC = () => {
 
     return (
         <div>
-            <h1>User List</h1>
-            <table className="user-table">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>First Name</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {users.map(user => (
-                        <tr key={user.user_id}>
-                            <td>{user.user_id}</td>
-                            <td>{user.user_fname}</td>
+            <div className="user-list">
+                <p>User List</p>
+                <table className="user-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
                         </tr>
-                    ))}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        {users.map(person => (
+                            <tr key={person.user_id}>
+                                <td>{person.user_id}</td>
+                                <td>{person.user_fname}</td>
+                                <td>{person.user_lname}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
+            <div className='secondDiv'>
+                <h1> Example 1</h1>
+                <h2> Example 2</h2>
+            </div>
         </div>
     );
 };

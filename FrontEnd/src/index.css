@@ -75,10 +75,18 @@ button:focus-visible {
 .user-table th, .user-table td {
   border: 1px solid #dddddd;
   padding: 8px;
-  text-align: left;
+  text-align: center;
 }
 
 .user-table th {
   background-color: #f2f2f2;
   font-weight: bold;
+}
+
+.user-list {
+  border: 3px solid #000000;
+}
+
+.secondDiv {
+  border: 10px solid #535bf2;
 }
