@@ -72,7 +72,8 @@ button:focus-visible {
   border-collapse: collapse;
 }
 
-.user-table th, .user-table td {
+.user-table th,
+.user-table td {
   border: 1px solid #dddddd;
   padding: 8px;
   text-align: center;
