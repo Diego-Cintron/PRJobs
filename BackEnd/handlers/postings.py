@@ -97,7 +97,7 @@ class PostingsHandler:
 
 
     def insertPosting(self, form):
-        if len(form) != 7:
+        if len(form) != 6:
             return jsonify(Error="Malformed post request"), 400
         else:
             user_id = form['user_id']
