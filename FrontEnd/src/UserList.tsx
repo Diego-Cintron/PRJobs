@@ -43,6 +43,7 @@ const UserList: React.FC = () => {
           ))}
         </tbody>
       </table>
+      <input />
     </div>
   );
 };
