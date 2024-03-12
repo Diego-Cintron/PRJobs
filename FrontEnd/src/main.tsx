@@ -4,10 +4,12 @@ import ReactDOM from "react-dom/client";
 import CreatePost from './CreatePost.tsx'
 import UserList from './UserList.tsx'
 import './index.css'
+import AccountSettings from "./AccountSettings.tsx";
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>    
     <UserList />
     <CreatePost />
+    <AccountSettings />
   </React.StrictMode>,
 )
