@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import User from "./User"; // Import the User interface
+import { errorHandle } from './apiUtils';
 import "./index.css";
 
 const UserList: React.FC = () => {
@@ -9,9 +10,7 @@ const UserList: React.FC = () => {
     const fetchUsers = async () => {
       try {
         const response = await fetch("http://127.0.0.1:5000/users");
-        if (!response.ok) {
-          throw new Error("Failed to fetch users");
-        }
+        errorHandle(response); // Check response status
         const data = await response.json();
         setUsers(data.Users);
       } catch (error) {
@@ -43,7 +42,6 @@ const UserList: React.FC = () => {
           ))}
         </tbody>
       </table>
-      <input />
     </div>
   );
 };

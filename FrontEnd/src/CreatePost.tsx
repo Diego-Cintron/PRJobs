@@ -1,51 +1,56 @@
 import React, { useState } from "react";
+import { errorHandle } from "./apiUtils";
 
 const CreatePost: React.FC = () => {
-  const [formData, setFormData] = useState({
+  const [postData, setPostData] = useState({
     post_title: "",
     post_description: "",
     post_address: "",
     post_municipality: "",
+    user_id: 1,
+    cm_id: 1,
   });
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
-  };
-
+  // Sends json file with the user inputs to the backend
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const postData = {
-      ...formData,
-      user_id: 1,
-      cm_id: 1,
-    };
+    if (!isInputValid()) {
+      alert(
+        "Input is not valid. Verify that all fields are within the character limit and are not empty."
+      );
+      return;
+    }
 
     try {
       const response = await fetch("http://127.0.0.1:5000/postings", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(postData),
       });
 
-      if (!response.ok) {
-        throw new Error("Failed to create posting");
-      }
+      errorHandle(response); // Check response status
 
       console.log("Posting created successfully");
-      // Optionally, you can redirect the user or show a success message
     } catch (error) {
-      console.error("Error creating posting:", error);
-      // Handle error (show error message, etc.)
+      console.error("Error creating posting:", error); // General error handling
     }
+  };
+
+  // Verifies that the user input is not empty, full of whitespaces, and does not surpass character limit
+  const isInputValid = () => {
+    const { post_title, post_description, post_address, post_municipality } =
+      postData;
+    return (
+      post_title.trim() !== "" &&
+      post_description.trim() !== "" &&
+      post_address.trim() !== "" &&
+      post_municipality.trim() !== "" &&
+      post_title.length <= 50 &&
+      post_description.length <= 280 &&
+      post_address.length <= 64 &&
+      post_municipality.length <= 20
+    );
   };
 
   return (
@@ -58,8 +63,10 @@ const CreatePost: React.FC = () => {
             type="text"
             id="post_title"
             name="post_title"
-            value={formData.post_title}
-            onChange={handleChange}
+            value={postData.post_title}
+            onChange={(e) =>
+              setPostData({ ...postData, post_title: e.target.value })
+            }
           />
         </div>
         <div>
@@ -67,8 +74,10 @@ const CreatePost: React.FC = () => {
           <textarea
             id="post_description"
             name="post_description"
-            value={formData.post_description}
-            onChange={handleChange}
+            value={postData.post_description}
+            onChange={(e) =>
+              setPostData({ ...postData, post_description: e.target.value })
+            }
           />
         </div>
         <div>
@@ -77,8 +86,10 @@ const CreatePost: React.FC = () => {
             type="text"
             id="post_address"
             name="post_address"
-            value={formData.post_address}
-            onChange={handleChange}
+            value={postData.post_address}
+            onChange={(e) =>
+              setPostData({ ...postData, post_address: e.target.value })
+            }
           />
         </div>
         <div>
@@ -87,8 +98,10 @@ const CreatePost: React.FC = () => {
             type="text"
             id="post_municipality"
             name="post_municipality"
-            value={formData.post_municipality}
-            onChange={handleChange}
+            value={postData.post_municipality}
+            onChange={(e) =>
+              setPostData({ ...postData, post_municipality: e.target.value })
+            }
           />
         </div>
         <button type="submit">Create Posting</button>
