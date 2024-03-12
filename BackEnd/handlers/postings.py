@@ -1,7 +1,6 @@
 from flask import jsonify
 from dao.postings import PostingsDAO
-from datetime import datetime
-
+from datetime import datetime, timedelta
 
 class PostingsHandler:
 
@@ -108,7 +107,7 @@ class PostingsHandler:
             post_address = form['post_address']
             post_municipality = form['post_municipality']
             post_uploaded = datetime.now()
-            post_expires = form['post_expires']
+            post_expires = datetime.now() + timedelta(days=30)
             if user_id and cm_id and post_title and post_description and post_address and post_municipality and post_uploaded and post_expires:
                 dao = PostingsDAO()
                 post_id = dao.insert(user_id, cm_id, post_title, post_description, post_address, post_municipality, post_uploaded, post_expires)
