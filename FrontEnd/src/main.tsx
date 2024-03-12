@@ -1,13 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 //import App from './App.tsx'
-import Welcome from "./Welcome.tsx";
-import UserList from "./UserList.tsx";
-import "./index.css";
+import CreatePost from './CreatePost.tsx'
+import UserList from './UserList.tsx'
+import './index.css'
 
-ReactDOM.createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
-    <Welcome />
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <React.StrictMode>    
     <UserList />
-  </React.StrictMode>
-);
+    <CreatePost />
+  </React.StrictMode>,
+)
