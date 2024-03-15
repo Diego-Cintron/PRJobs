@@ -31,18 +31,18 @@ class UserDAO:
         return result
     
 
-    def update(self, user_id, user_type, user_birthday, user_fname, user_lname, user_phone, user_email):
+    def update(self, user_id, user_type, user_birthday, user_fname, user_lname, user_phone, user_email, user_address, user_municipality, user_available):
         cursor = self.conn.cursor()
-        query = "update users set user_type = %s, user_birthday = %s, user_fname = %s, user_lname = %s, user_phone = %s, user_email = %s where user_id = %s;"
-        cursor.execute(query, (user_type, user_birthday, user_fname, user_lname, user_phone, user_email, user_id,))
+        query = "update users set user_type = %s, user_birthday = %s, user_fname = %s, user_lname = %s, user_phone = %s, user_email = %s, user_address = %s, user_municipality = %s, user_available = %s where user_id = %s;"
+        cursor.execute(query, (user_type, user_birthday, user_fname, user_lname, user_phone, user_email, user_address, user_municipality, user_available, user_id,))
         self.conn.commit()
         return user_id
     
 
-    def insert(self, user_type, user_birthday, user_fname, user_lname, user_phone, user_email):
+    def insert(self, user_type, user_birthday, user_fname, user_lname, user_phone, user_email, user_address, user_municipality, user_available):
         cursor = self.conn.cursor()
-        query = "insert into users(user_type, user_birthday, user_fname, user_lname, user_phone, user_email) values (%s, %s, %s, %s, %s, %s) returning user_id;"
-        cursor.execute(query, (user_type, user_birthday, user_fname, user_lname, user_phone, user_email,))
+        query = "insert into users(user_type, user_birthday, user_fname, user_lname, user_phone, user_email, user_address, user_municipality, user_available) values (%s, %s, %s, %s, %s, %s, %s, %s, %s) returning user_id;"
+        cursor.execute(query, (user_type, user_birthday, user_fname, user_lname, user_phone, user_email, user_address, user_municipality, user_available,))
         user_id = cursor.fetchone()[0]
         self.conn.commit()
         return user_id
