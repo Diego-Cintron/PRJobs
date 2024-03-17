@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import { errorHandle } from './apiUtils';
 
 function AllPostings() {
   const [postings, setPostings] = useState<any[]>([]);
-
+  const navigate = useNavigate();
   useEffect(() => {
     fetchPostings();
   }, []);
@@ -19,8 +20,9 @@ function AllPostings() {
     }
   };
 
+  // Redirect to individual posting page
   const handlePostingClick = (id: number) => {
-    console.log("Clicked! post_id:", id);
+    navigate(`/postings/${id}`);
   };
 
   return (
@@ -28,7 +30,7 @@ function AllPostings() {
       <h2>All Postings</h2>
       {postings.map((posting) => (
         <div
-          key={posting.id}
+          key={posting.post_id}
           style={{
             border: "1px solid #ccc",
             borderRadius: "5px",
