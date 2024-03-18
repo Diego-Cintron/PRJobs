@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
-import { errorHandle } from './apiUtils';
+import { errorHandler } from './apiUtils';
 
 function AllPostings() {
   const [postings, setPostings] = useState<any[]>([]);
@@ -12,7 +12,7 @@ function AllPostings() {
   const fetchPostings = async () => {
     try {
       const response = await fetch("http://127.0.0.1:5000/postings");
-      errorHandle(response); // Check response status
+      errorHandler(response); // Check response status
       const data = await response.json();
       setPostings(data.Postings);
     } catch (error) {

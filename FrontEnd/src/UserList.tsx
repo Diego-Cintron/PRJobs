@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import User from "./User"; // Import the User interface
-import { errorHandle } from './apiUtils';
+import { errorHandler } from './apiUtils';
 import "./index.css";
 
-const UserList: React.FC = () => {
+function UserList() {
   const [users, setUsers] = useState<User[]>([]);
 
   useEffect(() => {
     const fetchUsers = async () => {
       try {
         const response = await fetch("http://127.0.0.1:5000/users");
-        errorHandle(response); // Check response status
+        errorHandler(response); // Check response status
         const data = await response.json();
         setUsers(data.Users);
       } catch (error) {
