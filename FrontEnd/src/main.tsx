@@ -4,7 +4,7 @@ import './index.css'
 //import App from './App.tsx'
 // import CreatePost from './CreatePost.tsx'
 // import UserList from './UserList.tsx'
-import Login from './Login.tsx'
+// import Login from './Login.tsx'
 import Border from './Border.tsx'
 import UserProfile from './UserProfile.tsx'
 import Company from './Company.tsx'
@@ -18,12 +18,14 @@ import Posts from './Posts.tsx'
 // import Welcome from './Welcome.tsx'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>  
+  <React.StrictMode> 
     <Border />
-    <UserProfile />
-    <Login />  
-    <Company />
-    <Posts />
+    <div style={{display:'flex'}}>
+      <UserProfile />
+      <Posts /> 
+      <Company />
+    </div> 
+    {/* <Login />   */}
     {/* <UserList />
     <CreatePost />
     <DM />

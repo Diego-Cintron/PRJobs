@@ -91,6 +91,9 @@ button:focus-visible {
 .corner{
   width: 100%;
   background-color: #ffffff;
+  top: 0;
+  position: fixed;
+  display: flex;
 }
 
 .logohome{
@@ -98,11 +101,11 @@ button:focus-visible {
 }
 
 .notifications{
-  margin-left: 35%;
+  margin-left: 50%;
 }
 
 .setting{
-  margin-left: 30%;
+  margin-left: 41%;
 }
 
 .login-area{
@@ -116,15 +119,16 @@ button:focus-visible {
   padding: 10px;
   background-color: #81f6faa9;
   border: 1px solid #000000;
+  
 }
 
 
 .user-block{
   padding: 5%;
-  min-height: 30vh;
-  min-width: 20vh;
+  min-width: max-content;
   background-color: #70c5f7;
   border: 1px solid #000000;
+  position: flex;
 }
 
 .profilename{
@@ -167,10 +171,10 @@ button:focus-visible {
 
 .company-block{
   padding: 10%;
-  min-height: 50vh;
-  min-width: 30vh;
+  min-width: max-content;
   background-color: #b5df7ee5;
   border: 1px solid #000000;
+  position: flex;
 }
 
 .company-logo-picture{
@@ -211,14 +215,19 @@ button:focus-visible {
   border: 1px solid #000000;
 }
 
-
-.post-block{
+.postbackground{
   padding: 10%;
-  min-height: 50vh;
-  min-width: 30vh;
-  background-color: #5a6599e5;
+  background-color: #ccc89fe5;
+  position: flex;
+}
+
+.post{
+  padding: 10%;
+  min-width: max-content;
+  background-color: #a79d45e5;
   border: 1px solid #000000;
   color: #000000;
+  position: flex;
 }
 
 .postname{
