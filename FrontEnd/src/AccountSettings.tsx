@@ -88,26 +88,40 @@ const AccountSettings: React.FC = () => {
   return (
     <div className="user-settings">
       <h2>Account Settings</h2>
-      
-      <label htmlFor="user_email">Email address</label>
-      <input type="email" id="user_email" name="user_email" value={updatedData.user_email} onChange={handleChange} />
-      
-      <label htmlFor="user_fname">First name</label>
-      <input type="text" id="user_fname" name="user_fname" value={updatedData.user_fname} onChange={handleChange} />
-      
-      <label htmlFor="user_lname">Last name</label>
-      <input type="text" id="user_lname" name="user_lname" value={updatedData.user_lname} onChange={handleChange} />
-      
-      <label htmlFor="user_birthday">Birthday</label>
-      <input type="datetime" id="user_birthday" name="user_birthday" value={updatedData.user_birthday} onChange={handleChange} />
-      
-      <label htmlFor="user_phone">Phone</label>
-      <input type="tel" id="user_phone" name="user_phone" value={updatedData.user_phone} onChange={handleChange} />
-      
-      <label htmlFor="user_address">Address</label>
-      <input type="text" id="user_address" name="user_address" value={updatedData.user_address} onChange={handleChange} />
 
-      <button onClick={handleSave}>Save</button>
+      <div>
+        <label htmlFor="user_email">Email address</label>
+        <input type="email" id="user_email" name="user_email" value={updatedData.user_email} onChange={handleChange} />
+      </div>
+
+      <div>
+        <label htmlFor="user_fname">First name</label>
+        <input type="text" id="user_fname" name="user_fname" value={updatedData.user_fname} onChange={handleChange} />
+      </div>
+
+      <div>
+        <label htmlFor="user_lname">Last name</label>
+        <input type="text" id="user_lname" name="user_lname" value={updatedData.user_lname} onChange={handleChange} />
+      </div>
+
+      <div>
+        <label htmlFor="user_birthday">Birthday</label>
+        <input type="datetime" id="user_birthday" name="user_birthday" value={updatedData.user_birthday} onChange={handleChange} />
+      </div>
+
+      <div>
+        <label htmlFor="user_phone">Phone</label>
+        <input type="tel" id="user_phone" name="user_phone" value={updatedData.user_phone} onChange={handleChange} />
+      </div>
+
+      <div>
+        <label htmlFor="user_address">Address</label>
+        <input type="text" id="user_address" name="user_address" value={updatedData.user_address} onChange={handleChange} />
+      </div>
+
+      <div>
+        <button onClick={handleSave}>Save</button> {/* Boton de Save (se puede quitar del div) */}
+      </div>
 
     </div>
   );
