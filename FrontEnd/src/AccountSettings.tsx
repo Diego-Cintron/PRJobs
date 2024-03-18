@@ -4,7 +4,7 @@ import { errorHandle } from './apiUtils';
 
 const AccountSettings: React.FC = () => {
 
-  const [userId, setUserId] = useState<number>(2); // TODO: get user id dynamically
+  const [userId, setUserId] = useState<number>(3); // TODO: get user id dynamically
 
   const [data, setData] = useState<User>({
     user_id: userId,
@@ -19,18 +19,7 @@ const AccountSettings: React.FC = () => {
     user_available: [],
   });
 
-  const [updatedData, setUpdatedData] = useState<User>({
-    user_id: userId,
-    user_type: "",
-    user_birthday: "",
-    user_fname: "",
-    user_lname: "",
-    user_phone: "",
-    user_email: "",
-    user_address: "",
-    user_municipality: "",
-    user_available: [],
-  });
+  const [updatedData, setUpdatedData] = useState<User>(data); // Copia de la variable data
  
   
   useEffect(() => {
@@ -38,9 +27,9 @@ const AccountSettings: React.FC = () => {
         try {
             const response = await fetch(`http://127.0.0.1:5000/users/${userId}`);
             errorHandle(response);
-            const data = await response.json();
-            setData(data.User);
-            setUpdatedData(data.User);
+            const userData = await response.json();
+            setData(userData.User);
+            setUpdatedData(userData.User);
         } catch (error) {
             console.error(error);
         }
@@ -50,10 +39,11 @@ const AccountSettings: React.FC = () => {
   }, [userId]);
 
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = target;
     setUpdatedData({
         ...updatedData,
-        [event.target.name]: event.target.value
+        [name]: value
     })
   }
 
@@ -61,8 +51,8 @@ const AccountSettings: React.FC = () => {
   const handleSave = async () => {
     // Validar que los datos no esten vacios
     if (!updatedData.user_email.trim()) {alert("Email address is required"); return;}
-    if (!updatedData.user_fname.trim()) {alert("First Name  is required"); return;}
-    if (!updatedData.user_lname.trim()) { alert("Last Name is required");return; }
+    if (!updatedData.user_fname.trim()) {alert("First name  is required"); return;}
+    if (!updatedData.user_lname.trim()) { alert("Last name is required");return; }
     if (!updatedData.user_birthday.trim()) {alert("Birthday is required"); return;}
     if (!updatedData.user_phone.trim()) {alert("Phone  number is required"); return;}
     if (!updatedData.user_address.trim()) {alert("Address is required"); return;}
