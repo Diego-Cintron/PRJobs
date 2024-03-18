@@ -19,10 +19,12 @@ const AccountSettings: React.FC = () => {
     user_available: [],
   });
 
-  const [updatedData, setUpdatedData] = useState<User>(data); // Copia de la variable data
+  const [updatedData, setUpdatedData] = useState<User>(data); // Copia de la variable data (se usa para modificar los datos)
  
   
   useEffect(() => {
+
+    // Get  the data for the specific user ID
     const fetchUser = async () => { 
         try {
             const response = await fetch(`http://127.0.0.1:5000/users/${userId}`);
@@ -39,6 +41,7 @@ const AccountSettings: React.FC = () => {
   }, [userId]);
 
 
+  // Handles the changes made  by the users in the input fields
   const handleChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = target;
     setUpdatedData({
@@ -48,6 +51,7 @@ const AccountSettings: React.FC = () => {
   }
 
 
+  // Check if there are empty input fields
   const isDataValid = (data: User) => {
     return (
       data.user_email.trim() !== "" &&
@@ -60,6 +64,7 @@ const AccountSettings: React.FC = () => {
   };
 
 
+  // Submit handler - updates the database with new information
   const handleSave = async () => {
     // Validar que los datos no esten vacios
     if (!isDataValid(updatedData)) {
