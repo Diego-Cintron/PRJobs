@@ -48,14 +48,25 @@ const AccountSettings: React.FC = () => {
   }
 
 
+  const isDataValid = (data: User) => {
+    return (
+      data.user_email.trim() !== "" &&
+      data.user_fname.trim() !== "" &&
+      data.user_lname.trim() !== "" &&
+      data.user_birthday.trim() !== "" &&
+      data.user_phone.trim() !== "" &&
+      data.user_address.trim() !== ""
+    );
+  };
+
+
   const handleSave = async () => {
     // Validar que los datos no esten vacios
-    if (!updatedData.user_email.trim()) {alert("Email address is required"); return;}
-    if (!updatedData.user_fname.trim()) {alert("First name  is required"); return;}
-    if (!updatedData.user_lname.trim()) { alert("Last name is required");return; }
-    if (!updatedData.user_birthday.trim()) {alert("Birthday is required"); return;}
-    if (!updatedData.user_phone.trim()) {alert("Phone  number is required"); return;}
-    if (!updatedData.user_address.trim()) {alert("Address is required"); return;}
+    if (!isDataValid(updatedData)) {
+      alert("All fields are required");
+      return;
+    }
+
     try {
       //Crea una copia de updatedData sin el user_id
       const { user_id, ...dataToSend } = updatedData;
@@ -65,9 +76,9 @@ const AccountSettings: React.FC = () => {
         body: JSON.stringify(dataToSend),
       });
       errorHandle(response);
-      const data = await response.json();
-      setData(data.User);
-      setUpdatedData(data.User);
+      const userData = await response.json();
+      setData(userData.User);
+      setUpdatedData(userData.User);
     } catch (error) {
       console.error(error);
     }
