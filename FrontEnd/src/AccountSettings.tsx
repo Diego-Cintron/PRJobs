@@ -89,23 +89,23 @@ const AccountSettings: React.FC = () => {
     <div className="user-settings">
       <h2>Account Settings</h2>
       
-      <label>Email address</label>
-      <input type="email" name="user_email" value={updatedData.user_email} onChange={handleChange} />
+      <label htmlFor="user_email">Email address</label>
+      <input type="email" id="user_email" name="user_email" value={updatedData.user_email} onChange={handleChange} />
       
-      <label>First name</label>
-      <input type="text" name="user_fname" value={updatedData.user_fname} onChange={handleChange} />
+      <label htmlFor="user_fname">First name</label>
+      <input type="text" id="user_fname" name="user_fname" value={updatedData.user_fname} onChange={handleChange} />
       
-      <label>Last name</label>
-      <input type="text" name="user_lname" value={updatedData.user_lname} onChange={handleChange} />
+      <label htmlFor="user_lname">Last name</label>
+      <input type="text" id="user_lname" name="user_lname" value={updatedData.user_lname} onChange={handleChange} />
       
-      <label>Birthday</label>
-      <input type="datetime" name="user_birthday" value={updatedData.user_birthday} onChange={handleChange} />
+      <label htmlFor="user_birthday">Birthday</label>
+      <input type="datetime" id="user_birthday" name="user_birthday" value={updatedData.user_birthday} onChange={handleChange} />
       
-      <label>Phone</label>
-      <input type="tel" name="user_phone" value={updatedData.user_phone} onChange={handleChange} />
+      <label htmlFor="user_phone">Phone</label>
+      <input type="tel" id="user_phone" name="user_phone" value={updatedData.user_phone} onChange={handleChange} />
       
-      <label>Address</label>
-      <input type="text" name="user_address" value={updatedData.user_address} onChange={handleChange} />
+      <label htmlFor="user_address">Address</label>
+      <input type="text" id="user_address" name="user_address" value={updatedData.user_address} onChange={handleChange} />
 
       <button onClick={handleSave}>Save</button>
 
