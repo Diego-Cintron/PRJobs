@@ -16,7 +16,7 @@ const AccountSettings: React.FC = () => {
     user_email: "",
     user_address: "",
     user_municipality: "",
-    user_available: [""],
+    user_available: [],
   });
 
   const [updatedData, setUpdatedData] = useState<User>({
@@ -29,7 +29,7 @@ const AccountSettings: React.FC = () => {
     user_email: "",
     user_address: "",
     user_municipality: "",
-    user_available: [""],
+    user_available: [],
   });
  
   
@@ -59,6 +59,13 @@ const AccountSettings: React.FC = () => {
 
 
   const handleSave = async () => {
+    // Validar que los datos no esten vacios
+    if (!updatedData.user_email.trim()) {alert("Email address is required"); return;}
+    if (!updatedData.user_fname.trim()) {alert("First Name  is required"); return;}
+    if (!updatedData.user_lname.trim()) { alert("Last Name is required");return; }
+    if (!updatedData.user_birthday.trim()) {alert("Birthday is required"); return;}
+    if (!updatedData.user_phone.trim()) {alert("Phone  number is required"); return;}
+    if (!updatedData.user_address.trim()) {alert("Address is required"); return;}
     try {
       //Crea una copia de updatedData sin el user_id
       const { user_id, ...dataToSend } = updatedData;
