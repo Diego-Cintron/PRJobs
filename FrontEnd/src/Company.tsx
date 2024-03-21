@@ -1,6 +1,6 @@
 import React from "react";
 // import { errorHandle } from './apiUtils';
-import "./index.css";
+import "./styles.css";
 
 const Company: React.FC = () =>{
     return(

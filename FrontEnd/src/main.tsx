@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import './index.css'
+import './styles.css'
 //import App from './App.tsx'
 // import CreatePost from './CreatePost.tsx'
 // import UserList from './UserList.tsx'
@@ -20,7 +20,7 @@ import Posts from './Posts.tsx'
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode> 
     <Border />
-    <div style={{display:'flex'}}>
+    <div className="container">
       <UserProfile />
       <Posts /> 
       <Company />
