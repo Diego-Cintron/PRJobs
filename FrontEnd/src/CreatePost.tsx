@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { errorHandle } from "./apiUtils";
+import { errorHandler } from "./apiUtils";
 
 const CreatePost: React.FC = () => {
   const [postData, setPostData] = useState({
@@ -29,7 +29,7 @@ const CreatePost: React.FC = () => {
         body: JSON.stringify(postData),
       });
 
-      errorHandle(response); // Check response status
+      errorHandler(response); // Check response status
 
       console.log("Posting created successfully");
     } catch (error) {
