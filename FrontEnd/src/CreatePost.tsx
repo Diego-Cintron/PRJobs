@@ -31,7 +31,7 @@ const CreatePost: React.FC = () => {
 
       errorHandler(response); // Check response status
 
-      console.log("Posting created successfully");
+      window.location.reload();
     } catch (error) {
       console.error("Error creating posting:", error); // General error handling
     }

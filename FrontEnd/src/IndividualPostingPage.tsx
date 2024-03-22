@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 import { errorHandler } from "./apiUtils";
 import EditPostingModal from "./EditPostingModal";
 
 function IndividualPostingPage() {
+  const navigate = useNavigate();
   const { id } = useParams<{ id: string }>();
   const [posting, setPosting] = useState<any>(null);
   const [showEditModal, setShowEditModal] = useState<boolean>(false); // Used to show or hide modal (DEFAULT: Hidden)
@@ -30,6 +32,18 @@ function IndividualPostingPage() {
     }
   };
 
+  const handleDeleteButtonClick = async () => {
+    try {
+      const response = await fetch(`http://127.0.0.1:5000/postings/${id}`, {
+        method: "DELETE",
+      });
+      errorHandler(response);
+      navigate(`/postings`);
+    } catch (error) {
+      console.error("Error deleting posting:", error);
+    }
+  };
+
   // Display "Loading..." while the data is being fetched
   if (!posting) {
     return <div>Loading...</div>;
@@ -43,7 +57,7 @@ function IndividualPostingPage() {
     setShowEditModal(false); // Hide the edit modal
   };
 
-  return (
+    return (
     <div>
       {/* Displays current Posting's information */}
       <h2>Individual Posting</h2>
@@ -54,10 +68,15 @@ function IndividualPostingPage() {
       <p>Date Submmited: {posting.post_uploaded}</p>
       <p>Expires: {posting.post_expires}</p>
 
-      {/* Edit Button - Hidden if "showEditButton" is false*/}
+      {/* Edit Button & Delete Button - Hidden if "showEditButton" is false*/}
       {showEditButton && (
         <button onClick={handleEditButtonClick} className="edit-button">
           Edit
+        </button>
+      )}
+      {showEditButton && (
+        <button onClick={handleDeleteButtonClick} className="delete-button">
+          Delete
         </button>
       )}
 

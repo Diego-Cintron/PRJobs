@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from 'react-router-dom';
-import { errorHandler } from './apiUtils';
+import { useNavigate } from "react-router-dom";
+import { errorHandler } from "./apiUtils";
+import CreatePost from "./CreatePost";
+import './PostingStyles.css'
 
 function AllPostings() {
   const [postings, setPostings] = useState<any[]>([]);
@@ -27,7 +29,8 @@ function AllPostings() {
 
   return (
     <div>
-      <h2>All Postings</h2>
+      <CreatePost />
+      <h1>All Postings</h1>
       {postings.map((posting) => (
         <div
           key={posting.post_id}

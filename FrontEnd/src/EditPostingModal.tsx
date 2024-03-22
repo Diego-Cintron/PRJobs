@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import "./EditPostingModal.css";
-import Posting from "./Posting"; // Import the Posting interface
+import Posting from "./Posting";
 import { errorHandler } from "./apiUtils";
+
 
 interface EditPostingModalProps {
   posting: Posting; // Use the Posting interface
