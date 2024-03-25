@@ -1,0 +1,211 @@
+.corner {
+  width: 100%;
+  background-color: #ffffff;
+  top: 0;
+  position: fixed;
+  display: flex;
+}
+
+.logohome {
+  margin-left: 0%;
+}
+
+.notifications {
+  margin-left: 50%;
+}
+
+.setting {
+  margin-left: 41%;
+}
+
+.login-area {
+  min-width: 111.5vh;
+  padding: 20%;
+  background-color: #eb48636e;
+}
+
+.login-blocks {
+  width: 30vh;
+  padding: 10px;
+  background-color: #81f6faa9;
+  border: 1px solid #000000;
+}
+
+.profilename {
+  width: 25vh;
+  background-color: #ffffff;
+  border: 1px solid #000000;
+  color: #000000;
+}
+
+.email {
+  color: #000000;
+}
+
+.description {
+  height: 10vh;
+  width: 15vh;
+  text-align: center;
+  background-color: #ffffff;
+  border: 1px solid #000000;
+  color: #000000;
+}
+
+.skill {
+  height: 10vh;
+  width: 15vh;
+  text-align: center;
+  background-color: #ffffff;
+  border: 1px solid #000000;
+  color: #000000;
+}
+
+.map {
+  height: 10vh;
+  width: 10vh;
+  text-align: center;
+  background-color: #ffffff;
+  border: 1px solid #000000;
+  color: #000000;
+}
+
+.user-block,
+.postbackground,
+.company-block {
+  flex: 1; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px; 
+}
+
+.user-block {
+  background-color: #70c5f7;
+  border: 1px solid #000000;
+}
+
+.company-block {
+  background-color: #b5df7ee5;
+  border: 1px solid #000000;
+}
+
+.company-logo-picture {
+  background-color: #ffffff;
+  border: 1px solid #000000;
+}
+
+.company-description {
+  padding: 5%;
+  min-height: 7vh;
+  min-width: 15vh;
+  background-color: #ffffffe5;
+  border: 1px solid #000000;
+  text-align: center;
+  color: #000000;
+}
+
+.joblistings {
+  text-align: center;
+  background-color: #ffffffe5;
+  color: #000000;
+  border: 1px solid #000000;
+}
+
+.positions {
+  height: 10vh;
+  width: 10vh;
+  background-color: #ffffffe5;
+  color: #000000;
+  border: 1px solid #000000;
+}
+
+.availability {
+  height: 10vh;
+  width: 10vh;
+  background-color: #ffffffe5;
+  color: #000000;
+  border: 1px solid #000000;
+}
+
+.postbackground {
+  background-color: #ccc89fe5;
+  position: flex;
+}
+
+.post {
+  padding: 10%;
+  min-width: max-content;
+  background-color: #a79d45e5;
+  border: 1px solid #000000;
+  color: #000000;
+  position: flex;
+}
+
+.postname {
+  height: 5vh;
+  width: 30vh;
+  background-color: #ffffffe5;
+  color: #000000;
+  border: 1px solid #000000;
+}
+
+.postdate {
+  height: 5vh;
+  width: 30vh;
+  background-color: #ffffffe5;
+  color: #000000;
+  border: 1px solid #000000;
+}
+
+.postdescription {
+  height: 10vh;
+  width: 30vh;
+  background-color: #ffffffe5;
+  color: #000000;
+  border: 1px solid #000000;
+}
+
+.morepostinfo {
+  height: 10vh;
+  width: 30vh;
+  background-color: #a5ee7ae5;
+  color: #000000;
+  border: 1px solid #000000;
+}
+
+.searchjobs {
+  height: 5vh;
+  width: 30vh;
+  background-color: #ffffff;
+  color: #000000;
+  border: 1px solid #000000;
+  text-align: center;
+}
+
+.dm {
+  padding: 10%;
+  min-height: 50vh;
+  min-width: 30vh;
+  background-color: #98ddeec5;
+  border: 1px solid #000000;
+  color: #000000;
+}
+
+.dm-contact {
+  background-color: #ffffffe5;
+  border: 1px solid #000000;
+}
+
+.messagebar {
+  background-color: #ffffffe5;
+  border: 1px solid #000000;
+}
+
+.container {
+  display: flex;
+  justify-content: space-around;
+  align-items: stretch;
+  min-height: 100vh;
+  width: 100%;
+}
