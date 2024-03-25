@@ -1,4 +1,4 @@
-export const errorHandle = (response: Response) => {
+export const errorHandler = (response: Response) => {
     if (!response.ok) {
         throw Error(response.statusText);
     }

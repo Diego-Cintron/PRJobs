@@ -77,7 +77,7 @@ class PostingsHandler:
         if not dao.getPostingById(post_id):
             return jsonify(Error = "Posting Not Found"), 404
         else:
-            if len(form) != 7:
+            if len(form) != 6:
                 return jsonify(Error="Malformed update request"), 404
             else:
                 user_id = form['user_id']
