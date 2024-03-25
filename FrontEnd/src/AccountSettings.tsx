@@ -111,7 +111,7 @@ const AccountSettings: React.FC = () => {
 
       <div>
         <label htmlFor="user_birthday">Birthday</label>
-        <input type="datetime" id="user_birthday" name="user_birthday" value={updatedData.user_birthday} onChange={handleChange} />
+        <input type="date" id="user_birthday" name="user_birthday" value={updatedData.user_birthday} onChange={handleChange} />
       </div>
 
       <div>
