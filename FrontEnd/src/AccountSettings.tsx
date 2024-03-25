@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import User from "./User";
-import { errorHandle } from './apiUtils';
+import { errorHandler } from './apiUtils';
 
 const AccountSettings: React.FC = () => {
 
@@ -28,7 +28,7 @@ const AccountSettings: React.FC = () => {
     const fetchUser = async () => { 
         try {
             const response = await fetch(`http://127.0.0.1:5000/users/${userId}`);
-            errorHandle(response);
+            errorHandler(response);
             const userData = await response.json();
             setData(userData.User);
             setUpdatedData(userData.User);
@@ -80,7 +80,7 @@ const AccountSettings: React.FC = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(dataToSend),
       });
-      errorHandle(response);
+      errorHandler(response);
       const userData = await response.json();
       setData(userData.User);
       setUpdatedData(userData.User);

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import User from "./User"; // Import the User interface
+import AccountSettings from "./AccountSettings";
 import { errorHandler } from './apiUtils';
 import "./index.css";
 
@@ -42,6 +43,7 @@ function UserList() {
           ))}
         </tbody>
       </table>
+      <AccountSettings />
     </div>
   );
 };
