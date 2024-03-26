@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import User from "./User";
+import User from "./Interfaces/User";
 import { errorHandler } from './apiUtils';
 
 const AccountSettings: React.FC = () => {

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import User from "./User"; // Import the User interface
+import User from "./Interfaces/User"; // Import the User interface
 import AccountSettings from "./AccountSettings";
 import { errorHandler } from './apiUtils';
 import "./index.css";
