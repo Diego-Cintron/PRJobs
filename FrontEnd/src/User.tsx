@@ -9,6 +9,7 @@ interface User {
     user_address: string;
     user_municipality: string;
     user_available: string[];
+    user_password: string;
 }
 
 export default User;

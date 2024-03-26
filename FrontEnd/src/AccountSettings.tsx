@@ -4,7 +4,7 @@ import { errorHandler } from './apiUtils';
 
 const AccountSettings: React.FC = () => {
 
-  const [userId, setUserId] = useState<number>(3); // TODO: get user id dynamically
+  const [userId, setUserId] = useState<number>(4); // TODO: get user id dynamically
 
   const [data, setData] = useState<User>({
     user_id: userId,
@@ -17,6 +17,7 @@ const AccountSettings: React.FC = () => {
     user_address: "",
     user_municipality: "",
     user_available: [],
+    user_password: ""
   });
 
   const [updatedData, setUpdatedData] = useState<User>(data); // Copia de la variable data (se usa para modificar los datos)
@@ -96,7 +97,7 @@ const AccountSettings: React.FC = () => {
 
       <div>
         <label htmlFor="user_email">Email address</label>
-        <input type="email" id="user_email" name="user_email" value={updatedData.user_email} onChange={handleChange} />
+        <input type="email" id="user_email" name="user_email" value={updatedData.user_email} readOnly />
       </div>
 
       <div>
