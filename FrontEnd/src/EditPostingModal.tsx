@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Posting from "./Posting";
+import Posting from "./Interfaces/Posting";
 import { errorHandler } from "./apiUtils";
 
 
