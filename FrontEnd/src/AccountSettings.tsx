@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import User from "./Interfaces/User";
-import { errorHandler } from './apiUtils';
+import { useAuth } from "./AuthContext";
+import { errorHandler } from "./apiUtils";
 
 const AccountSettings: React.FC = () => {
-
-  const [userId, setUserId] = useState<number>(4); // TODO: get user id dynamically
+  const { user } = useAuth();
+  const [userId] = useState<number>(user?.user_id || -1); // Gets user id dynamically
 
   const [data, setData] = useState<User>({
     user_id: userId,
@@ -17,40 +18,36 @@ const AccountSettings: React.FC = () => {
     user_address: "",
     user_municipality: "",
     user_available: [],
-    user_password: ""
+    user_password: "",
   });
 
   const [updatedData, setUpdatedData] = useState<User>(data); // Copia de la variable data (se usa para modificar los datos)
- 
-  
-  useEffect(() => {
 
+  useEffect(() => {
     // Get  the data for the specific user ID
-    const fetchUser = async () => { 
-        try {
-            const response = await fetch(`http://127.0.0.1:5000/users/${userId}`);
-            errorHandler(response);
-            const userData = await response.json();
-            setData(userData.User);
-            setUpdatedData(userData.User);
-        } catch (error) {
-            console.error(error);
-        }
+    const fetchUser = async () => {
+      try {
+        const response = await fetch(`http://127.0.0.1:5000/users/${userId}`);
+        errorHandler(response);
+        const userData = await response.json();
+        setData(userData.User);
+        setUpdatedData(userData.User);
+      } catch (error) {
+        console.error(error);
+      }
     };
-    
+
     fetchUser();
   }, [userId]);
-
 
   // Handles the changes made  by the users in the input fields
   const handleChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = target;
     setUpdatedData({
-        ...updatedData,
-        [name]: value
-    })
-  }
-
+      ...updatedData,
+      [name]: value,
+    });
+  };
 
   // Check if there are empty input fields
   const isDataValid = (data: User) => {
@@ -63,7 +60,6 @@ const AccountSettings: React.FC = () => {
       data.user_address.trim() !== ""
     );
   };
-
 
   // Submit handler - updates the database with new information
   const handleSave = async () => {
@@ -90,48 +86,82 @@ const AccountSettings: React.FC = () => {
     }
   };
 
-
   return (
     <div className="user-settings">
       <h2>Account Settings</h2>
 
       <div>
         <label htmlFor="user_email">Email address</label>
-        <input type="email" id="user_email" name="user_email" value={updatedData.user_email} readOnly />
+        <input
+          type="email"
+          id="user_email"
+          name="user_email"
+          value={updatedData.user_email}
+          readOnly
+        />
       </div>
 
       <div>
         <label htmlFor="user_fname">First name</label>
-        <input type="text" id="user_fname" name="user_fname" value={updatedData.user_fname} onChange={handleChange} />
+        <input
+          type="text"
+          id="user_fname"
+          name="user_fname"
+          value={updatedData.user_fname}
+          onChange={handleChange}
+        />
       </div>
 
       <div>
         <label htmlFor="user_lname">Last name</label>
-        <input type="text" id="user_lname" name="user_lname" value={updatedData.user_lname} onChange={handleChange} />
+        <input
+          type="text"
+          id="user_lname"
+          name="user_lname"
+          value={updatedData.user_lname}
+          onChange={handleChange}
+        />
       </div>
 
       <div>
         <label htmlFor="user_birthday">Birthday</label>
-        <input type="date" id="user_birthday" name="user_birthday" value={updatedData.user_birthday} onChange={handleChange} />
+        <input
+          type="date"
+          id="user_birthday"
+          name="user_birthday"
+          value={updatedData.user_birthday}
+          onChange={handleChange}
+        />
       </div>
 
       <div>
         <label htmlFor="user_phone">Phone</label>
-        <input type="tel" id="user_phone" name="user_phone" value={updatedData.user_phone} onChange={handleChange} />
+        <input
+          type="tel"
+          id="user_phone"
+          name="user_phone"
+          value={updatedData.user_phone}
+          onChange={handleChange}
+        />
       </div>
 
       <div>
         <label htmlFor="user_address">Address</label>
-        <input type="text" id="user_address" name="user_address" value={updatedData.user_address} onChange={handleChange} />
+        <input
+          type="text"
+          id="user_address"
+          name="user_address"
+          value={updatedData.user_address}
+          onChange={handleChange}
+        />
       </div>
 
       <div>
-        <button onClick={handleSave}>Save</button> {/* Boton de Save (se puede quitar del div) */}
+        <button onClick={handleSave}>Save</button>{" "}
+        {/* Boton de Save (se puede quitar del div) */}
       </div>
-
     </div>
   );
 };
-
 
 export default AccountSettings;

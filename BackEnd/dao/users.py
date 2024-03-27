@@ -30,6 +30,13 @@ class UserDAO:
         result = cursor.fetchone()
         return result
     
+    def login(self, user_email, user_password):
+        cursor = self.conn.cursor()
+        query = "select * from users where user_email = %s and user_password = %s;"
+        cursor.execute(query, (user_email, user_password,))
+        result = cursor.fetchone()
+        return result
+    
 
     def update(self, user_id, user_type, user_birthday, user_fname, user_lname, user_phone, user_email, user_address, user_municipality, user_available, user_password):
         cursor = self.conn.cursor()

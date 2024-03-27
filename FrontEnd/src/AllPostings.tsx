@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { errorHandler } from "./apiUtils";
+import { useAuth } from "./AuthContext";
 import CreatePost from "./CreatePost";
-import './PostingStyles.css'
+import "./PostingStyles.css";
 
 function AllPostings() {
+  const { user } = useAuth();
+  const [userId] = useState<number>(user?.user_id || -1); // Gets user id dynamically
   const [postings, setPostings] = useState<any[]>([]);
   const navigate = useNavigate();
   useEffect(() => {
@@ -13,7 +16,7 @@ function AllPostings() {
 
   const fetchPostings = async () => {
     try {
-      const response = await fetch("http://127.0.0.1:5000/postings");
+      const response = await fetch(`http://127.0.0.1:5000/postings/user/${userId}`);
       errorHandler(response); // Check response status
       const data = await response.json();
       setPostings(data.Postings);

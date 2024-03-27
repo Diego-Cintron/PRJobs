@@ -55,6 +55,21 @@ class UserHandler:
             user = self.build_user_dict(row)
         return jsonify(User=user)
     
+    
+    def login(self, form):
+        dao = UserDAO()
+        if len(form) != 2:
+            return jsonify(Error="Malformed login request"), 404
+        else:
+            user_email = form['user_email']
+            user_password = form['user_password']
+            row = dao.login(user_email, user_password)
+            if not row:
+                return jsonify(Error="User Not Found"), 404
+            else:
+                user = self.build_user_dict(row)
+            return jsonify(User=user)
+        
 
     def updateUser(self, user_id, form):
         dao = UserDAO()
@@ -112,3 +127,4 @@ class UserHandler:
         else:
             dao.delete(user_id)
             return jsonify(DeleteStatus="OK"), 200
+           

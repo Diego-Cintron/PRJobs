@@ -1,8 +1,11 @@
+// import React from 'react';
+import { useAuth } from "./AuthContext";
+import SignIn from "./SignIn";
+
 function Home() {
-  return (
-    <div>
-      <h1>Home Page</h1>
-    </div>
-  );
+  const { user } = useAuth();
+
+  return <div>{user ? <p>Welcome, {user.user_fname}!</p> : <SignIn />}</div>;
 }
+
 export default Home;

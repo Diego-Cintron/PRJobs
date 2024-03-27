@@ -43,6 +43,14 @@ def searchByUserID(user_id):
         return UserHandler().deleteUser(user_id)
     else: 
         return jsonify(Error="Method not allowed!!!"), 405
+    
+@app.route('/users/login', methods=['POST'])
+def login():
+    if request.method == 'POST':
+        data = request.json
+        return UserHandler().login(data)
+    else:
+        return jsonify(Error="Method not allowed."), 405
 
 
 # ----- POSTINGS -----

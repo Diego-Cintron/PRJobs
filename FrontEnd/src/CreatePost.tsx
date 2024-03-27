@@ -1,13 +1,18 @@
 import React, { useState } from "react";
 import { errorHandler } from "./apiUtils";
+import { useAuth } from "./AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const CreatePost: React.FC = () => {
+  const navigate = useNavigate();
+  const { user } = useAuth();
+  const [userId] = useState<number>(user?.user_id || -1); // Gets user id dynamically
   const [postData, setPostData] = useState({
     post_title: "",
     post_description: "",
     post_address: "",
     post_municipality: "",
-    user_id: 1,
+    user_id: userId,
     cm_id: 1,
   });
 
@@ -31,7 +36,7 @@ const CreatePost: React.FC = () => {
 
       errorHandler(response); // Check response status
 
-      window.location.reload();
+      navigate(`/postings`);
     } catch (error) {
       console.error("Error creating posting:", error); // General error handling
     }

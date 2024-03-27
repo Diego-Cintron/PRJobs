@@ -72,12 +72,12 @@
 .user-block,
 .postbackground,
 .company-block {
-  flex: 1; 
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 20px; 
+  padding: 20px;
 }
 
 .user-block {
@@ -208,4 +208,5 @@
   align-items: stretch;
   min-height: 100vh;
   width: 100%;
+  padding-top: 35px;
 }
