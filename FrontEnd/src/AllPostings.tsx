@@ -16,7 +16,9 @@ function AllPostings() {
 
   const fetchPostings = async () => {
     try {
-      const response = await fetch(`http://127.0.0.1:5000/postings/user/${userId}`);
+      const response = await fetch(
+        `http://127.0.0.1:5000/postings/user/${userId}`
+      );
       errorHandler(response); // Check response status
       const data = await response.json();
       setPostings(data.Postings);
@@ -34,23 +36,27 @@ function AllPostings() {
     <div>
       <CreatePost />
       <h1>All Postings</h1>
-      {postings.map((posting) => (
-        <div
-          key={posting.post_id}
-          style={{
-            border: "1px solid #ccc",
-            borderRadius: "5px",
-            padding: "10px",
-            marginLeft: "10px",
-            marginBottom: "10px",
-            cursor: "pointer",
-          }}
-          onClick={() => handlePostingClick(posting.post_id)}
-        >
-          <h3>{posting.post_title}</h3>
-          <p>{posting.post_description}</p>
-        </div>
-      ))}
+      {postings.length === 0 ? (
+        <p>No Postings Found.</p>
+      ) : (
+        postings.map((posting) => (
+          <div
+            key={posting.post_id}
+            style={{
+              border: "1px solid #ccc",
+              borderRadius: "5px",
+              padding: "10px",
+              marginLeft: "10px",
+              marginBottom: "10px",
+              cursor: "pointer",
+            }}
+            onClick={() => handlePostingClick(posting.post_id)}
+          >
+            <h3>{posting.post_title}</h3>
+            <p>{posting.post_description}</p>
+          </div>
+        ))
+      )}
     </div>
   );
 }
