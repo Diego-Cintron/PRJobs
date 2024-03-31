@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Posting from "./Interfaces/Posting";
-import { errorHandler } from "./apiUtils";
-
+import { errorHandler, maxDescriptionLength } from "./apiUtils";
 
 interface EditPostingModalProps {
   posting: Posting; // Use the Posting interface
@@ -30,7 +29,7 @@ const EditPostingModal: React.FC<EditPostingModalProps> = ({
     e.preventDefault();
 
     // Sends updated Posting to backend
-    try { 
+    try {
       const response = await fetch(
         `http://127.0.0.1:5000/postings/${posting.post_id}`,
         {
@@ -77,8 +76,8 @@ const EditPostingModal: React.FC<EditPostingModalProps> = ({
               name="post_description"
               value={formData.post_description}
               onChange={handleChange}
-              maxLength={280} // Maximum description character limit
-              rows={Math.ceil(formData.post_description.length / 50)} // Adjusting rows based on character count
+              maxLength={maxDescriptionLength}
+              rows={Math.ceil(formData.post_description.length / 50)} // Adjusting rows based on max character count
             />
           </div>
           <div>
