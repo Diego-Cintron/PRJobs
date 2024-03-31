@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { errorHandler } from "./apiUtils";
+import { errorHandler, maxDescriptionLength } from "./apiUtils";
 import { useAuth } from "./AuthContext";
+import './PostingStyles.css'
 import { useNavigate } from "react-router-dom";
 
 const CreatePost: React.FC = () => {
@@ -52,7 +53,7 @@ const CreatePost: React.FC = () => {
       post_address.trim() !== "" &&
       post_municipality.trim() !== "" &&
       post_title.length <= 50 &&
-      post_description.length <= 280 &&
+      post_description.length <= maxDescriptionLength &&
       post_address.length <= 64 &&
       post_municipality.length <= 20
     );
@@ -62,7 +63,7 @@ const CreatePost: React.FC = () => {
     <div>
       <h1>Create New Posting</h1>
       <form onSubmit={handleSubmit}>
-        <div>
+        <div className="label-div">
           <label htmlFor="post_title">Title:</label>
           <input
             type="text"
@@ -72,20 +73,24 @@ const CreatePost: React.FC = () => {
             onChange={(e) =>
               setPostData({ ...postData, post_title: e.target.value })
             }
+            className="input-style"
           />
         </div>
-        <div>
+        <div className="label-div">
           <label htmlFor="post_description">Description:</label>
           <textarea
             id="post_description"
             name="post_description"
+            rows={Math.ceil(maxDescriptionLength / 50)} // Adjusting rows based on max character count
             value={postData.post_description}
             onChange={(e) =>
               setPostData({ ...postData, post_description: e.target.value })
             }
+            className="textarea-style"
+            style={{ resize: "none" }}
           />
         </div>
-        <div>
+        <div className="label-div">
           <label htmlFor="post_address">Address:</label>
           <input
             type="text"
@@ -95,9 +100,10 @@ const CreatePost: React.FC = () => {
             onChange={(e) =>
               setPostData({ ...postData, post_address: e.target.value })
             }
+            className="input-style"
           />
         </div>
-        <div>
+        <div className="label-div">
           <label htmlFor="post_municipality">Municipality:</label>
           <input
             type="text"
@@ -107,6 +113,7 @@ const CreatePost: React.FC = () => {
             onChange={(e) =>
               setPostData({ ...postData, post_municipality: e.target.value })
             }
+            className="input-style"
           />
         </div>
         <button type="submit">Create Posting</button>

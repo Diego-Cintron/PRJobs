@@ -1,3 +1,13 @@
+.input-style,
+.textarea-style {
+  width: 300px; /* Adjust the width as needed */
+}
+.label-div {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px; /* Adjust spacing between label and input */
+}
+
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -21,15 +31,15 @@
 }
 
 .close {
-  position: absolute; 
-  top: 7px; 
-  right: 20px; 
+  position: absolute;
+  top: 7px;
+  right: 20px;
   cursor: pointer;
   font-size: 25px;
 }
 
 .close:hover {
-  color: #555; 
+  color: #555;
 }
 
 h2 {
