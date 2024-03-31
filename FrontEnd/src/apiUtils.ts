@@ -4,3 +4,5 @@ export const errorHandler = (response: Response) => {
     }
     return response;
 };
+
+export const maxDescriptionLength = 280;
