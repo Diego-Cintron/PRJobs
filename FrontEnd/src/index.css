@@ -13,6 +13,11 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+@font-face {
+  font-family: 'Genty';
+  src: url(src\fonts\GentyDemo-Regular.otf);
+}
+
 a {
   font-weight: 500;
   color: #ffffff;
@@ -67,6 +72,7 @@ button:focus-visible {
   }
 }
 
+/* User Database Page */
 .user-table {
   width: 100%;
   border-collapse: collapse;
@@ -87,3 +93,15 @@ button:focus-visible {
 .user-list {
   border: 3px solid #000000;
 }
+
+
+/* Welcome Page */
+.welcome-background{
+  background:linear-gradient(#4f58fd83 0%,#42cef8c4 50%);
+}
+
+.welcome-box{
+  background:linear-gradient(#3374ffad 0%, #0400ff8c 50%);
+  font-family: 'Genty';
+}
+
