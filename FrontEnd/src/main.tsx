@@ -1,7 +1,7 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import './styles.css'
-import App from './App.tsx'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./styles.css";
+import App from "./App.tsx";
 // import CreatePost from './CreatePost.tsx'
 // import UserList from './UserList.tsx'
 // import Login from './Login.tsx'
@@ -11,10 +11,11 @@ import App from './App.tsx'
 // import EditJobPost from './EditJobPost.tsx'
 // import EditUser from './EditUser.tsx'
 // import ListApplicants from './ListApplicants.tsx'
-// import Welcome from './Welcome.tsx'
+// import Welcome from "./Welcome.tsx";
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode> 
-   <App />
-  </React.StrictMode>,
-)
+ReactDOM.createRoot(document.getElementById("root")!).render(
+  <React.StrictMode>
+    <App />
+    {/* <Welcome /> */}
+  </React.StrictMode>
+);

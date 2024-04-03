@@ -13,10 +13,6 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-@font-face {
-  font-family: 'Genty';
-  src: url(src\fonts\GentyDemo-Regular.otf);
-}
 
 a {
   font-weight: 500;
@@ -96,12 +92,39 @@ button:focus-visible {
 
 
 /* Welcome Page */
-.welcome-background{
-  background:linear-gradient(#4f58fd83 0%,#42cef8c4 50%);
-}
+
+/* @font-face {
+  font-family: Genty;
+  src: url(GentyDemo-Regular.woff);
+} */
 
 .welcome-box{
+  height: 300px;
+  width: 300px;
+  position: fixed;
+  top: 40%;
+  left: 35%;
+  margin-top: -100px;
+  margin-left: -200px;
   background:linear-gradient(#3374ffad 0%, #0400ff8c 50%);
-  font-family: 'Genty';
+  text-align: center;
+  font-size:60px;
+  color: #e70e0e;
+  font-weight: bold;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  flex: auto;
+}
+
+.welcome-login{
+  height: 400px;
+  width: 400px;
+  background: rgb(255, 255, 255);
+
+  position: fixed;
+  top: 40%;
+  left: 60%;
+  margin-top: -100px;
+  margin-left: -200px;
+  flex: auto;
 }
 
