@@ -1,1 +1,1 @@
-web: python Backend/main.py
+web: python BackEnd/main.py
