@@ -8,6 +8,7 @@ import PostingsPage from "./PostingsPage";
 import IndividualPostingPage from "./IndividualPostingPage";
 import UserList from "./UserList";
 import NavigationBar from "./NavigationBar";
+import NotFound from './NotFound.tsx';
 // import Border from "./Border.tsx";
 // import Login from "./Login.tsx";
 import UserProfile from "./UserProfile.tsx";
@@ -29,6 +30,7 @@ function App() {
             <Route path="/postings" element={<PostingsPage />} />
             <Route path="/postings/:id" element={<IndividualPostingPage />} />
             <Route path="/users" element={<UserList />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
           <Company />
         </div>
