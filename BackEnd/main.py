@@ -14,17 +14,17 @@ app = Flask(__name__)
 # Apply CORS to this app
 CORS(app)
 
-# @app.route('/')
-# def serve_react_app():
-#     return send_from_directory('static', 'index.html')
-
-# @app.route('/static/<path:path>')
-# def serve_static(path):
-#     return send_from_directory('static', path)
-
 @app.route('/')
-def greeting():
-    return 'Hello, this is PRJobs!'
+def serve_react_app():
+    return send_from_directory('../FrontEnd/build', 'index.html')
+
+@app.route('/static/<path:path>')
+def serve_static(path):
+    return send_from_directory('../FrontEnd/build/static', path)
+
+# @app.route('/')
+# def greeting():
+#     return 'Hello, this is PRJobs!'
 
 
 # ----- Users -----
