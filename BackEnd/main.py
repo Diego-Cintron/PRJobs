@@ -23,9 +23,9 @@ CORS(app)
 #     return send_from_directory('build', filename)
 
 
-# @app.route('/')
-# def greeting():
-#     return 'Hello, this is PRJobs!'
+@app.route('/')
+def greeting():
+    return 'Hello, this is PRJobs!'
 
 
 # ----- Users -----
