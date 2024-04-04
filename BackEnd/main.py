@@ -16,11 +16,12 @@ CORS(app)
 
 @app.route('/')
 def serve_react_app():
-    return send_from_directory('../FrontEnd/build', 'index.html')
+    return send_from_directory('build', 'index.html')
 
-@app.route('/static/<path:path>')
-def serve_static(path):
-    return send_from_directory('../FrontEnd/build/static', path)
+@app.route('/<path:filename>')
+def serve_static(filename):
+    return send_from_directory('build', filename)
+
 
 # @app.route('/')
 # def greeting():
