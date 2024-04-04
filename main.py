@@ -15,15 +15,13 @@ app = Flask(__name__)
 # Apply CORS to this app
 CORS(app)
 
-@app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
 def serve_frontend(path):
-    frontend_folder = os.path.abspath('FrontEnd')
-    if os.path.exists(os.path.join(frontend_folder, path)):
-        return send_from_directory(frontend_folder, path)
-    else:
-        # If the requested file does not exist, serve the index.html file
-        return send_from_directory(frontend_folder, 'index.html')
+    return send_from_directory('dist', path)
+
+@app.route('/')
+def serve_index():
+    return send_from_directory('dist', 'index.html')
 
 
 # @app.route('/')
@@ -162,5 +160,4 @@ def searchByMessagesReceiver(user_id2):
         return jsonify("Not supported"), 405
 
 if __name__ == '__main__':
-    port = int(os.environ.get("PORT", 5000))
-    app.run(debug=True, host='0.0.0.0', port=port)
+    app.run(debug=True)

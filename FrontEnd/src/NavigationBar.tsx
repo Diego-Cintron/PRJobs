@@ -13,10 +13,10 @@ function NavigationBar() {
           <Link to="/about">About</Link>
         </li>
         <li>
-          <Link to="/postings">Postings</Link>
+          <Link to="/post">Postings</Link>
         </li>
         <li>
-          <Link to="/users">Users</Link>
+          <Link to="/u">Users</Link>
         </li>
       </ul>
     </nav>
