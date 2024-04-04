@@ -26,9 +26,9 @@ def serve_frontend(path):
         return send_from_directory(frontend_folder, 'index.html')
 
 
-@app.route('/')
-def greeting():
-    return 'Hello, this is PRJobs!'
+# @app.route('/')
+# def greeting():
+#     return 'Hello, this is PRJobs!'
 
 
 # ----- Users -----
