@@ -4,12 +4,12 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "start": "cd FrontEnd && vite",
-    "build": "cd FrontEnd && vite build",
-    "dev": "cd FrontEnd && vite",
-    "lint": "cd FrontEnd && npm run lint",
-    "preview": "cd FrontEnd && npm run preview"
-  },
+  "start": "cd FrontEnd && serve -s build",
+  "build": "cd FrontEnd && vite build",
+  "dev": "cd FrontEnd && vite",
+  "lint": "cd FrontEnd && npm run lint",
+  "preview": "cd FrontEnd && npm run preview"
+},
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
