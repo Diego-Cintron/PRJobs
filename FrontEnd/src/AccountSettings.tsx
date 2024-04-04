@@ -27,7 +27,7 @@ const AccountSettings: React.FC = () => {
     // Get  the data for the specific user ID
     const fetchUser = async () => {
       try {
-        const response = await fetch(`http://127.0.0.1:5000/users/${userId}`);
+        const response = await fetch(`http://127.0.0.1:5000/api/users/${userId}`);
         errorHandler(response);
         const userData = await response.json();
         setData(userData.User);

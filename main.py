@@ -15,23 +15,21 @@ app = Flask(__name__)
 # Apply CORS to this app
 CORS(app)
 
+# Serve the index.html file for non-backend routes
+@app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
 def serve_frontend(path):
-    return send_from_directory('dist', path)
-
-@app.route('/')
-def serve_index():
-    return send_from_directory('dist', 'index.html')
-
-
-# @app.route('/')
-# def greeting():
-#     return 'Hello, this is PRJobs!'
+    if path.startswith('api/'):
+        # Backend route, return 404 Not Found
+        return jsonify(Error="Not Found"), 404
+    else:
+        # Frontend route, serve the index.html file
+        return send_from_directory('FrontEnd', 'index.html')
 
 
 # ----- Users -----
 # Insert a new User or get all Users
-@app.route('/users', methods=['GET', 'POST'])
+@app.route('/api/users', methods=['GET', 'POST'])
 def getAllUsers():
     if request.method == 'GET':
         return UserHandler().getAllUsers()
@@ -42,7 +40,7 @@ def getAllUsers():
         return jsonify(Error="Method not allowed."), 405
     
 # Get User by ID, Update a User, or Delete a User
-@app.route('/users/<int:user_id>', methods=['GET', 'PUT', 'DELETE'])
+@app.route('/api/users/<int:user_id>', methods=['GET', 'PUT', 'DELETE'])
 def searchByUserID(user_id):
     if request.method == 'GET':
         return UserHandler().getUserById(user_id)
@@ -54,7 +52,7 @@ def searchByUserID(user_id):
     else: 
         return jsonify(Error="Method not allowed!!!"), 405
     
-@app.route('/users/login', methods=['POST'])
+@app.route('/api/users/login', methods=['POST'])
 def login():
     if request.method == 'POST':
         data = request.json
@@ -65,7 +63,7 @@ def login():
 
 # ----- POSTINGS -----
 # Insert a new Posting or get all Postings
-@app.route('/postings', methods=['GET', 'POST'])
+@app.route('/api/postings', methods=['GET', 'POST'])
 def getAllPostings():
     if request.method == 'GET':
         return PostingsHandler().getAllPostings()
@@ -77,7 +75,7 @@ def getAllPostings():
 
 
 # Get posting by ID, Update a posting, or Delete a posting
-@app.route('/postings/<int:post_id>', methods=['GET', 'PUT', 'DELETE'])
+@app.route('/api/postings/<int:post_id>', methods=['GET', 'PUT', 'DELETE'])
 def searchByPostID(post_id):
     if request.method == 'GET':
         return PostingsHandler().getPostingById(post_id)
@@ -90,14 +88,14 @@ def searchByPostID(post_id):
         return jsonify(Error="Method not allowed!!!"), 405
 
 # Get all Postings by user_id
-@app.route('/postings/user/<int:user_id>', methods=['GET'])
+@app.route('/api/postings/user/<int:user_id>', methods=['GET'])
 def user_postings(user_id):
     return PostingsHandler().getPostingByUserId(user_id)
 
 
 # ----- Companies -----
 # Insert a new Company or get all Companies
-@app.route('/companies', methods=['GET', 'POST'])
+@app.route('/api/companies', methods=['GET', 'POST'])
 def getAllCompanies():
     if request.method == 'GET':
         return CompanyHandler().getAllCompanies()
@@ -108,7 +106,7 @@ def getAllCompanies():
         return jsonify(Error="Method not allowed."), 405
     
 # Get User by ID, Update a User, or Delete a User
-@app.route('/companies/<int:cm_id>', methods=['GET', 'PUT', 'DELETE'])
+@app.route('/api/companies/<int:cm_id>', methods=['GET', 'PUT', 'DELETE'])
 def searchByCompanyID(cm_id):
     if request.method == 'GET':
         return CompanyHandler().getCompanyByID(cm_id)
@@ -121,7 +119,7 @@ def searchByCompanyID(cm_id):
         return jsonify(Error="Method not allowed."), 405
 
 # ----- Messages -----
-@app.route('/messages', methods=["GET", "POST"])
+@app.route('/api/messages', methods=["GET", "POST"])
 def getMessage():
     if request.method == "GET":
         return MessagesHandler().getAllMessages()
@@ -132,7 +130,7 @@ def getMessage():
         return jsonify("Not supported"), 405   
 
  
-@app.route('/messages/ID/<int:msg_id>', methods=["GET", 'DELETE'])
+@app.route('/api/messages/ID/<int:msg_id>', methods=["GET", 'DELETE'])
 def searchByMessagesID(msg_id):
     if request.method == 'GET':
         return MessagesHandler().getMessagesById(msg_id)
@@ -141,7 +139,7 @@ def searchByMessagesID(msg_id):
     else: 
         return jsonify("Not supported"), 405
     
-@app.route('/messages/sender/<int:user_id1>', methods=["GET", 'DELETE'])
+@app.route('/api/messages/sender/<int:user_id1>', methods=["GET", 'DELETE'])
 def searchByMessagesSender(user_id1):
     if request.method == 'GET':
         return MessagesHandler().getMessagesbySender(user_id1)
@@ -150,7 +148,7 @@ def searchByMessagesSender(user_id1):
     else: 
         return jsonify("Not supported"), 405
     
-@app.route('/messages/receiver/<int:user_id2>', methods=["GET", 'DELETE'])
+@app.route('/api/messages/receiver/<int:user_id2>', methods=["GET", 'DELETE'])
 def searchByMessagesReceiver(user_id2):
     if request.method == 'GET':
         return MessagesHandler().getMessagesbyReceiver(user_id2)

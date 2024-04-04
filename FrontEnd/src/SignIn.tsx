@@ -9,7 +9,7 @@ const SignIn: React.FC = () => {
 
   const handleSignIn = async () => {
     try {
-      const response = await fetch("http://127.0.0.1:5000/users/login", {
+      const response = await fetch("http://127.0.0.1:5000/api/users/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ user_email: email, user_password: password }),

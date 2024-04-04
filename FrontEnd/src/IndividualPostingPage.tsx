@@ -23,7 +23,7 @@ function IndividualPostingPage() {
 
   const fetchPosting = async (post_id: string) => {
     try {
-      const response = await fetch(`http://127.0.0.1:5000/postings/${post_id}`);
+      const response = await fetch(`http://127.0.0.1:5000/api/postings/${post_id}`);
       errorHandler(response); // Check response status
       const data = await response.json();
       setPosting(data.Posting);

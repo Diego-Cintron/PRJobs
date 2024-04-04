@@ -31,7 +31,7 @@ const EditPostingModal: React.FC<EditPostingModalProps> = ({
     // Sends updated Posting to backend
     try {
       const response = await fetch(
-        `http://127.0.0.1:5000/postings/${posting.post_id}`,
+        `http://127.0.0.1:5000/api/postings/${posting.post_id}`,
         {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
