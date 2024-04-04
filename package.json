@@ -4,12 +4,12 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "start": "serve -s build", 
-    "build": "vite build",
-    "dev": "vite",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
-  },
+  "start": "cd FrontEnd && serve -s build",
+  "build": "cd FrontEnd && npm run build",
+  "dev": "cd FrontEnd && npm run dev",
+  "lint": "cd FrontEnd && npm run lint",
+  "preview": "cd FrontEnd && npm run preview"
+},
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
