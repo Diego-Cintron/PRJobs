@@ -1,1 +1,2 @@
-web: gunicorn -w 4 -b "0.0.0.0:$PORT" BackEnd.main:app
+web: gunicorn BackEnd.main:app
+frontend: cd FrontEnd && npm start
