@@ -1,2 +1,2 @@
 web: python main.py
-frontend: npm start
+frontend: npm start --prefix FrontEnd

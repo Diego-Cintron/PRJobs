@@ -4,9 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "start": "cd FrontEnd && serve -s",
+    "start": "serve -s build",
     "build": "cd FrontEnd && vite build",
-    "dev": "cd FrontEnd && vite",
     "lint": "cd FrontEnd && npm run lint",
     "preview": "cd FrontEnd && npm run preview"
   },
@@ -24,7 +23,6 @@
     "eslint": "^8.56.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
-    "serve": "^14.2.1",
     "typescript": "^5.2.2",
     "vite": "^5.1.4"
   }
