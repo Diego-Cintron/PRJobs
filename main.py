@@ -19,12 +19,13 @@ CORS(app)
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
 def serve_frontend(path):
+    # Check if the path starts with 'api/' (assumed backend route)
     if path.startswith('api/'):
-        # Backend route, return 404 Not Found
         return jsonify(Error="Not Found"), 404
     else:
         # Frontend route, serve JavaScript module files
-        return send_from_directory('FrontEnd/dist', path)
+        frontend_folder = os.path.join(os.getcwd(), 'FrontEnd', 'dist')
+        return send_from_directory(frontend_folder, path)
 
 
 # ----- Users -----
