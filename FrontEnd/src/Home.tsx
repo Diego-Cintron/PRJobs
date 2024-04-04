@@ -3,9 +3,9 @@ import { useAuth } from "./AuthContext";
 import SignIn from "./SignIn";
 
 function Home() {
-  const { user } = useAuth();
-
-  return <div>{user ? <p>Welcome, {user.user_fname}!</p> : <SignIn />}</div>;
+  // const { user } = useAuth();
+  return <div><p>WELCOME!!!</p></div>
+  // return <div>{user ? <p>Welcome, {user.user_fname}!</p> : <SignIn />}</div>;
 }
 
 export default Home;
