@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
   "start": "cd FrontEnd && serve -s build",
-  "build": "cd FrontEnd && npm run build",
-  "dev": "cd FrontEnd && npm run dev",
+  "build": "cd FrontEnd && vite build",
+  "dev": "cd FrontEnd && vite",
   "lint": "cd FrontEnd && npm run lint",
   "preview": "cd FrontEnd && npm run preview"
 },
