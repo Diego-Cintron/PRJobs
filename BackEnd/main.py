@@ -15,13 +15,15 @@ app = Flask(__name__)
 # Apply CORS to this app
 CORS(app)
 
-# @app.route('/')
-# def serve_react_app():
-#     return send_from_directory('build', 'index.html')
-
-# @app.route('/<path:filename>')
-# def serve_static(filename):
-#     return send_from_directory('build', filename)
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def serve_frontend(path):
+    frontend_folder = os.path.abspath('FrontEnd')
+    if os.path.exists(os.path.join(frontend_folder, path)):
+        return send_from_directory(frontend_folder, path)
+    else:
+        # If the requested file does not exist, serve the index.html file
+        return send_from_directory(frontend_folder, 'index.html')
 
 
 @app.route('/')
