@@ -27,9 +27,9 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
-            <Route path="/postings" element={<PostingsPage />} />
-            <Route path="/postings/:id" element={<IndividualPostingPage />} />
-            <Route path="/users" element={<UserList />} />
+            <Route path="/post" element={<PostingsPage />} />
+            <Route path="/post/:id" element={<IndividualPostingPage />} />
+            <Route path="/u" element={<UserList />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
           <Company />
