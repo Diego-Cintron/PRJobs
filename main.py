@@ -24,7 +24,7 @@ def serve_frontend(path):
         return jsonify(Error="Not Found"), 404
     else:
         # Frontend route, serve the index.html file
-        return send_from_directory('FrontEnd/dist', 'index.html')
+        return send_from_directory('FrontEnd.dist', 'index.html')
 
 
 # ----- Users -----
