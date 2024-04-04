@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
   "start": "cd FrontEnd && serve -s build",
-  "build": "cd FrontEnd && vite build",
+  "build": "cd FrontEnd && vite build --outDir ../BackEnd/static",
+  // "build": "cd FrontEnd && vite build",
   "dev": "cd FrontEnd && vite",
   "lint": "cd FrontEnd && npm run lint",
   "preview": "cd FrontEnd && npm run preview"

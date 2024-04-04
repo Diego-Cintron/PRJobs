@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, send_from_directory
 from handlers.postings import PostingsHandler 
 from handlers.company import CompanyHandler
 from handlers.messages import MessagesHandler
@@ -13,6 +13,14 @@ app = Flask(__name__)
 
 # Apply CORS to this app
 CORS(app)
+
+@app.route('/')
+def index():
+    return send_from_directory('static', 'index.html')
+
+@app.route('/static/<path:path>')
+def serve_static(path):
+    return send_from_directory('static', path)
 
 @app.route('/')
 def greeting():
