@@ -1,4 +1,5 @@
 // npm install react-router-dom
+import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { AuthProvider } from "./AuthContext";
 import Home from "./Home";

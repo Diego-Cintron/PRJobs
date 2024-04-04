@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import User from "./Interfaces/User"; // Import the User interface
 import AccountSettings from "./AccountSettings";
 import { errorHandler } from './apiUtils';
