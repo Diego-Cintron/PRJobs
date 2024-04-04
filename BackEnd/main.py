@@ -1,8 +1,8 @@
 from flask import Flask, jsonify, request, send_from_directory
-from handlers.postings import PostingsHandler 
-from handlers.company import CompanyHandler
-from handlers.messages import MessagesHandler
-from handlers.users import UserHandler
+from BackEnd.handlers.postings import PostingsHandler 
+from BackEnd.handlers.company import CompanyHandler
+from BackEnd.handlers.messages import MessagesHandler
+from BackEnd.handlers.users import UserHandler
 # Import Cross-Origin Resource Sharing to enable
 # services on other ports on this machine or on other
 # machines to access this app

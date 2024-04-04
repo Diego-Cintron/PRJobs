@@ -1,4 +1,4 @@
-from config.credential import prjobs_config
+from BackEnd.config.credential import prjobs_config
 import psycopg2
 
 class PostingsDAO:

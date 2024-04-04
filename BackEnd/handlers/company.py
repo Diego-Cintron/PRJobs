@@ -1,5 +1,5 @@
 from flask import jsonify
-from dao.company import CompanyDAO
+from BackEnd.dao.company import CompanyDAO
 
 class CompanyHandler:
 

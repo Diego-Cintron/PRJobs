@@ -1,5 +1,5 @@
 from flask import jsonify
-from dao.messages import MessagesDAO
+from BackEnd.dao.messages import MessagesDAO
 from datetime import datetime
 
 class MessagesHandler:
