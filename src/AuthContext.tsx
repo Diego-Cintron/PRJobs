@@ -1,4 +1,3 @@
-// AuthContext.tsx
 import React, { createContext, useContext, useState } from 'react';
 import  User  from './Interfaces/User'; // Assuming User interface is defined in a separate file
 
