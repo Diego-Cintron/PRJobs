@@ -7,7 +7,7 @@
     "start": "serve -s build",
     "build": "cd FrontEnd && vite build",
     "lint": "cd FrontEnd && npm run lint",
-    "preview": "cd FrontEnd && npm run preview"
+    "preview": "cd FrontEnd && vite preview"
   },
   "dependencies": {
     "react": "^18.2.0",
