@@ -9,17 +9,24 @@ from BackEnd.handlers.users import UserHandler
 # machines to access this app
 from flask_cors import CORS, cross_origin
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='./build', static_url_path='/')
 
 
 # Apply CORS to this app
 CORS(app)
 
-@app.route('/')
-def serve_frontend():
-    build_dir = os.path.join(os.getcwd(), 'build')
-    return send_from_directory(build_dir, 'index.html')
+# @app.route('/')
+# def serve_frontend():
+#     build_dir = os.path.join(os.getcwd(), 'build')
+#     return send_from_directory(build_dir, 'index.html')
 
+@app.route('/')
+def index():
+    return app.send_static_file('index.html')
+
+@app.errorhandler(404)
+def not_found(e):
+    return app.send_static_file('index.html')
 
 # ----- Users -----
 # Insert a new User or get all Users
@@ -151,6 +158,5 @@ def searchByMessagesReceiver(user_id2):
     else: 
         return jsonify("Not supported"), 405
 
-if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 5000)) 
-    app.run(host='0.0.0.0', port=port)
+if __name__ == "__main__":
+    app.run(host='0.0.0.0', debug=False, port=os.environ.get('PORT', 80))
