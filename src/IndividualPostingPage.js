@@ -31,7 +31,7 @@ function IndividualPostingPage() {
 
   const handleDeleteButtonClick = async () => {
     try {
-      const response = await fetch(`http://127.0.0.1:5000/postings/${id}`, {
+      const response = await fetch(`/api/postings/${id}`, {
         method: "DELETE",
       });
       errorHandler(response);
