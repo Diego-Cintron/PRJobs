@@ -1,2 +1,2 @@
-web: python BackEnd/main.py
+web: python main.py
 frontend: npm start
