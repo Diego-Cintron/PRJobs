@@ -2,12 +2,15 @@ import React from "react";
 import AllPostings from "./AllPostings";
 
 function PostingsPage() {
-    return (
-      <div>
-        <h1>Postings Page</h1>
+  return (
+    <div>
+      <div className="container">
+        <UserProfile />
         <AllPostings />
+        <Company />
       </div>
-    );
+    </div>
+  );
 }
 
 export default PostingsPage;

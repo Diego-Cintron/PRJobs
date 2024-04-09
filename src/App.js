@@ -16,17 +16,13 @@ function App() {
       <Router>
         <NavigationBar />
 
-        <div className="container">
-          <UserProfile />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/postings" element={<PostingsPage />} />
-            <Route path="/postings/:id" element={<IndividualPostingPage />} />
-            <Route path="/users" element={<UserList />} />
-          </Routes>
-          <Company />
-        </div>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/postings" element={<PostingsPage />} />
+          <Route path="/postings/:id" element={<IndividualPostingPage />} />
+          <Route path="/users" element={<UserList />} />
+        </Routes>
       </Router>
     </AuthProvider>
   );
