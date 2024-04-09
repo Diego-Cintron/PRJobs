@@ -5,7 +5,7 @@ import SignIn from "./SignIn";
 function Home() {
   const { user } = useAuth();
 
-  return <div>{user ? <p>Welcome, {user.user_fname}!</p> : <SignIn />}</div>;
+  return <div className="temporary">{user ? <p>Welcome, {user.user_fname}!</p> : <SignIn />}</div>;
 }
 
 export default Home;
