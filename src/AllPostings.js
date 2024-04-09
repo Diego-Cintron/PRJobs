@@ -17,7 +17,7 @@ function AllPostings() {
 
   const fetchPostings = async () => {
     try {
-      const response = await fetch(`http://127.0.0.1:5000/postings/api/user/${userId}`);
+      const response = await fetch(`http://127.0.0.1:80/postings/api/user/${userId}`);
       errorHandler(response);
       const data = await response.json();
       setPostings(data.Postings);
