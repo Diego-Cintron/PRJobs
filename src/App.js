@@ -7,8 +7,6 @@ import PostingsPage from "./PostingsPage";
 import IndividualPostingPage from "./IndividualPostingPage";
 import UserList from "./UserList";
 import NavigationBar from "./NavigationBar";
-import UserProfile from "./UserProfile";
-import Company from "./Company";
 
 function App() {
   return (
