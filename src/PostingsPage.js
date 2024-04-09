@@ -9,7 +9,7 @@ function PostingsPage() {
       <div className="container">
         <UserProfile />
         <AllPostings />
-        <Company />
+        {/* <Company /> */}
       </div>
     </div>
   );

@@ -1,23 +1,17 @@
-import React from "react";
-// import { errorHandle } from './apiUtils';
-import "./styles.css";
-
 const Company = () => {
-  return (
-    <div className="company-block">
-      <img src="\src\images\meson-lugar.jpeg" height={250} width={400}></img>
-      <img
-        className="company-logo-picture"
-        src="\src\images\el-meson-logo.png"
-        height={70}
-        width={100}
-      ></img>
-      <p className="company-description">Company Name & Description</p>
-      <p className="map">Map</p>
-      <p className="joblistings">Job Listings</p>
-      <p className="positions">Positions (bullet points)</p>
-      <p className="availability">Availability (bullet points)</p>
-    </div>
-  );
-};
+    return (
+        <div className="company-block">
+            <img className="company-cover" /*src="\src\images\meson-lugar.jpeg"*/ height={100} width={100}></img>
+            <img className="company-logo" /*src="\src\images\el-meson-logo.png"*/ height={70} width={100}></img>
+            <p className="company-name"> <b>Company Name</b> </p>
+            <p className="company-description"> Company Description </p>
+            <p className="divider"> </p>
+            <img className="map-logo" src="src\images\map-logo-placeholder.png" height={100} width={100}></img>
+            <p className="map"></p>
+            <p className="joblistings-header"> <b>Available Positions</b> </p>
+            <p className="joblistings"> </p>
+            <p className="positions">Positions </p>
+        </div>
+    ); 
+}
 export default Company;

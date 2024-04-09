@@ -1,216 +1,359 @@
-.corner {
-    width: 100%;
-    background-color: #ffffff;
-    top: 0;
-    position: fixed;
-    display: flex;
-  }
+.top-bar {
+  width: 100%;
+  background: linear-gradient(.25turn, #cdffd8, #94b9ff);
+  top: 0;
   
-  .logohome {
-    margin-left: 0%;
-  }
-  
-  .notifications {
-    margin-left: 50%;
-  }
-  
-  .setting {
-    margin-left: 41%;
-  }
-  
-  .login-area {
-    min-width: 111.5vh;
-    padding: 20%;
-    background-color: #eb48636e;
-  }
-  
-  .login-blocks {
-    width: 30vh;
-    padding: 10px;
-    background-color: #81f6faa9;
-    border: 1px solid #000000;
-  }
-  
-  .profilename {
-    width: 25vh;
-    background-color: #ffffff;
-    border: 1px solid #000000;
-    color: #000000;
-  }
-  
-  .email {
-    color: #000000;
-  }
-  
-  .description {
-    height: 10vh;
-    width: 15vh;
-    text-align: center;
-    background-color: #ffffff;
-    border: 1px solid #000000;
-    color: #000000;
-  }
-  
-  .skill {
-    height: 10vh;
-    width: 15vh;
-    text-align: center;
-    background-color: #ffffff;
-    border: 1px solid #000000;
-    color: #000000;
-  }
-  
-  .map {
-    height: 10vh;
-    width: 10vh;
-    text-align: center;
-    background-color: #ffffff;
-    border: 1px solid #000000;
-    color: #000000;
-  }
-  
-  .user-block,
-  .postbackground,
-  .company-block {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-  }
-  
-  .user-block {
-    background-color: #70c5f7;
-    border: 1px solid #000000;
-  }
-  
-  .company-block {
-    background-color: #b5df7ee5;
-    border: 1px solid #000000;
-  }
-  
-  .company-logo-picture {
-    background-color: #ffffff;
-    border: 1px solid #000000;
-  }
-  
-  .company-description {
-    padding: 5%;
-    min-height: 7vh;
-    min-width: 15vh;
-    background-color: #ffffffe5;
-    border: 1px solid #000000;
-    text-align: center;
-    color: #000000;
-  }
-  
-  .joblistings {
-    text-align: center;
-    background-color: #ffffffe5;
-    color: #000000;
-    border: 1px solid #000000;
-  }
-  
-  .positions {
-    height: 10vh;
-    width: 10vh;
-    background-color: #ffffffe5;
-    color: #000000;
-    border: 1px solid #000000;
-  }
-  
-  .availability {
-    height: 10vh;
-    width: 10vh;
-    background-color: #ffffffe5;
-    color: #000000;
-    border: 1px solid #000000;
-  }
-  
-  .postbackground {
-    background-color: #ccc89fe5;
-    position: flex;
-  }
-  
-  .post {
-    padding: 10%;
-    min-width: max-content;
-    background-color: #a79d45e5;
-    border: 1px solid #000000;
-    color: #000000;
-    position: flex;
-  }
-  
-  .postname {
-    height: 5vh;
-    width: 30vh;
-    background-color: #ffffffe5;
-    color: #000000;
-    border: 1px solid #000000;
-  }
-  
-  .postdate {
-    height: 5vh;
-    width: 30vh;
-    background-color: #ffffffe5;
-    color: #000000;
-    border: 1px solid #000000;
-  }
-  
-  .postdescription {
-    height: 10vh;
-    width: 30vh;
-    background-color: #ffffffe5;
-    color: #000000;
-    border: 1px solid #000000;
-  }
-  
-  .morepostinfo {
-    height: 10vh;
-    width: 30vh;
-    background-color: #a5ee7ae5;
-    color: #000000;
-    border: 1px solid #000000;
-  }
-  
-  .searchjobs {
-    height: 5vh;
-    width: 30vh;
-    background-color: #ffffff;
-    color: #000000;
-    border: 1px solid #000000;
-    text-align: center;
-  }
-  
-  .dm {
-    padding: 10%;
-    min-height: 50vh;
-    min-width: 30vh;
-    background-color: #98ddeec5;
-    border: 1px solid #000000;
-    color: #000000;
-  }
-  
-  .dm-contact {
-    background-color: #ffffffe5;
-    border: 1px solid #000000;
-  }
-  
-  .messagebar {
-    background-color: #ffffffe5;
-    border: 1px solid #000000;
-  }
-  
-  .container {
-    display: flex;
-    justify-content: space-around;
-    align-items: stretch;
-    min-height: 100vh;
-    width: 100%;
-    padding-top: 35px;
-  }
+  position: fixed;
+  display: flex;
 
-  .temporary {
-    padding-top: 35px;
-  }
+  z-index: 30;
+
+}
+
+.bottom-bar {
+  width: 100%;
+  background: linear-gradient(.25turn, #cdffd8, #94b9ff);
+  bottom: 0;
+  position: fixed;
+  display: flex;
+
+  z-index: 30;
+
+}
+
+.search-button {
+  margin-left: 50%;
+}
+
+.logohome {
+  margin-left: 0%;
+}
+
+.notifications {
+  margin-left: 50%;
+}
+
+.setting {
+  margin-left: 41%;
+}
+
+.login-area {
+  min-width: 111.5vh;
+  padding: 20%;
+  background-color: #eb48636e;
+}
+
+.login-blocks {
+  width: 30vh;
+  padding: 10px;
+  background-color: #81f6faa9;
+  border: 1px solid #000000;
+}
+
+.profilename {
+  width: 25vh;
+  background-color: #ffffff;
+  border: 1px solid #000000;
+  color: #000000;
+}
+
+.email {
+  color: #000000;
+}
+
+.description {
+  height: 10vh;
+  width: 15vh;
+  text-align: center;
+  background-color: #ffffff;
+  border: 1px solid #000000;
+  color: #000000;
+}
+
+.skill {
+  height: 10vh;
+  width: 15vh;
+  text-align: center;
+  background-color: #ffffff;
+  border: 1px solid #000000;
+  color: #000000;
+}
+
+.user-block,
+.postbackground {
+  flex: 1; 
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px; 
+}
+
+.user-block {
+  background-color: #70c5f7;
+  border: 1px solid #000000;
+}
+
+.company-block {
+  flex: 1; 
+  height: 100%;
+  width: 100%;
+  display: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px; 
+}
+
+/* background gradient */
+.company-block {
+  height: auto;
+  width: auto;
+  /* background: linear-gradient(#9cd6dde5, #007986e5, #003237e5 ); */
+  /* background: linear-gradient(#0093a7e5, #9cd6dde5, #ffffff ); */
+  background: linear-gradient(#ffffff, #9cd6dde5, #94b9ff );
+}
+
+img.company-cover {
+  margin-top: 3%;
+  object-fit: cover;
+  height: 10%;
+  width: 100%;
+
+  /* background: linear-gradient(#ffffff, #9cd6dde5, #94b9ff); */
+  background: linear-gradient(.25turn, #ffde59, #ff914d);
+
+}
+
+img.company-logo {
+  position: absolute;
+  width: 100px;
+  height: 90px;
+
+  top: 30%;
+  left: 3%;
+
+  background-color: #ffffff;
+  /* background: url(el-meson-logo.png); */
+  border: 2px solid #00b8a9;
+
+  border-radius: 50%;
+
+  z-index: 20;
+
+}
+
+.company-name {
+
+  position: absolute;
+
+  top: 35%;
+  left: 13%;
+
+  text-align: center;
+  align-items: flex-start;
+  background-color: #00b8a9;
+  border: 1px solid #000000;
+
+  border-radius: 25px;
+
+  width: 15%;
+}
+
+.company-description {
+  padding: 5%;
+  min-height: 7vh;
+  /* min-width: 15vh; */
+  background-color: #ffffffe5;
+  border: 1px solid #00b8a9;
+
+  text-align: center;
+  color: #00b8a9;
+
+  overflow: auto;
+
+}
+
+.divider {
+  border-bottom: 1px solid #00b8a9;
+  width: 100%;
+  
+  margin-left: 0%;
+}
+
+img.map-logo {
+  position: absolute;
+  width: auto;
+  height: 70px;
+
+  left: 3%;
+
+  z-index: 20;
+
+  /* transition: all 10s ease-in-out; */
+
+}
+
+.map {
+  background-color: #ffde59;
+  /* background: linear-gradient(#ffde59, #ff914d); */
+  border: 1px solid #00b8a9;
+  color: #00b8a9;
+
+  width:30%;
+  height: 20%;
+
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  border-radius: 25px;
+
+}
+
+.joblistings-header {
+  position: absolute;
+  z-index: 20;
+
+  left: 50%;
+  top: 73%;
+
+  text-align: center;
+  align-items: flex-start;
+  background-color: #00b8a9;
+  border: 1px solid #000000;
+
+  border-radius: 25px;
+
+  width: 30%;
+  height: auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  overflow: auto;
+
+}
+
+.joblistings {
+  position: absolute;
+
+  background-color:#ffffff;
+  border: #000000;
+  width: 60%;
+  height: 100%;
+
+  left: 35%;
+  top: 70%;
+
+  border-radius: 25px;
+  
+  margin-left: 0%;
+}
+
+.positions {
+  height: 10vh;
+  width: 10vh;
+  background-color: #ffffffe5;
+  color: #000000;
+  border: 1px solid #000000;
+}
+
+.availability {
+  height: 10vh;
+  width: 10vh;
+  background-color: #ffffffe5;
+  color: #000000;
+  border: 1px solid #000000;
+}
+
+.postbackground {
+  background-color: #ccc89fe5;
+  position: flex;
+}
+
+.post {
+  padding: 10%;
+  min-width: max-content;
+  background-color: #a79d45e5;
+  border: 1px solid #000000;
+  color: #000000;
+  position: flex;
+}
+
+.postname {
+  height: 5vh;
+  width: 30vh;
+  background-color: #ffffffe5;
+  color: #000000;
+  border: 1px solid #000000;
+}
+
+.postdate {
+  height: 5vh;
+  width: 30vh;
+  background-color: #ffffffe5;
+  color: #000000;
+  border: 1px solid #000000;
+}
+
+.postdescription {
+  height: 10vh;
+  width: 30vh;
+  background-color: #ffffffe5;
+  color: #000000;
+  border: 1px solid #000000;
+}
+
+.morepostinfo {
+  height: 10vh;
+  width: 30vh;
+  background-color: #a5ee7ae5;
+  color: #000000;
+  border: 1px solid #000000;
+}
+
+.searchjobs {
+  height: 5vh;
+  width: 30vh;
+  background-color: #ffffff;
+  color: #000000;
+  border: 1px solid #000000;
+  text-align: center;
+}
+
+.dm {
+  padding: 10%;
+  min-height: 50vh;
+  min-width: 30vh;
+  background-color: #98ddeec5;
+  border: 1px solid #000000;
+  color: #000000;
+}
+
+.dm-contact {
+  background-color: #ffffffe5;
+  border: 1px solid #000000;
+}
+
+.messagebar {
+  background-color: #ffffffe5;
+  border: 1px solid #000000;
+}
+
+.container {
+  display: flex;
+  justify-content: space-around;
+  align-items: stretch;
+  min-height: 100vh;
+  width: 100%;
+  padding-top: 35px;
+}
+
+.temporary {
+  padding-top: 35px;
+}
