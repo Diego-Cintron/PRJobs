@@ -2,6 +2,7 @@
   "name": "prjobs",
   "version": "0.1.0",
   "private": true,
+  "proxy": "https://prjobs-ceb2ebdcde23.herokuapp.com",
   "homepage": "https://prjobs-ceb2ebdcde23.herokuapp.com",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",

@@ -18,18 +18,15 @@ const EditPostingModal = ({ posting, onClose }) => {
     e.preventDefault();
 
     try {
-      const response = await fetch(
-        `http://127.0.0.1:80/api/postings/${posting.post_id}`,
-        {
-          method: "PUT",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            ...formData,
-            cm_id: posting.cm_id,
-            user_id: posting.user_id,
-          }),
-        }
-      );
+      const response = await fetch(`/api/postings/${posting.post_id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...formData,
+          cm_id: posting.cm_id,
+          user_id: posting.user_id,
+        }),
+      });
 
       errorHandler(response);
 

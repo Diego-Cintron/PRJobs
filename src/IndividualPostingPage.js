@@ -20,7 +20,7 @@ function IndividualPostingPage() {
 
   const fetchPosting = async (post_id) => {
     try {
-      const response = await fetch(`http://127.0.0.1:80/api/postings/${post_id}`);
+      const response = await fetch(`/api/postings/${post_id}`);
       errorHandler(response);
       const data = await response.json();
       setPosting(data.Posting);
