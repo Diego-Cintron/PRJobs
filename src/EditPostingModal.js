@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { errorHandler, maxDescriptionLength } from "./apiUtils";
+import { errorHandler, maxDescriptionLength } from "./others/apiUtils";
 
 const EditPostingModal = ({ posting, onClose }) => {
   const [formData, setFormData] = useState({

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { errorHandler } from "./apiUtils";
+import { errorHandler } from "./others/apiUtils";
 import EditPostingModal from "./EditPostingModal";
 
 function IndividualPostingPage() {

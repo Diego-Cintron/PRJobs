@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { errorHandler, maxDescriptionLength } from "./apiUtils";
+import { errorHandler, maxDescriptionLength } from "./others/apiUtils";
 import { useAuth } from "./AuthContext";
 import "./PostingStyles.css";
 import { useNavigate } from "react-router-dom";

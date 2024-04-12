@@ -1,5 +1,8 @@
 import os
+import requests
+import googlemaps
 from flask import Flask, jsonify, request, send_from_directory
+from BackEnd.config.google_key import key
 from BackEnd.handlers.postings import PostingsHandler 
 from BackEnd.handlers.company import CompanyHandler
 from BackEnd.handlers.messages import MessagesHandler
@@ -14,11 +17,6 @@ app = Flask(__name__, static_folder='./build', static_url_path='/')
 
 # Apply CORS to this app
 CORS(app)
-
-# @app.route('/')
-# def serve_frontend():
-#     build_dir = os.path.join(os.getcwd(), 'build')
-#     return send_from_directory(build_dir, 'index.html')
 
 @app.route('/')
 def index():
@@ -157,6 +155,25 @@ def searchByMessagesReceiver(user_id2):
         return MessagesHandler().deleteMessage(user_id2)
     else: 
         return jsonify("Not supported"), 405
+    
+    
+# ----- Geocoding -----
+@app.route('/api/geocode', methods=['POST'])
+def geocode_address():
+    address = request.json['address']
+    api_key = key
+    gmaps = googlemaps.Client(key=api_key)
+    geocode_result = gmaps.geocode(address)
+    
+    if geocode_result:
+        # Extract the latitude and longitude
+        location = geocode_result[0]['geometry']['location']
+        latitude = location['lat']
+        longitude = location['lng']
+        result = {'latitude': latitude, 'longitude': longitude}
+        return jsonify(result)
+    else:
+        return jsonify({'error': 'No geocode result found for the given address'})
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', debug=False, port=os.environ.get('PORT', 80))
