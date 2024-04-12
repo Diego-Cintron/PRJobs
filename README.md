@@ -1,2 +1,8 @@
-# PRJobs
-PRJobs Spring 2024 Capstone Project
+# PRJobs Capstone
+Developers:
+* Raúl Adames
+* Diego A. Cintrón
+* Alaina del Moral
+* Gabriel Díaz
+
+## https://prjobs-ceb2ebdcde23.herokuapp.com

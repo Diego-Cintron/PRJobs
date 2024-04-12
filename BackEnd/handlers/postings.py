@@ -1,5 +1,5 @@
 from flask import jsonify
-from dao.postings import PostingsDAO
+from BackEnd.dao.postings import PostingsDAO
 from datetime import datetime, timedelta
 
 class PostingsHandler:
