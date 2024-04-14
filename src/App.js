@@ -16,14 +16,14 @@ function App() {
     <AuthProvider>
       
       {/* For testing purposes: to view company page in full. In progress... */}
-      <Border />
+      {/* <Border />
       <div className="container">
         <Company /> 
 
       </div>
-      <BottomBorder />
+      <BottomBorder /> */}
 
-      {/* <Router>
+      <Router>
         <NavigationBar />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -33,7 +33,9 @@ function App() {
           <Route path="/users" element={<UserList />} />
           <Route path="/company" element={<Company />} />
         </Routes>
-      </Router> */}
+      </Router>
+
+      <BottomBorder />
 
     </AuthProvider>
   );
