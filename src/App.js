@@ -10,11 +10,16 @@ import NavigationBar from "./NavigationBar";
 import BottomBorder from "./BottomBorder";
 import Company from "./Company";
 import Border from "./Border";
+import HomePage from "./HomePage";
 
 function App() {
   return (
     <AuthProvider>
-      
+      <Border />
+      <div className="container">
+        <HomePage /> 
+      </div>
+      <BottomBorder />
       {/* For testing purposes: to view company page in full. In progress... */}
       {/* <Border />
       <div className="container">
@@ -23,7 +28,7 @@ function App() {
       </div>
       <BottomBorder /> */}
 
-      <Router>
+      {/* <Router>
         <NavigationBar />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -33,9 +38,7 @@ function App() {
           <Route path="/users" element={<UserList />} />
           <Route path="/company" element={<Company />} />
         </Routes>
-      </Router>
-
-      <BottomBorder />
+      </Router> */}
 
     </AuthProvider>
   );
