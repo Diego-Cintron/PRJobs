@@ -357,3 +357,15 @@ img.map-logo {
 .temporary {
   padding-top: 35px;
 }
+
+/* HomePage */
+.homepage{
+  background-color: #0cb3f5;
+  width: 100%;
+  position: fixed;
+  padding: 100%;
+}
+
+.tittle{
+  font-size: xx-large;
+}
