@@ -360,12 +360,18 @@ img.map-logo {
 
 /* HomePage */
 .homepage{
+  height: auto;
+  width: auto;
   background-color: #0cb3f5;
-  width: 100%;
-  position: fixed;
-  padding: 100%;
+  padding:100%;
+  text-align: left;
+  
+
 }
 
 .tittle{
+  z-index: 30;
   font-size: xx-large;
+  text-align: left;
+  position: fixed;
 }
