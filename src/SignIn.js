@@ -29,21 +29,32 @@ const SignIn = () => {
   };
 
   return (
-    <div>
-      <input
-        type="email"
-        placeholder="Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <input
-        type="password"
-        placeholder="Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <button onClick={handleSignIn}>Sign In</button>
-      {error && <p style={{ color: "red" }}>{error}</p>}
+    <div className="signin-block">
+      <div>
+        <p className="title">Welcome to PRJobs</p>
+        <p className="subtitle">First time login? Sign Up</p>
+      </div>
+      <div className="signin">
+        <p>Email</p>
+        <input
+          type="email"
+          placeholder="example@example.com"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <p>Password</p>
+        <input
+          type="password"
+          placeholder="Character 5-11"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <p className="forgot">Forgot Password?</p>
+        <button className="edit-button" onClick={handleSignIn}>
+          Sign In
+        </button>
+        {error && <p style={{ color: "red" }}>{error}</p>}
+      </div>
     </div>
   );
 };

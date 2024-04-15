@@ -11,13 +11,15 @@ import BottomBorder from "./BottomBorder";
 import Company from "./Company";
 import Border from "./Border";
 import HomePage from "./HomePage";
+import SignIn from "./SignIn";
 
 function App() {
   return (
     <AuthProvider>
       <Border />
       <div className="container">
-        <HomePage /> 
+        {/* <HomePage />  */}
+        <SignIn />
       </div>
       <BottomBorder />
       {/* For testing purposes: to view company page in full. In progress... */}

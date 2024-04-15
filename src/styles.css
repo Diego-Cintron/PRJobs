@@ -346,6 +346,7 @@ img.map-logo {
 }
 
 .container {
+  background: linear-gradient(#d7ffcd, #94c6ff);
   display: flex;
   justify-content: space-around;
   align-items: stretch;
@@ -358,20 +359,49 @@ img.map-logo {
   padding-top: 35px;
 }
 
-/* HomePage */
-.homepage{
-  height: auto;
-  width: auto;
-  background-color: #0cb3f5;
-  padding:100%;
-  text-align: left;
-  
+/* Sign In */
+.signin-block{
+  display:flex;
+  border-radius: 35px;
+  background: linear-gradient(#05a3ffc0, #ffffff56);
+  width: 1000px;
+  height: 500px;
+  margin-top: 5%;
+  padding: 50px;
 
 }
 
-.tittle{
-  z-index: 30;
-  font-size: xx-large;
+.signin{
+  position: flex;
   text-align: left;
-  position: fixed;
+  background-color: #f7fcff2c;
+  width: 400px;
+  height: 400px;
+  margin-top: 50px;
+  margin-left: 150px;
+  border-radius: 35px;
+  padding: 10px;
+}
+
+.title{
+  font-style: italic;
+  font-size: xxx-large;
+  text-align: center;
+  position: flex;
+  width: 400px;
+  height: 100px;
+  margin-top: 125px;
+
+}
+
+.subtitle{
+  font-style: italic;
+  font-size: smaller;
+  text-align: center;
+  position: flex;
+
+}
+
+.forgot{
+  font-size: smaller;
 }
