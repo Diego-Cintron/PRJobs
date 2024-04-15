@@ -16,12 +16,8 @@ import SignIn from "./SignIn";
 function App() {
   return (
     <AuthProvider>
-      <Border />
-      <div className="container">
-        {/* <HomePage />  */}
-        <SignIn />
-      </div>
-      <BottomBorder />
+      {/* <Border /> */}
+
       {/* For testing purposes: to view company page in full. In progress... */}
       {/* <Border />
       <div className="container">
@@ -30,7 +26,7 @@ function App() {
       </div>
       <BottomBorder /> */}
 
-      {/* <Router>
+      <Router>
         <NavigationBar />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -40,8 +36,8 @@ function App() {
           <Route path="/users" element={<UserList />} />
           <Route path="/company" element={<Company />} />
         </Routes>
-      </Router> */}
-
+      </Router>
+      <BottomBorder />
     </AuthProvider>
   );
 }
