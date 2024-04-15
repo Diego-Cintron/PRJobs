@@ -4,16 +4,20 @@ import { errorHandler } from "./others/apiUtils";
 import { useAuth } from "./AuthContext";
 import { geocodeAddress } from "./others/Api";
 import CreatePost from "./CreatePost";
+import { calculateDistance } from "./others/Haversine"; // Import the calculateDistance function
 import "./PostingStyles.css";
 
 function AllPostings() {
   const { user } = useAuth();
   const [userId] = useState(user?.user_id || -1);
+  const [userLatitude, setUserLatitude] = useState(null); // State to hold user's latitude
+  const [userLongitude, setUserLongitude] = useState(null); // State to hold user's longitude
   const [postings, setPostings] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
     fetchPostings();
+    fetchUserGeolocation();
   }, []);
 
   const fetchPostings = async () => {
@@ -31,6 +35,19 @@ function AllPostings() {
       setPostings(postingsWithGeocode);
     } catch (error) {
       console.error("Error fetching postings:", error);
+    }
+  };
+
+  const fetchUserGeolocation = async () => {
+    try {
+      const userAddress = user?.user_address;
+      if (userAddress) {
+        const geocodeData = await geocodeAddress(userAddress);
+        setUserLatitude(geocodeData.latitude);
+        setUserLongitude(geocodeData.longitude);
+      }
+    } catch (error) {
+      console.error("Error fetching user's geolocation:", error);
     }
   };
 
@@ -60,11 +77,10 @@ function AllPostings() {
           >
             <h3>{posting.post_title}</h3>
             <p>{posting.post_description}</p>
-            {posting.geocodeData && (
+            {posting.geocodeData && userLatitude && userLongitude && (
               <div>
-                <h4>Geocode Data:</h4>
-                <p>Latitude: {posting.geocodeData.latitude}</p>
-                <p>Longitude: {posting.geocodeData.longitude}</p>
+                <h4>Distance to User:</h4>
+                <p>{calculateDistance(userLatitude, userLongitude, posting.geocodeData.latitude, posting.geocodeData.longitude)} km</p>
               </div>
             )}
           </div>
