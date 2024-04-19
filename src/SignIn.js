@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { useAuth } from "./AuthContext";
 
 const SignIn = () => {
@@ -7,7 +6,6 @@ const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const navigate = useNavigate();
 
   const handleSignIn = async () => {
     try {
@@ -30,27 +28,33 @@ const SignIn = () => {
     }
   };
 
-  const handleSignUp = () => {
-    navigate(`/signup`);
-  }
-
   return (
-    <div>
-      <button onClick={handleSignUp}>Sign Up!</button>
-      <input
-        type="email"
-        placeholder="Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <input
-        type="password"
-        placeholder="Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <button onClick={handleSignIn}>Sign In</button>
-      {error && <p style={{ color: "red" }}>{error}</p>}
+    <div className="signin-block">
+      <div>
+        <p className="title">Welcome to PRJobs</p>
+        <p className="subtitle">First time login? Sign Up</p>
+      </div>
+      <div className="signin">
+        <p>Email</p>
+        <input
+          type="email"
+          placeholder="example@example.com"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <p>Password</p>
+        <input
+          type="password"
+          placeholder="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <p className="forgot">Forgot Password?</p>
+        <button className="edit-button" onClick={handleSignIn}>
+          Sign In
+        </button>
+        {error && <p style={{ color: "red" }}>{error}</p>}
+      </div>
     </div>
   );
 };
