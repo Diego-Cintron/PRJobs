@@ -4,6 +4,7 @@ import { errorHandler } from "./others/apiUtils";
 import EditPostingModal from "./EditPostingModal";
 import UserProfile from "./UserProfile";
 import Company from "./Company";
+import config from "./others/config"; 
 
 function IndividualPostingPage() {
   const navigate = useNavigate();
@@ -76,7 +77,7 @@ function IndividualPostingPage() {
             frameBorder="0"
             style={{ border: 0 }}
             src={`https://www.google.com/maps/embed/v1/place?key=${
-              process.env.GOOGLE_MAPS_API_KEY
+              config.googleMapsApiKey
             }&q=${encodeURIComponent(posting.post_address)}`}
             allowFullScreen
           ></iframe>

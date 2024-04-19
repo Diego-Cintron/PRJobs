@@ -25,5 +25,4 @@ yarn-error.log*
 node_modules
 
 /BackEnd/config
-/src/others/config.js
 .env
