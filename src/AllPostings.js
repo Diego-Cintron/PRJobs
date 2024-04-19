@@ -4,14 +4,14 @@ import { errorHandler } from "./others/apiUtils";
 import { useAuth } from "./AuthContext";
 import { geocodeAddress } from "./others/Api";
 import CreatePost from "./CreatePost";
-import { calculateDistance } from "./others/Haversine"; // Import the calculateDistance function
+import { calculateDistance } from "./others/Haversine";
 import "./PostingStyles.css";
 
 function AllPostings() {
   const { user } = useAuth();
   const [userId] = useState(user?.user_id || -1);
-  const [userLatitude, setUserLatitude] = useState(null); // State to hold user's latitude
-  const [userLongitude, setUserLongitude] = useState(null); // State to hold user's longitude
+  const [userLatitude, setUserLatitude] = useState(null);
+  const [userLongitude, setUserLongitude] = useState(null); 
   const [postings, setPostings] = useState([]);
   const navigate = useNavigate();
 

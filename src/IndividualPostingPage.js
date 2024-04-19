@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { errorHandler } from "./others/apiUtils";
 import EditPostingModal from "./EditPostingModal";
+import UserProfile from "./UserProfile";
+import Company from "./Company";
+import config from "./others/config"; 
 
 function IndividualPostingPage() {
   const navigate = useNavigate();
@@ -54,29 +57,48 @@ function IndividualPostingPage() {
   };
 
   return (
-    <div>
-      <h2>Individual Posting</h2>
-      <h3>Title: {posting.post_title}</h3>
-      <p>Description: {posting.post_description}</p>
-      <p>Address: {posting.post_address}</p>
-      <p>Municipality: {posting.post_municipality}</p>
-      <p>Date Submmited: {posting.post_uploaded}</p>
-      <p>Expires: {posting.post_expires}</p>
+    <div className="container">
+      <UserProfile />
+      <div>
+        <h2>Individual Posting</h2>
+        <h3>Title: {posting.post_title}</h3>
+        <p>Description: {posting.post_description}</p>
+        <p>Address: {posting.post_address}</p>
+        <p>Municipality: {posting.post_municipality}</p>
+        <p>Date Submitted: {posting.post_uploaded}</p>
+        <p>Expires: {posting.post_expires}</p>
 
-      {showEditButton && (
-        <button onClick={handleEditButtonClick} className="edit-button">
-          Edit
-        </button>
-      )}
-      {showEditButton && (
-        <button onClick={handleDeleteButtonClick} className="delete-button">
-          Delete
-        </button>
-      )}
+        {/* Google Maps embedded map */}
+        <div style={{ height: "400px", width: "100%" }}>
+          <iframe
+            title="Posting Location"
+            width="100%"
+            height="100%"
+            frameBorder="0"
+            style={{ border: 0 }}
+            src={`https://www.google.com/maps/embed/v1/place?key=${
+              config.googleMapsApiKey
+            }&q=${encodeURIComponent(posting.post_address)}`}
+            allowFullScreen
+          ></iframe>
+        </div>
 
-      {showEditModal && (
-        <EditPostingModal posting={posting} onClose={handleCloseModal} />
-      )}
+        {showEditButton && (
+          <button onClick={handleEditButtonClick} className="edit-button">
+            Edit
+          </button>
+        )}
+        {showEditButton && (
+          <button onClick={handleDeleteButtonClick} className="delete-button">
+            Delete
+          </button>
+        )}
+
+        {showEditModal && (
+          <EditPostingModal posting={posting} onClose={handleCloseModal} />
+        )}
+      </div>
+      <Company companyId={posting.cm_id} />
     </div>
   );
 }
