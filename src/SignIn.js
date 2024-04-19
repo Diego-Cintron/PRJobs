@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "./AuthContext";
 
 const SignIn = () => {
@@ -6,6 +7,7 @@ const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   const handleSignIn = async () => {
     try {
@@ -28,8 +30,13 @@ const SignIn = () => {
     }
   };
 
+  const handleSignUp = () => {
+    navigate(`/signup`);
+  }
+
   return (
     <div>
+      <button onClick={handleSignUp}>Sign Up!</button>
       <input
         type="email"
         placeholder="Email"
