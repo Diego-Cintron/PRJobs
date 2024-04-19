@@ -9,6 +9,7 @@ import IndividualPostingPage from "./IndividualPostingPage";
 import UserList from "./UserList";
 import NavigationBar from "./NavigationBar";
 import SignUp from "./SignUp";
+import Company from "./Company";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/postings/:id" element={<IndividualPostingPage />} />
           <Route path="/users" element={<UserList />} />
           <Route path="/signup" element={<SignUp />} />
+          <Route path="/company" element={<Company />} /> 
         </Routes>
       </Router>
     </AuthProvider>
