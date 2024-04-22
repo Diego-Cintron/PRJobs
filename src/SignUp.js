@@ -3,6 +3,8 @@ import { errorHandler } from "./others/apiUtils";
 import { useNavigate } from "react-router-dom";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import './SignUpStyle.css';
+
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -70,7 +72,16 @@ const SignUp = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div>
+      <div className="background"><div/>
+
+      <img className="logo"
+        src={"https://drive.google.com/thumbnail?id=1gDZsJIvwVTYlHBFyqVPtAZSwMhnwx7Mp" }
+        height={200}
+        width={200}
+        alt="PRJobs logo"
+      />
+
+      <div className="FName"> 
         <label htmlFor="user_fname">First Name:</label>
         <input
           type="text"
@@ -82,7 +93,7 @@ const SignUp = () => {
         />
       </div>
 
-      <div>
+      <div className="LName">
         <label htmlFor="user_lname">Last Name:</label>
         <input
           type="text"
@@ -94,7 +105,7 @@ const SignUp = () => {
         />
       </div>
 
-      <div>
+      <div className="Email">
         <label htmlFor="user_email">Email:</label>
         <input
           type="text"
@@ -106,7 +117,7 @@ const SignUp = () => {
         />
       </div>
 
-      <div>
+      <div className="Password">
         <label htmlFor="user_password">Password:</label>
         <input
           type="text"
@@ -118,7 +129,7 @@ const SignUp = () => {
         />
       </div>
 
-      <div>
+      <div className="Address">
         <label htmlFor="user_address">Address:</label>
         <input
           type="text"
@@ -130,7 +141,7 @@ const SignUp = () => {
         />
       </div>
 
-      <div>
+      <div className="Municipality">
         <label htmlFor="user_municipality">Municipality:</label>
         <input
           type="text"
@@ -142,7 +153,7 @@ const SignUp = () => {
         />
       </div>
 
-      <div>
+      <div className="Phone">
         <label htmlFor="user_phone">Phone:</label>
         <input
           type="text"
@@ -154,7 +165,7 @@ const SignUp = () => {
         />
       </div>
 
-      <div>
+      <div className="Skills">
         <label htmlFor="user_skills">Skills:</label>
         <input
           type="text"
@@ -166,8 +177,8 @@ const SignUp = () => {
         />
       </div>
 
-      <div>
-        <label htmlFor="user_birthday">Birthday:</label>
+      <div className="Birthday">
+        <label htmlFor="user_birthday">Birthday: </label>
         <DatePicker
           id="user_birthday"
           name="user_birthday"
@@ -180,8 +191,8 @@ const SignUp = () => {
         />
       </div>
 
-      <div>
-        <label htmlFor="user_type">User Type:</label>
+      <div className="UsrType">
+        <label htmlFor="user_type">User Type: </label>
         <select
           id="user_type"
           name="user_type"
@@ -195,7 +206,7 @@ const SignUp = () => {
         </select>
       </div>
 
-      <div>
+      <div className="Availability">
         <p>User Availability:</p>
         <label>
           <input
@@ -262,7 +273,11 @@ const SignUp = () => {
         </label>
       </div>
 
-      <button type="submit">Sign Up</button>
+      {/* <div className="container"> */}
+        <button class="submit">Sign Up</button>
+      {/* </div> */}
+
+      </div>
     </form>
   );
 };

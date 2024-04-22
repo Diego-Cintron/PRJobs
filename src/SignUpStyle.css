@@ -1,0 +1,81 @@
+.background {
+    background: linear-gradient(.25turn, #94b9ff, #cdffd8);
+    /* background: linear-gradient(#ffffff, #9cd6dde5, #94b9ff ); */
+    
+    height: auto;
+    width: 100%;
+    /* margin: auto; */
+
+    position: absolute;
+    left: 0%;
+
+    margin: 0%;
+    padding: 0%;
+    
+}
+
+img.logo {
+    display: flex;
+    margin: 2% auto auto;
+
+}
+
+.FName, .LName, 
+.Email, .Password,
+.Address, .Municipality,
+.Phone, .Skills, .Birthday,
+.UsrType {
+    /* display: flex; */
+    /* width: fit-content; */
+
+    text-align: center;
+
+    background: linear-gradient(.25turn, #cdffd8, #94b9ff);
+    border-radius: 25px;
+
+    padding: 10px 50px;
+    height: auto;
+    width: 50%;
+    margin: 1% auto;
+}
+
+/* .FName {
+    margin-top: 4%;
+} */
+
+.Availability {
+    margin: auto;
+    text-align: center;
+    object-position: right;
+
+    margin-bottom: 1%;
+}
+
+/* .container {
+    height: 200px;
+} */
+
+/* Formatting in regards to position & display */
+.submit {
+    display: flex;
+    padding: 1% 2%;
+    /* width: fit-content; */
+    margin: auto;
+
+}
+
+.submit {
+    background-color: #007bff;
+    color: white;
+    /* padding: 10px 20px; */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .submit:hover {
+    background-color: #0056b3;
+  }
+
+
+

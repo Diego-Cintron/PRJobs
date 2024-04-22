@@ -10,6 +10,7 @@ import UserList from "./UserList";
 import NavigationBar from "./NavigationBar";
 import SignUp from "./SignUp";
 import Company from "./Company";
+import BottomBorder from "./BottomBorder";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/company" element={<Company />} /> 
         </Routes>
+
       </Router>
     </AuthProvider>
   );
