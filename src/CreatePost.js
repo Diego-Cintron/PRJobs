@@ -58,10 +58,10 @@ const CreatePost = () => {
   };
 
   return (
-    <div>
-      <h1>Create New Posting</h1>
+    <div className="createpost-block">
       <form onSubmit={handleSubmit}>
         <div className="label-div">
+          <h1>Create New Posting</h1>
           <label htmlFor="post_title">Title:</label>
           <input
             type="text"
