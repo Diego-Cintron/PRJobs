@@ -30,7 +30,18 @@ class MessagesDAO:
     
     def getMessagesByUserId(self, user_id):
         cursor = self.conn.cursor()
-        query = "SELECT * FROM messages WHERE user_id1 = %s OR user_id2 = %s;"
+        query = """
+            SELECT 
+                m.*, 
+                CONCAT(u1.user_fname, ' ', u1.user_lname) AS user1_name, 
+                u1.user_image AS user1_image, 
+                CONCAT(u2.user_fname, ' ', u2.user_lname) AS user2_name, 
+                u2.user_image AS user2_image
+            FROM messages m
+            INNER JOIN users u1 ON m.user_id1 = u1.user_id
+            INNER JOIN users u2 ON m.user_id2 = u2.user_id
+            WHERE m.user_id1 = %s OR m.user_id2 = %s;
+            """
         cursor.execute(query, (user_id, user_id,))
         result = cursor.fetchall()
         return result
