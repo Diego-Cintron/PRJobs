@@ -1,9 +1,15 @@
 nav {
-    position: fixed;
     top: 0;
-    width: 100%;
-    background-color: #333;
+    left: 0; 
+    display:flex;
+    background: linear-gradient(#CDFFD8, #94B9FF);
     padding: 10px 20px;
+    size-adjust: 40px;
+    font-size: x-large;
+    border-radius: 35px;
+    align-items: stretch;
+
+    z-index: 100;
   }
   
   ul {

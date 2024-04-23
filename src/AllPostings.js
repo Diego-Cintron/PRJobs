@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { errorHandler } from "./others/apiUtils";
 import { useAuth } from "./AuthContext";
 import { geocodeAddress } from "./others/Api";
-import CreatePost from "./CreatePost";
 import { calculateDistance } from "./others/Haversine";
 import "./PostingStyles.css";
 
@@ -11,7 +10,7 @@ function AllPostings() {
   const { user } = useAuth();
   const [userId] = useState(user?.user_id || -1);
   const [userLatitude, setUserLatitude] = useState(null);
-  const [userLongitude, setUserLongitude] = useState(null); 
+  const [userLongitude, setUserLongitude] = useState(null);
   const [postings, setPostings] = useState([]);
   const navigate = useNavigate();
 
@@ -57,10 +56,9 @@ function AllPostings() {
 
   return (
     <div>
-      <CreatePost />
-      <h1>All Postings</h1>
+      {/* <h1>All Postings</h1> */}
       {postings.length === 0 ? (
-        <p>No Postings Found.</p>
+        <p>Loading</p>
       ) : (
         postings.map((posting) => (
           <div
@@ -71,6 +69,8 @@ function AllPostings() {
               marginLeft: "10px",
               marginBottom: "10px",
               cursor: "pointer",
+              background: "white",
+              color: "black",
             }}
             key={posting.post_id}
             onClick={() => handlePostingClick(posting.post_id)}
@@ -80,7 +80,15 @@ function AllPostings() {
             {posting.geocodeData && userLatitude && userLongitude && (
               <div>
                 <h4>Distance to User:</h4>
-                <p>{calculateDistance(userLatitude, userLongitude, posting.geocodeData.latitude, posting.geocodeData.longitude)} km</p>
+                <p>
+                  {calculateDistance(
+                    userLatitude,
+                    userLongitude,
+                    posting.geocodeData.latitude,
+                    posting.geocodeData.longitude
+                  )}{" "}
+                  km
+                </p>
               </div>
             )}
           </div>
