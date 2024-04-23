@@ -27,9 +27,8 @@ function UserList() {
   };
 
   const normalizedSearchTerm = searchTerm.trim().toLowerCase();
-  const allUsers = users;
-  //console.log("PP: ", normalizedSearchTerm);
-  //console.log(users)
+  console.log("Normal: ", normalizedSearchTerm);
+  console.log("BB: ", searchTerm);
 
   const filteredUsers = users.filter((user) =>
     user.skills && user.skills.some((skill) =>
