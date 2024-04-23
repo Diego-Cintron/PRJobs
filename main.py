@@ -138,21 +138,24 @@ def searchByMessagesID(msg_id):
     else: 
         return jsonify("Not supported"), 405
     
-@app.route('/api/messages/sender/<int:user_id1>', methods=["GET", 'DELETE'])
-def searchByMessagesSender(user_id1):
+@app.route('/api/messages/user/<int:user_id>', methods=["GET"])
+def searchMessagesByUserID(user_id):
     if request.method == 'GET':
-        return MessagesHandler().getMessagesbySender(user_id1)
-    elif request.method == 'DELETE':
-        return MessagesHandler().deleteMessage(user_id1)
+        return MessagesHandler().getMessagesByUserId(user_id)
     else: 
         return jsonify("Not supported"), 405
     
-@app.route('/api/messages/receiver/<int:user_id2>', methods=["GET", 'DELETE'])
+@app.route('/api/messages/sender/<int:user_id1>', methods=["GET"])
+def searchByMessagesSender(user_id1):
+    if request.method == 'GET':
+        return MessagesHandler().getMessagesbySender(user_id1)
+    else: 
+        return jsonify("Not supported"), 405
+    
+@app.route('/api/messages/receiver/<int:user_id2>', methods=["GET"])
 def searchByMessagesReceiver(user_id2):
     if request.method == 'GET':
         return MessagesHandler().getMessagesbyReceiver(user_id2)
-    elif request.method == 'DELETE':
-        return MessagesHandler().deleteMessage(user_id2)
     else: 
         return jsonify("Not supported"), 405
     

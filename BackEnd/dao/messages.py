@@ -28,6 +28,14 @@ class MessagesDAO:
         result = cursor.fetchone()
         return result
     
+    def getMessagesByUserId(self, user_id):
+        cursor = self.conn.cursor()
+        query = "SELECT * FROM messages WHERE user_id1 = %s OR user_id2 = %s;"
+        cursor.execute(query, (user_id, user_id,))
+        result = cursor.fetchall()
+        return result
+
+    
     def getMessagesbySender(self, user_id1):
          cursor = self.conn.cursor()
          query = "select * from messages where user_id1 = %s;"
