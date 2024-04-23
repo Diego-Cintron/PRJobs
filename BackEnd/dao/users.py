@@ -38,18 +38,18 @@ class UserDAO:
         return result
     
 
-    def update(self, user_id, user_type, user_birthday, user_fname, user_lname, user_phone, user_email, user_address, user_municipality, user_available, user_password, user_skills):
+    def update(self, user_id, user_type, user_birthday, user_fname, user_lname, user_phone, user_email, user_address, user_municipality, user_available, user_password, user_skills, user_image):
         cursor = self.conn.cursor()
-        query = "update users set user_type = %s, user_birthday = %s, user_fname = %s, user_lname = %s, user_phone = %s, user_email = %s, user_address = %s, user_municipality = %s, user_available = %s, user_password = %s, user_skills = %s where user_id = %s;"
-        cursor.execute(query, (user_type, user_birthday, user_fname, user_lname, user_phone, user_email, user_address, user_municipality, user_available, user_password, user_skills, user_id,))
+        query = "update users set user_type = %s, user_birthday = %s, user_fname = %s, user_lname = %s, user_phone = %s, user_email = %s, user_address = %s, user_municipality = %s, user_available = %s, user_password = %s, user_skills = %s, user_image = %s where user_id = %s;"
+        cursor.execute(query, (user_type, user_birthday, user_fname, user_lname, user_phone, user_email, user_address, user_municipality, user_available, user_password, user_skills, user_image, user_id,))
         self.conn.commit()
         return user_id
     
 
-    def insert(self, user_type, user_birthday, user_fname, user_lname, user_phone, user_email, user_address, user_municipality, user_available, user_password, user_skills):
+    def insert(self, user_type, user_birthday, user_fname, user_lname, user_phone, user_email, user_address, user_municipality, user_available, user_password, user_skills, user_image):
         cursor = self.conn.cursor()
-        query = "insert into users(user_type, user_birthday, user_fname, user_lname, user_phone, user_email, user_address, user_municipality, user_available, user_password, user_skills) values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s) returning user_id;"
-        cursor.execute(query, (user_type, user_birthday, user_fname, user_lname, user_phone, user_email, user_address, user_municipality, user_available, user_password, user_skills,))
+        query = "insert into users(user_type, user_birthday, user_fname, user_lname, user_phone, user_email, user_address, user_municipality, user_available, user_password, user_skills, user_image) values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s) returning user_id;"
+        cursor.execute(query, (user_type, user_birthday, user_fname, user_lname, user_phone, user_email, user_address, user_municipality, user_available, user_password, user_skills, user_image,))
         user_id = cursor.fetchone()[0]
         self.conn.commit()
         return user_id
