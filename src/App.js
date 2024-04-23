@@ -1,10 +1,9 @@
-// npm install react-datepicker --save
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { AuthProvider } from "./AuthContext";
 import Home from "./Home";
 import About from "./About";
-import PostingsPage from "./PostingsPage";
+import Messages from "./Messages";
 import IndividualPostingPage from "./IndividualPostingPage";
 import UserList from "./UserList";
 import NavigationBar from "./NavigationBar";
@@ -26,6 +25,7 @@ function App() {
           <Route path="/users" element={<UserList />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/company" element={<Company />} />
+          <Route path="/messages" element={<Messages />} />
         </Routes>
 
       </Router>

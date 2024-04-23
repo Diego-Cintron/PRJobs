@@ -12,6 +12,19 @@ class MessagesHandler:
         result['msg_time'] = row[4]
         return result
     
+    def build_user_messages_dict(self, row):
+        result = {}
+        result['msg_id'] = row[0]
+        result['user_id1'] = row[1]
+        result['user_id2'] = row[2]
+        result['msg_content'] = row[3]
+        result['msg_time'] = row[4]
+        result['user1_name'] = row[5] 
+        result['user1_image'] = row[6]  
+        result['user2_name'] = row[7] 
+        result['user2_image'] = row[8]          
+        return result
+    
     def build_messages_attributes(self, msg_id, user_id1, user_id2, msg_content, msg_time):
         result = {}
         result['msg_id'] = msg_id
@@ -39,6 +52,15 @@ class MessagesHandler:
             message = self.build_messages_dict(row)
             return jsonify({"Message" : message}), 200
         
+    def getMessagesByUserId(self, user_id):
+        dao = MessagesDAO()
+        messages = dao.getMessagesByUserId(user_id) 
+        result_list = []
+        for row in messages:
+            result = self.build_user_messages_dict(row)
+            result_list.append(result)
+        return jsonify(Message=result_list) 
+        
     def getMessagesbySender(self, user_id1):
         dao = MessagesDAO()
         messages = dao.getMessagesbySender(user_id1)
@@ -46,7 +68,7 @@ class MessagesHandler:
         for row in messages:
             result = self.build_messages_dict(row)
             result_list.append(result)
-        return jsonify(Message=result_list) 
+        return jsonify(Messages=result_list)
         
     def getMessagesbyReceiver(self, user_id2):
         dao = MessagesDAO()
