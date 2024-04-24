@@ -159,6 +159,13 @@ def searchByMessagesReceiver(user_id2):
     else: 
         return jsonify("Not supported"), 405
     
+@app.route('/api/messages/users/<int:user_id1>/<int:user_id2>', methods=["GET"])
+def getMessagesBetweenUsers(user_id1, user_id2):
+    if request.method == 'GET':
+        return MessagesHandler().getMessagesBetweenUsers(user_id1, user_id2)
+    else: 
+        return jsonify("Not supported"), 405
+    
     
 # ----- Geocoding -----
 @app.route('/api/geocode', methods=['POST'])

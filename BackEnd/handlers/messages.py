@@ -96,6 +96,12 @@ class MessagesHandler:
         else:
             message = self.build_messages_dict(row)
             return jsonify(Message=message)
+        
+    def getMessagesBetweenUsers(self, user_id1, user_id2):
+        dao = MessagesDAO()
+        messages = dao.getMessagesBetweenUsers(user_id1, user_id2) 
+        result_list = [self.build_user_messages_dict(row) for row in messages]
+        return jsonify(Messages=result_list)
 
 
     def insertMessage(self, form):
