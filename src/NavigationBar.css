@@ -1,5 +1,6 @@
 nav {
     top: 0;
+    left: 0; 
     display:flex;
     background: linear-gradient(#CDFFD8, #94B9FF);
     padding: 10px 20px;
@@ -7,6 +8,8 @@ nav {
     font-size: x-large;
     border-radius: 35px;
     align-items: stretch;
+
+    z-index: 100;
   }
   
   ul {

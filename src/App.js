@@ -10,6 +10,7 @@ import UserList from "./UserList";
 import NavigationBar from "./NavigationBar";
 import SignUp from "./SignUp";
 import Company from "./Company";
+import BottomBorder from "./BottomBorder";
 import CreatePost from "./CreatePost";
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
           <Route path="/messages" element={<Messages />} />
           <Route path="/conversation/:user_id1/:user_id2" element={<Conversation />} />
         </Routes>
+
       </Router>
     </AuthProvider>
   );

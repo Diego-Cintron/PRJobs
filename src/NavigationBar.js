@@ -19,6 +19,9 @@ function NavigationBar() {
           <Link to="/users">Users</Link>
         </li>
         <li>
+          <Link to="/company">Company</Link>
+        </li>
+        <li>
           <Link to="/messages">&#x1F5EA;</Link>
         </li>
       </ul>
