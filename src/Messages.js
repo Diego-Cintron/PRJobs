@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { errorHandler } from "./others/apiUtils";
 import { useAuth } from "./AuthContext";
 import "./PostingStyles.css";
+//TODO:
+//  Add feature for starting conversations
 
 function Messages() {
   const { user } = useAuth();
@@ -20,45 +22,32 @@ function Messages() {
       errorHandler(response);
       const data = await response.json();
 
-      // Create a map that contains the latest message for each correspondence
-      const correspondenceMap = new Map();
-
-      // Iterate through messages and update "correspondenceMap"
+      // Filter duplicate correspondences
+      const uniqueCorrespondences = [];
+      const seenCorrespondences = new Set();
       data.Message.forEach((message) => {
-        const otherUserName =
-          message.user_id1 === userId ? message.user2_name : message.user1_name;
-        const otherUserImage =
-          message.user_id1 === userId
-            ? message.user2_image
-            : message.user1_image;
-
-        const correspondenceKey =
+        const key =
           message.user_id1 < message.user_id2
             ? `${message.user_id1}-${message.user_id2}`
             : `${message.user_id2}-${message.user_id1}`;
-
-        // Update the map if the message is newer or doesn't exist in the map
-        if (
-          !correspondenceMap.has(correspondenceKey) ||
-          message.msg_time > correspondenceMap.get(correspondenceKey).msg_time
-        ) {
-          correspondenceMap.set(correspondenceKey, {
-            ...message,
-            otherUserName,
-            otherUserImage,
-          });
+        if (!seenCorrespondences.has(key)) {
+          seenCorrespondences.add(key);
+          uniqueCorrespondences.push(message);
         }
       });
-
-      // Updates "messages" state
-      setMessages(Array.from(correspondenceMap.values()));
+      setMessages(uniqueCorrespondences);
     } catch (error) {
       console.error("Error fetching messages:", error);
     }
   };
 
-  const handleMessageClick = (id) => {
-    navigate(`/messages/${id}`);
+  const handleMessageClick = (conversation) => {
+    navigate(
+      `/conversation/${conversation.user_id1}/${conversation.user_id2}`,
+      {
+        state: { conversation },
+      }
+    );
   };
 
   return (
@@ -80,7 +69,7 @@ function Messages() {
               color: "black",
             }}
             key={message.msg_id}
-            onClick={() => handleMessageClick(message.msg_id)}
+            onClick={() => handleMessageClick(message)}
           >
             <h3>{message.otherUserName}</h3>
             <img src={message.otherUserImage} alt="Receiver Image" />

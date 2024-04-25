@@ -96,11 +96,17 @@ class MessagesHandler:
         else:
             message = self.build_messages_dict(row)
             return jsonify(Message=message)
+        
+    def getMessagesBetweenUsers(self, user_id1, user_id2):
+        dao = MessagesDAO()
+        messages = dao.getMessagesBetweenUsers(user_id1, user_id2) 
+        result_list = [self.build_user_messages_dict(row) for row in messages]
+        return jsonify(Messages=result_list)
 
 
     def insertMessage(self, form):
         print("form: ", form)
-        if len(form) != 4:
+        if len(form) != 3:
             return jsonify(Error = "Malformed post request"), 400
         else:
             user_id1 = form['user_id1']
@@ -128,7 +134,7 @@ class MessagesHandler:
         if not dao.getMessagesById(msg_id):
             return jsonify(Error = "Message not found."), 404
         else:
-            if len(form) != 4:
+            if len(form) != 3:
                 return jsonify(Error="Malformed update request"), 400
             else:
                 user_id1 = form['user_id1']
