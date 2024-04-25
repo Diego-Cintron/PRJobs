@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import AccountSettings from "./AccountSettings";
 import { errorHandler } from './others/apiUtils';
 
 function UserList() {
