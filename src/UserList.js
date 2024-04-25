@@ -23,7 +23,7 @@ function UserList() {
   }, []);
 
   const handleSearch = () => {
-    if (searchTerm != "") {
+    if (searchTerm !== "") {
       const searchTermLower = searchTerm.toLowerCase();
       const filteredUsers = users.filter((user) =>
         user.user_skills && user.user_skills.some((skill) =>
