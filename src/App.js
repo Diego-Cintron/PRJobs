@@ -12,6 +12,7 @@ import SignUp from "./SignUp";
 import Company from "./Company";
 import BottomBorder from "./BottomBorder";
 import CreatePost from "./CreatePost";
+import AccountSettings from "./AccountSettings";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path="/company" element={<Company />} />
           <Route path="/messages" element={<Messages />} />
           <Route path="/conversation/:user_id1/:user_id2" element={<Conversation />} />
+          <Route path="/account-settings" element={<AccountSettings />} />
         </Routes>
 
       </Router>

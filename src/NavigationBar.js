@@ -24,6 +24,9 @@ function NavigationBar() {
         <li>
           <Link to="/messages">&#x1F5EA;</Link>
         </li>
+        <li>
+          <Link to="/account-settings">My Profile</Link>
+        </li>
       </ul>
     </nav>
   );
