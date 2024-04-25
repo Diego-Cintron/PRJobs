@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { errorHandler } from "./others/apiUtils";
 import { useAuth } from "./AuthContext";
 import "./PostingStyles.css";
+//TODO:
+//  Add feature for starting conversations
 
 function Messages() {
   const { user } = useAuth();

@@ -106,7 +106,7 @@ class MessagesHandler:
 
     def insertMessage(self, form):
         print("form: ", form)
-        if len(form) != 4:
+        if len(form) != 3:
             return jsonify(Error = "Malformed post request"), 400
         else:
             user_id1 = form['user_id1']
@@ -134,7 +134,7 @@ class MessagesHandler:
         if not dao.getMessagesById(msg_id):
             return jsonify(Error = "Message not found."), 404
         else:
-            if len(form) != 4:
+            if len(form) != 3:
                 return jsonify(Error="Malformed update request"), 400
             else:
                 user_id1 = form['user_id1']
