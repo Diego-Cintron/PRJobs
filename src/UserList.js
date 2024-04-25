@@ -13,6 +13,7 @@ function UserList() {
         errorHandler(response);
         const data = await response.json();
         setUsers(data.Users);
+        setSkilledUsers(data.Users);
       } catch (error) {
         console.error(error);
       }
@@ -22,13 +23,18 @@ function UserList() {
   }, []);
 
   const handleSearch = () => {
-    const searchTermLower = searchTerm.toLowerCase();
-    const filteredUsers = users.filter((user) =>
-      user.user_skills && user.user_skills.some((skill) =>
-        skill.toLowerCase() === searchTermLower
-      )
-    );
-    setSkilledUsers(filteredUsers);
+    if (searchTerm != "") {
+      const searchTermLower = searchTerm.toLowerCase();
+      const filteredUsers = users.filter((user) =>
+        user.user_skills && user.user_skills.some((skill) =>
+          skill.toLowerCase() === searchTermLower
+        )
+      );
+      setSkilledUsers(filteredUsers);
+    } else {
+      setSkilledUsers(users);
+    }
+    
   };
   
 
