@@ -65,7 +65,7 @@ const AccountSettings = () => {
 
     try {
       const { user_id, ...dataToSend } = updatedData;
-      const response = await fetch(`http://127.0.0.1:5000/users/${userId}`, {
+      const response = await fetch(`/api/users/${userId}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(dataToSend),
@@ -145,6 +145,17 @@ const AccountSettings = () => {
           id="user_address"
           name="user_address"
           value={updatedData.user_address}
+          onChange={handleChange}
+        />
+      </div>
+
+      <div>
+        <label htmlFor="user_image">Image URL</label>
+        <input
+          type="text"
+          id="user_image"
+          name="user_image"
+          value={updatedData.user_image}
           onChange={handleChange}
         />
       </div>

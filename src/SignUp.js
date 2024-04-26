@@ -153,6 +153,18 @@ const SignUp = () => {
         />
       </div>
 
+      <div className="Address">
+        <label htmlFor="user_image">Image URL:</label>
+        <input
+          type="text"
+          id="user_image"
+          name="user_image"
+          value={formData.user_image}
+          onChange={handleInputChange}
+          required
+        />
+      </div>
+
       <div className="Phone">
         <label htmlFor="user_phone">Phone:</label>
         <input
@@ -206,7 +218,7 @@ const SignUp = () => {
         </select>
       </div>
 
-      <div className="Availability">
+      <div className="Address" style={{display: "flex"}}>
         <p>User Availability:</p>
         <label>
           <input
