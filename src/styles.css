@@ -448,3 +448,31 @@ img.PRJobs-logo {
   background: linear-gradient(#CDFFD8, #94B9FF);
   padding: 50px;
 }
+
+
+/* Messages */
+.messagespage{
+  width: 100%;
+  display:flex;
+  min-height: 90vh;
+}
+
+
+.active-block{
+  background: #FFBD59;
+  display: inline-block;
+  align-items: stretch;
+  justify-content: space-around;
+  min-width: 40vh;
+  padding: 10px;
+}
+
+.messagebox{
+  display: inline-block;
+  background: linear-gradient(#CDFFD8, #94B9FF);
+  align-items: stretch;
+  justify-content: space-around;
+  min-width: 150vh;
+}
+
+

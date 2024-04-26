@@ -51,44 +51,49 @@ function Messages() {
   };
 
   return (
-    <div>
-      <h1>All Messages</h1>
-      {messages.length === 0 ? (
-        <p>Loading</p>
-      ) : (
-        messages.map((message) => (
-          <div
-            style={{
-              border: "1px solid #ccc",
-              borderRadius: "5px",
-              padding: "10px",
-              marginLeft: "10px",
-              marginBottom: "10px",
-              cursor: "pointer",
-              background: "white",
-              color: "black",
-            }}
-            key={message.msg_id}
-            onClick={() => handleMessageClick(message)}
-          >
-            {console.log(message)}
-            <h3>
-              {userId === message.user_id1
-                ? message.user2_name
-                : message.user1_name}
-            </h3>
-            <img
-              src={
-                userId === message.user_id1
-                  ? message.user2_image || defaultUserImage
-                  : message.user1_image || defaultUserImage
-              }
-              style={{ maxWidth: "50px" }}
-            />
-            <p>{message.msg_content}</p>
-          </div>
-        ))
-      )}
+    <div className="messagespage">
+      <div className="active-block">
+        <h1>Active Chats</h1>
+        {messages.length === 0 ? (
+          <p>Loading...</p>
+        ) : (
+          messages.map((message) => (
+            <div
+              style={{
+                border: "1px solid #ccc",
+                borderRadius: "5px",
+                padding: "10px",
+                marginLeft: "10px",
+                marginBottom: "10px",
+                cursor: "pointer",
+                background: "white",
+                color: "black",
+              }}
+              key={message.msg_id}
+              onClick={() => handleMessageClick(message)}
+            >
+              {console.log(message)}
+              <h3>
+                {userId === message.user_id1
+                  ? message.user2_name
+                  : message.user1_name}
+              </h3>
+              <img
+                src={
+                  userId === message.user_id1
+                    ? message.user2_image || defaultUserImage
+                    : message.user1_image || defaultUserImage
+                }
+                style={{ maxWidth: "50px" }}
+              />
+              <p>{message.msg_content}</p>
+            </div>
+          ))
+        )}
+      </div>
+      <div className="messagebox">
+        <p>Hello</p>
+      </div>
     </div>
   );
 }
