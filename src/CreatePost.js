@@ -35,7 +35,7 @@ const CreatePost = () => {
       });
 
       errorHandler(response);
-
+      alert("Your post was successfully created.");
       navigate(`/postings`);
     } catch (error) {
       console.error("Error creating posting:", error);
@@ -56,6 +56,17 @@ const CreatePost = () => {
       post_municipality.length <= 20
     );
   };
+
+  if (user.user_type !== "poster") {
+    return (
+      <div className="createpost-block">
+        <p>
+          Sorry, but you are not registered as a User with the necessary
+          permissions to create a new Post.
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div className="createpost-block">
