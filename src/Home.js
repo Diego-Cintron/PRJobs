@@ -6,7 +6,7 @@ import HomePage from "./HomePage";
 function Home() {
   const { user } = useAuth();
 
-  return <div className="temporary">{user ? <HomePage /> : <SignIn />}</div>;
+  return <div>{user ? <HomePage /> : <SignIn />}</div>;
 }
 
 export default Home;
