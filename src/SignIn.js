@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { useAuth } from "./AuthContext";
 
 const SignIn = () => {
@@ -31,14 +32,19 @@ const SignIn = () => {
   return (
     <div className="signin-block">
       <div>
-      <img className="PRJobs-logo"
-        src={"https://drive.google.com/thumbnail?id=1gDZsJIvwVTYlHBFyqVPtAZSwMhnwx7Mp" }
-        height={150}
-        width={150}
-        alt="PRJobs logo"
-      />
+        <img
+          className="PRJobs-logo"
+          src={
+            "https://drive.google.com/thumbnail?id=1gDZsJIvwVTYlHBFyqVPtAZSwMhnwx7Mp"
+          }
+          height={150}
+          width={150}
+          alt="PRJobs logo"
+        />
         <p className="title">Welcome to PRJobs</p>
-        <p className="subtitle">First time login? Sign Up</p>
+        <p className="subtitle">
+          First time login? <Link to="/signup">Sign Up</Link>
+        </p>
       </div>
       <div className="signin">
         <p>Email</p>
