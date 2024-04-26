@@ -5,7 +5,7 @@ import { errorHandler } from "./others/apiUtils";
 const AccountSettings = () => {
   const { user } = useAuth();
   const [userId] = useState(user?.user_id || -1);
-
+  const [updatedData, setUpdatedData] = useState(data);
   const [data, setData] = useState({
     user_id: userId,
     user_type: "",
@@ -19,8 +19,6 @@ const AccountSettings = () => {
     user_available: [],
     user_password: "",
   });
-
-  const [updatedData, setUpdatedData] = useState(data);
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -74,15 +72,16 @@ const AccountSettings = () => {
       const userData = await response.json();
       setData(userData.User);
       setUpdatedData(userData.User);
+      alert("Your profile has been updated");
     } catch (error) {
       console.error(error);
+      alert("Sorry, something went wrong");
     }
   };
 
   return (
     <div className="user-settings">
       <h2>Account Settings</h2>
-
       <div>
         <label htmlFor="user_email">Email address</label>
         <input
