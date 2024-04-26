@@ -1,6 +1,7 @@
 import React from "react";
 import { useAuth } from "./AuthContext";
 import "./styles.css";
+import { defaultUserImage } from "./others/apiUtils";
 
 const UserProfile = () => {
   const { user } = useAuth();
@@ -16,13 +17,10 @@ const UserProfile = () => {
   return (
     <div className="user-block">
       <img
-        src={
-          user.user_avatar ||
-          "https://www.pngkey.com/png/full/115-1150152_default-profile-picture-avatar-png-green.png"
-        }
+        src={user.user_image || defaultUserImage}
         height={100}
         width={100}
-        alt="User Avatar"
+        alt="User Image"
       />
       <p className="profilename">
         {user.user_fname} {user.user_lname}

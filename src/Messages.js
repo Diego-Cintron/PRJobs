@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { errorHandler } from "./others/apiUtils";
+import { defaultUserImage, errorHandler } from "./others/apiUtils";
 import { useAuth } from "./AuthContext";
 import "./PostingStyles.css";
 //TODO:
@@ -71,8 +71,20 @@ function Messages() {
             key={message.msg_id}
             onClick={() => handleMessageClick(message)}
           >
-            <h3>{message.otherUserName}</h3>
-            <img src={message.otherUserImage} alt="Receiver Image" />
+            {console.log(message)}
+            <h3>
+              {userId === message.user_id1
+                ? message.user2_name
+                : message.user1_name}
+            </h3>
+            <img
+              src={
+                userId === message.user_id1
+                  ? message.user2_image || defaultUserImage
+                  : message.user1_image || defaultUserImage
+              }
+              style={{ maxWidth: "50px" }}
+            />
             <p>{message.msg_content}</p>
           </div>
         ))
