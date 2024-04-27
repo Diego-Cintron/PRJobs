@@ -12,6 +12,7 @@ function AllPostings() {
   const [userLatitude, setUserLatitude] = useState(null);
   const [userLongitude, setUserLongitude] = useState(null);
   const [postings, setPostings] = useState([]);
+  const [sortedBy, setSortedBy] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -24,6 +25,7 @@ function AllPostings() {
       const response = await fetch(`/api/postings`);
       errorHandler(response);
       const data = await response.json();
+
       // Iterate through each posting and fetch geocode data
       const postingsWithGeocode = await Promise.all(
         data.Postings.map(async (posting) => {
@@ -54,9 +56,89 @@ function AllPostings() {
     navigate(`/postings/${id}`);
   };
 
+  // Sort postings by expires soon
+  const sortByExpiresSoon = () => {
+    const sortedPostings = [...postings].sort((a, b) => {
+      const dateA = new Date(a.post_expires);
+      const dateB = new Date(b.post_expires);
+      return dateA - dateB; // Ascending order
+    });
+    setSortedBy("expiresSoon");
+    setPostings(sortedPostings);
+  };
+
+  // Sort postings by recently posted
+  const sortByRecentlyPosted = () => {
+    const sortedPostings = [...postings].sort((a, b) => {
+      const dateA = new Date(a.post_uploaded);
+      const dateB = new Date(b.post_uploaded);
+      return dateB - dateA; // Descending order
+    });
+    setSortedBy("recentlyPosted");
+    setPostings(sortedPostings);
+  };
+
+  // Sort postings by distance to the user
+  const sortByDistance = () => {
+    const sortedPostings = [...postings].sort((a, b) => {
+      const distanceA = calculateDistanceToUser(a);
+      const distanceB = calculateDistanceToUser(b);
+      if (isNaN(distanceA)) return 1; // Treat NaN as greater than other distances
+      if (isNaN(distanceB)) return -1; // Treat NaN as less than other distances
+      return distanceA - distanceB;
+    });
+    setSortedBy("distance");
+    setPostings(sortedPostings);
+  };
+
+  const calculateDistanceToUser = (posting) => {
+    if (!userLatitude || !userLongitude) return Number.MAX_VALUE; // Handle case where the user's geolocation is not available
+    const postingLatitude = posting.geocodeData?.latitude || 0;
+    const postingLongitude = posting.geocodeData?.longitude || 0;
+    if (
+      !postingLatitude ||
+      !postingLongitude ||
+      isNaN(postingLatitude) ||
+      isNaN(postingLongitude)
+    ) {
+      return NaN; // Handle case where the posting's geolocation is invalid
+    }
+    const distance = calculateDistance(
+      userLatitude,
+      userLongitude,
+      postingLatitude,
+      postingLongitude
+    );
+    return distance;
+  };
+
+  const handleSortBy = (sortType) => {
+    switch (sortType) {
+      case "distance":
+        sortByDistance();
+        break;
+      case "recentlyPosted":
+        sortByRecentlyPosted();
+        break;
+      case "expiresSoon":
+        sortByExpiresSoon();
+        break;
+      default:
+        break;
+    }
+  };
+
   return (
     <div>
-      {/* <h1>All Postings</h1> */}
+      <div className="sorting-buttons">
+        <button onClick={() => handleSortBy("distance")}>Distance</button>
+        <button onClick={() => handleSortBy("recentlyPosted")}>
+          Recently Posted
+        </button>
+        <button onClick={() => handleSortBy("expiresSoon")}>
+          Expires Soon
+        </button>
+      </div>
       {postings.length === 0 ? (
         <p>Loading</p>
       ) : (
@@ -77,20 +159,15 @@ function AllPostings() {
           >
             <h3>{posting.post_title}</h3>
             <p>{posting.post_description}</p>
-            {posting.geocodeData && userLatitude && userLongitude && (
-              <div>
-                <h4>Distance to User:</h4>
-                <p>
-                  {calculateDistance(
-                    userLatitude,
-                    userLongitude,
-                    posting.geocodeData.latitude,
-                    posting.geocodeData.longitude
-                  )}{" "}
-                  km
-                </p>
-              </div>
-            )}
+            <div>
+              <h4>Distance to User:</h4>
+              <p>
+                {isNaN(calculateDistanceToUser(posting))
+                  ? "N/A"
+                  : calculateDistanceToUser(posting)}{" "}
+                km
+              </p>
+            </div>
           </div>
         ))
       )}
