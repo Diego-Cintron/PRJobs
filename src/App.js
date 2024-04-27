@@ -4,13 +4,11 @@ import { AuthProvider } from "./AuthContext";
 import Home from "./Home";
 import About from "./About";
 import Messages from "./Messages";
-import Conversation from "./Conversation";
 import IndividualPostingPage from "./IndividualPostingPage";
 import UserList from "./UserList";
 import NavigationBar from "./NavigationBar";
 import SignUp from "./SignUp";
 import Company from "./Company";
-import BottomBorder from "./BottomBorder";
 import CreatePost from "./CreatePost";
 import AccountSettings from "./AccountSettings";
 
@@ -28,10 +26,8 @@ function App() {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/company" element={<Company />} />
           <Route path="/messages" element={<Messages />} />
-          <Route path="/conversation/:user_id1/:user_id2" element={<Conversation />} />
           <Route path="/account-settings" element={<AccountSettings />} />
         </Routes>
-
       </Router>
     </AuthProvider>
   );
