@@ -1,4 +1,5 @@
 from BackEnd.config.credential import prjobs_config
+from datetime import datetime
 import psycopg2
 
 class PostingsDAO:
@@ -15,13 +16,14 @@ class PostingsDAO:
 
     def getAllPostings(self):
         cursor = self.conn.cursor()
-        query = "select * from postings;"
-        cursor.execute(query)
+        query = "SELECT * FROM postings WHERE post_expires > %s;"
+        current_time = datetime.now()
+        cursor.execute(query, (current_time,))
         result = []
         for row in cursor:
             result.append(row)
         return result
-    
+
 
     def getPostingById(self, post_id):
         cursor = self.conn.cursor()
