@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { errorHandler } from './others/apiUtils';
+import { errorHandler } from "./others/apiUtils";
 
 function UserList() {
   const [users, setUsers] = useState([]);
@@ -25,21 +25,27 @@ function UserList() {
   const handleSearch = () => {
     if (searchTerm !== "") {
       const searchTermLower = searchTerm.toLowerCase();
-      const filteredUsers = users.filter((user) =>
-        user.user_skills && user.user_skills.some((skill) =>
-          skill.toLowerCase() === searchTermLower
-        )
+      const filteredUsers = users.filter(
+        (user) =>
+          user.user_skills &&
+          user.user_skills.some(
+            (skill) => skill.toLowerCase() === searchTermLower
+          )
       );
       setSkilledUsers(filteredUsers);
     } else {
       setSkilledUsers(users);
     }
-    
   };
-  
 
   return (
     <div className="user-list">
+      <script
+        async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2843724221280103"
+        crossorigin="anonymous"
+      ></script>
+
       <p>User List</p>
       <div>
         <input
@@ -70,6 +76,6 @@ function UserList() {
       </table>
     </div>
   );
-};
+}
 
 export default UserList;

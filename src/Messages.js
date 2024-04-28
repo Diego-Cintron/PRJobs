@@ -84,6 +84,12 @@ function Messages() {
 
   return (
     <div className="messagespage">
+      <script
+        async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2843724221280103"
+        crossorigin="anonymous"
+      ></script>
+
       <div className="active-block">
         <div className="search-section">
           <h2>New Chat</h2>
