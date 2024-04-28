@@ -1,33 +1,28 @@
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
 import { errorHandler } from "./others/apiUtils";
 
-function Conversation() {
-  const location = useLocation();
-  const conversation = location.state ? location.state.conversation : null;
+function Conversation({ user_id1, user_id2 }) {
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(true);
   const [newMessage, setNewMessage] = useState("");
   const [userName, setUserName] = useState("");
 
   useEffect(() => {
-    if (conversation) {
-      fetchConversationData();
-    }
-  }, [conversation]);
+    fetchConversationData();
+  }, [user_id1, user_id2]);
 
   // Fetch the messages and the name of the other user
   const fetchConversationData = async () => {
     try {
       // Fetch other user's name
-      const userResponse = await fetch(`/api/users/${conversation.user_id2}`);
+      const userResponse = await fetch(`/api/users/${user_id2}`);
       errorHandler(userResponse);
       const userData = await userResponse.json();
       setUserName(userData.User.user_fname);
 
       // Fetch messages between users
       const messagesResponse = await fetch(
-        `/api/messages/users/${conversation.user_id1}/${conversation.user_id2}`
+        `/api/messages/users/${user_id1}/${user_id2}`
       );
       errorHandler(messagesResponse);
       const messagesData = await messagesResponse.json();
@@ -48,8 +43,8 @@ function Conversation() {
         },
         body: JSON.stringify({
           msg_content: newMessage,
-          user_id1: conversation.user_id1, // Currently signed in user
-          user_id2: conversation.user_id2, // Receiver
+          user_id1: user_id1, // Currently signed in user
+          user_id2: user_id2, // Receiver
         }),
       });
       errorHandler(response);

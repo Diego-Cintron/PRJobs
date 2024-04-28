@@ -30,6 +30,15 @@ class UserDAO:
         result = cursor.fetchone()
         return result
     
+    
+    def getUserByEmail(self, user_email):
+        cursor = self.conn.cursor()
+        query = "SELECT * FROM users WHERE user_email = %s"
+        cursor.execute(query, (user_email,))
+        user_info = cursor.fetchone()
+        return user_info
+    
+    
     def login(self, user_email, user_password):
         cursor = self.conn.cursor()
         query = "select * from users where user_email = %s and user_password = %s;"
