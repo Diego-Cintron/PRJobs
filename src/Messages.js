@@ -3,14 +3,13 @@ import { defaultUserImage, errorHandler } from "./others/apiUtils";
 import { useAuth } from "./AuthContext";
 import Conversation from "./Conversation";
 import "./PostingStyles.css";
-//TODO:
-//  Add feature for starting conversations
 
 function Messages() {
   const { user } = useAuth();
   const [userId] = useState(user?.user_id || -1);
   const [messages, setMessages] = useState([]);
-  const [selectedMessage, setSelectedMessage] = useState(null);
+  const [selectedOtherUser, setSelectedOtherUser] = useState(null);
+  const [searchEmail, setSearchEmail] = useState("");
 
   useEffect(() => {
     fetchMessages();
@@ -56,13 +55,46 @@ function Messages() {
     }
   };
 
+  const handleSearchUser = async (email) => {
+    try {
+      const response = await fetch(`/api/users/${email}`);
+      if (response.ok) {
+        const data = await response.json();
+        if (data) {
+          setSelectedOtherUser(data.User.user_id);
+          console.log(selectedOtherUser);
+        } else {
+          console.error("User not found");
+        }
+      } else {
+        console.error("Failed to fetch user:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error searching for user:", error);
+    }
+  };
+
   const handleMessageClick = (message) => {
-    setSelectedMessage(message);
+    setSelectedOtherUser(message.user_id2);
+  };
+
+  const handleSearchInputChange = (event) => {
+    setSearchEmail(event.target.value);
   };
 
   return (
     <div className="messagespage">
       <div className="active-block">
+        <div className="search-section">
+          <h2>New Chat</h2>
+          <input
+            type="text"
+            placeholder="Enter user email"
+            value={searchEmail}
+            onChange={handleSearchInputChange}
+          />
+          <button onClick={() => handleSearchUser(searchEmail)}>Search</button>
+        </div>
         <h1>Active Chats</h1>
         {messages.length === 0 ? (
           <p>Loading...</p>
@@ -82,7 +114,6 @@ function Messages() {
               key={message.msg_id}
               onClick={() => handleMessageClick(message)}
             >
-              {console.log(message)}
               <h3>
                 {userId === message.user_id1
                   ? message.user2_name
@@ -99,10 +130,10 @@ function Messages() {
         )}
       </div>
       <div className="messagebox">
-        {selectedMessage && (
+        {selectedOtherUser && (
           <Conversation
-            user_id1={selectedMessage.user_id1}
-            user_id2={selectedMessage.user_id2}
+            user_id1={userId} // Currently signed in user
+            user_id2={selectedOtherUser}
           />
         )}
       </div>
