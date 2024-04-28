@@ -60,6 +60,16 @@ class UserHandler:
         return jsonify(User=user)
     
     
+    def getUserByEmail(self, user_email):
+        dao = UserDAO()
+        row = dao.getUserByEmail(user_email)
+        if not row:
+            return jsonify(Error="User Not Found"), 404
+        else:
+            user = self.build_user_dict(row)
+        return jsonify(User=user)
+    
+    
     def login(self, form):
         dao = UserDAO()
         if len(form) != 2:
@@ -67,11 +77,11 @@ class UserHandler:
         else:
             user_email = form['user_email']
             user_password = form['user_password']
-            row = dao.login(user_email, user_password)
-            if not row:
+            result = dao.login(user_email, user_password)
+            if not result:
                 return jsonify(Error="User Not Found"), 404
             else:
-                user = self.build_user_dict(row)
+                user = self.build_user_dict(result)
             return jsonify(User=user)
         
 

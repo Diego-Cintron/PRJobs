@@ -49,7 +49,15 @@ def searchByUserID(user_id):
     elif request.method == 'DELETE':
         return UserHandler().deleteUser(user_id)
     else: 
-        return jsonify(Error="Method not allowed!!!"), 405
+        return jsonify(Error="Method not allowed."), 405
+    
+# Get User by their email
+@app.route('/api/users/<string:user_email>', methods=['GET'])
+def searchByUserEmail(user_email):
+    if request.method == 'GET':
+        return UserHandler().getUserByEmail(user_email)
+    else: 
+        return jsonify(Error="Method not allowed."), 405
     
 @app.route('/api/users/login', methods=['POST'])
 def login():
