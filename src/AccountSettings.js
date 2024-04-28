@@ -5,7 +5,6 @@ import { errorHandler } from "./others/apiUtils";
 const AccountSettings = () => {
   const { user } = useAuth();
   const [userId] = useState(user?.user_id || -1);
-  const [updatedData, setUpdatedData] = useState(data);
   const [data, setData] = useState({
     user_id: userId,
     user_type: "",
@@ -19,6 +18,8 @@ const AccountSettings = () => {
     user_available: [],
     user_password: "",
   });
+  const [updatedData, setUpdatedData] = useState(data);
+
 
   useEffect(() => {
     const fetchUser = async () => {
