@@ -3,7 +3,7 @@ import { useAuth } from "./AuthContext";
 import { errorHandler } from "./others/apiUtils";
 
 const AccountSettings = () => {
-  const { user } = useAuth();
+  const { user, updateUser } = useAuth();
   const [userId] = useState(user?.user_id || -1);
   const [data, setData] = useState({
     user_id: userId,
@@ -73,6 +73,7 @@ const AccountSettings = () => {
       const userData = await response.json();
       setData(userData.User);
       setUpdatedData(userData.User);
+      updateUser(userData.User);
       alert("Your profile has been updated");
     } catch (error) {
       console.error(error);

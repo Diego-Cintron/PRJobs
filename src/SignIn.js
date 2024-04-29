@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useAuth } from "./AuthContext";
 
 const SignIn = () => {
-  const { setUser } = useAuth();
+  const { updateUser } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -17,7 +17,7 @@ const SignIn = () => {
       });
       if (response.ok) {
         const data = await response.json();
-        setUser(data.User);
+        updateUser(data.User);
         setError("");
       } else {
         alert("Email and Password combination is invalid");
