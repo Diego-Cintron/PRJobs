@@ -18,6 +18,7 @@ const SignUp = () => {
     user_birthday: null,
     user_available: [false, false, false, false, false, false, false],
     user_skills: [],
+    cm_id: 1,
   });
 
   const handleInputChange = (e) => {
