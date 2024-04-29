@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { errorHandler } from "./others/apiUtils";
 import { useAuth } from "./AuthContext";
 import "./styles.css";
 
-const EditCompany = ({ cm_id }) => {
-  const { user } = useAuth();
+function CreateCompany() {
+  const { user, updateUser } = useAuth();
+  const navigate = useNavigate();
   const [companyData, setCompanyData] = useState({
     cm_name: "",
     cm_email: "",
@@ -14,39 +15,50 @@ const EditCompany = ({ cm_id }) => {
     cm_logo: "",
   });
 
-  useEffect(() => {
-    fetchCompanyData();
-  }, []);
-
-  const fetchCompanyData = async () => {
-    try {
-      const response = await fetch(`/api/companies/${cm_id}`);
-      errorHandler(response);
-      const data = await response.json();
-      setCompanyData(data.Company);
-    } catch (error) {
-      console.error("Error fetching company data:", error);
-    }
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+  
     try {
-      const response = await fetch(`/api/companies/${cm_id}`, {
-        method: "PUT",
+      const response = await fetch(`/api/companies`, {
+        method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(companyData),
       });
       errorHandler(response);
-      alert("Company details updated successfully.");
+      const data = await response.json();
+  
+      setCompanyData(data.Company);
+  
+      alert("Company profile created successfully.");
+      updateUserData(data.Company.cm_id); 
     } catch (error) {
-      console.error("Error updating company details:", error);
-      alert("Error updating company details.");
+      console.error("Error creating company profile:", error);
+      alert("Error creating company profile.");
+    }
+  };  
+
+  const updateUserData = async (cm_id) => {
+    try {
+      const updatedUserData = { ...user, cm_id: cm_id };
+      const response = await fetch(`/api/users/${user.user_id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updatedUserData),
+      });
+      errorHandler(response);
+      updateUser({ cm_id: cm_id }); // Update currently signed in data
+      alert("UPDATED USER! (delete this alert)");
+      navigate(`/postings`);
+    } catch (error) {
+      console.error("Error updating user data:", error);
+      alert("Error updating user data.");
     }
   };
+  
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -58,7 +70,7 @@ const EditCompany = ({ cm_id }) => {
 
   return (
     <div className="company-block">
-      <h2>Edit Company</h2>
+      <h2>Create a Company profile</h2>
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="cm_name">Company Name:</label>
@@ -115,11 +127,11 @@ const EditCompany = ({ cm_id }) => {
           />
         </div>
         <div>
-          <button type="submit">Update</button>
+          <button type="submit">Submit</button>
         </div>
       </form>
     </div>
   );
 }
 
-export default EditCompany;
+export default CreateCompany;

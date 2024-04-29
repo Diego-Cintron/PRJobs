@@ -1,25 +1,23 @@
 .top-bar {
   width: 100%;
-  background: linear-gradient(.25turn, #cdffd8, #94b9ff);
+  background: linear-gradient(0.25turn, #cdffd8, #94b9ff);
   top: 0;
-  
+
   position: fixed;
   display: flex;
 
   z-index: 30;
-
 }
 
 .bottom-bar {
   width: 100%;
-  background: linear-gradient(.25turn, #cdffd8, #94b9ff);
+  background: linear-gradient(0.25turn, #cdffd8, #94b9ff);
   bottom: 0;
   position: fixed;
   display: flex;
 
   left: 0;
   z-index: 30;
-
 }
 
 .search-button {
@@ -85,14 +83,14 @@
 .user-block,
 .postbackground,
 .company-block {
-  flex: 1; 
+  flex: 1;
   height: 100%;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 20px; 
+  padding: 20px;
 }
 
 .user-block {
@@ -101,14 +99,14 @@
 }
 
 .company-block {
-  flex: 1; 
+  flex: 1;
   height: 100%;
   width: 100%;
   display: 1;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 20px; 
+  padding: 20px;
 }
 
 /* background gradient */
@@ -117,7 +115,7 @@
   width: auto;
   /* background: linear-gradient(#9cd6dde5, #007986e5, #003237e5 ); */
   /* background: linear-gradient(#0093a7e5, #9cd6dde5, #ffffff ); */
-  background: linear-gradient(#ffffff, #9cd6dde5, #94b9ff );
+  background: linear-gradient(#ffffff, #9cd6dde5, #94b9ff);
 }
 
 img.company-cover {
@@ -127,8 +125,7 @@ img.company-cover {
   width: 100%;
 
   /* background: linear-gradient(#ffffff, #9cd6dde5, #94b9ff); */
-  background: linear-gradient(.25turn, #ffde59, #ff914d);
-
+  background: linear-gradient(0.25turn, #ffde59, #ff914d);
 }
 
 img.company-logo {
@@ -146,11 +143,9 @@ img.company-logo {
   border-radius: 50%;
 
   z-index: 20;
-
 }
 
 .company-name {
-
   position: absolute;
 
   top: 35%;
@@ -177,13 +172,12 @@ img.company-logo {
   color: #00b8a9;
 
   overflow: auto;
-
 }
 
 .divider {
   border-bottom: 1px solid #00b8a9;
   width: 100%;
-  
+
   margin-left: 0%;
 }
 
@@ -197,7 +191,6 @@ img.map-logo {
   z-index: 20;
 
   /* transition: all 10s ease-in-out; */
-
 }
 
 .map {
@@ -206,7 +199,7 @@ img.map-logo {
   border: 1px solid #00b8a9;
   color: #00b8a9;
 
-  width:30%;
+  width: 30%;
   height: 20%;
 
   flex: 1;
@@ -215,7 +208,6 @@ img.map-logo {
   align-items: center;
 
   border-radius: 25px;
-
 }
 
 .joblistings-header {
@@ -240,13 +232,12 @@ img.map-logo {
   align-items: center;
 
   overflow: auto;
-
 }
 
 .joblistings {
   position: absolute;
 
-  background-color:#ffffff;
+  background-color: #ffffff;
   border: #000000;
   width: 60%;
   height: 100%;
@@ -255,7 +246,7 @@ img.map-logo {
   top: 70%;
 
   border-radius: 25px;
-  
+
   margin-left: 0%;
 }
 
@@ -364,23 +355,22 @@ img.map-logo {
 }
 
 /* Sign In */
-.signin-block{
-  display:flex;
+.signin-block {
+  display: flex;
   border-radius: 35px;
   background: linear-gradient(#cdffd8, #94b9ff);
   /* width: 1000px;
   height: 500px; */
-  
+
   padding: 10px 50px;
 
   width: 80%;
   /* height: 200%; */
   margin: auto;
   margin-top: 1%;
-  
 }
 
-.signin{
+.signin {
   position: flex;
   text-align: left;
   /* background-color: #00a2ff2c; */
@@ -396,10 +386,8 @@ img.map-logo {
   margin-left: 11%;
   margin-bottom: 5%;
 
-
   border-radius: 35px;
   padding: 10px 20px 9%;
-
 }
 
 /* Welcome to PRJobs */
@@ -409,57 +397,53 @@ img.PRJobs-logo {
   margin-left: 32%;
 }
 
-.title{
+.title {
   font-style: italic;
-  font-family:Georgia, 'Times New Roman', Times, serif;
+  font-family: Georgia, "Times New Roman", Times, serif;
   font-size: xxx-large;
   text-align: center;
   position: flex;
   width: 400px;
   height: 100px;
   margin-top: 0%;
-
 }
 
 /* First time login? */
-.subtitle{
+.subtitle {
   font-style: italic;
   font-size: smaller;
   text-align: center;
   position: flex;
-
 }
 
 /* Forgot Password? */
-.forgot{
+.forgot {
   font-size: smaller;
 }
 
 /* Homepage */
 
 .homepage-block,
-.createpost-block{
+.createpost-block {
   color: #000000;
-  display:flex;
+  display: flex;
   justify-content: space-around;
   border-radius: 35px;
   align-items: stretch;
   min-height: 100vh;
-  background: linear-gradient(#CDFFD8, #94B9FF);
+  background: linear-gradient(#cdffd8, #94b9ff);
   padding: 50px;
 }
 
-
 /* Messages */
-.messagespage{
+.messagespage {
   width: 100%;
-  display:flex;
+  display: flex;
   min-height: 90vh;
 }
 
-
-.active-block{
-  background: #FFBD59;
+.active-block {
+  background: #ffbd59;
   display: inline-block;
   align-items: stretch;
   justify-content: space-around;
@@ -467,12 +451,119 @@ img.PRJobs-logo {
   padding: 10px;
 }
 
-.messagebox{
+.messagebox {
   display: inline-block;
-  background: linear-gradient(#CDFFD8, #94B9FF);
+  background: linear-gradient(#cdffd8, #94b9ff);
   align-items: stretch;
   justify-content: space-around;
   min-width: 150vh;
 }
 
+.company-block {
+  flex: 1;
+  height: 100%;
+  width: 100%;
+  display: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
 
+/* background gradient */
+.company-block {
+  height: auto;
+  width: 99%; /* Change width to 100% */
+  background: linear-gradient(#9cd6dd, #007986, #003237);
+}
+
+img.company-cover {
+  /* margin-top: 1.5%; */
+  object-fit: cover;
+  height: 85%;
+  width: 100%;
+  margin-right: 0.5%;
+  background: linear-gradient(0.25turn, #ffde59, #ff914d);
+}
+
+
+img.company-logo {
+  position: absolute;
+  width: 100px;
+  height: 90px;
+  top: 30%;
+  left: 3%;
+  background-color: #ffffff;
+  border: 2px solid #00b8a9;
+  border-radius: 50%;
+  z-index: 20;
+}
+
+.company-name {
+  position: absolute;
+  top: 35%;
+  left: 13%;
+  text-align: center;
+  background-color: #00b8a9;
+  border: 1px solid #000000;
+  border-radius: 25px;
+  padding: 5px;
+}
+
+.company-description {
+  padding: 5%;
+  min-height: 7vh;
+  min-width: 15vh;
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 1px solid #00b8a9;
+  text-align: center;
+  color: #00b8a9;
+}
+
+.divider {
+  border-bottom: 1px solid #00b8a9;
+  width: 100%;
+}
+
+img.map-logo {
+  position: absolute;
+  height: 70px;
+  left: 3%;
+  z-index: 20;
+}
+
+.map {
+  background-color: #ffde59;
+  border: 1px solid #00b8a9;
+  color: #00b8a9;
+  width: 30%;
+  height: 20%;
+  border-radius: 25px;
+}
+
+.joblistings-header {
+  position: absolute;
+  z-index: 20;
+  left: 50%;
+  top: 73%;
+  text-align: center;
+  background-color: #00b8a9;
+  border: 1px solid #000000;
+  border-radius: 25px;
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: auto;
+}
+
+.joblistings {
+  position: absolute;
+  background-color: #ffffff;
+  border: 1px solid #000000;
+  width: 60%;
+  height: 100%;
+  left: 35%;
+  top: 70%;
+  border-radius: 25px;
+}
