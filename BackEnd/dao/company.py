@@ -45,18 +45,18 @@ class CompanyDAO:
     ''' Maybe should add getCompanyByEmail and getCompanyByPhone ? '''
     
     # Update Function
-    def update(self, cm_id, cm_name, cm_phone, cm_email, cm_description):
+    def update(self, cm_id, cm_name, cm_phone, cm_email, cm_description, cm_logo):
         cursor = self.conn.cursor()
-        query = "update companies set cm_name = %s, cm_phone = %s, cm_email = %s, cm_description = %s where cm_id = %s;"
-        cursor.execute(query, (cm_name, cm_phone, cm_email, cm_description, cm_id,))
+        query = "update companies set cm_name = %s, cm_phone = %s, cm_email = %s, cm_description = %s, cm_logo = %s where cm_id = %s;"
+        cursor.execute(query, (cm_name, cm_phone, cm_email, cm_description, cm_logo, cm_id,))
         self.conn.commit()
         return cm_id
     
     # Insert Function
-    def insert(self, cm_name, cm_phone, cm_email, cm_description):
+    def insert(self, cm_name, cm_phone, cm_email, cm_description, cm_logo):
         cursor = self.conn.cursor()
-        query = "insert into companies(cm_name, cm_phone, cm_email, cm_description) values (%s, %s, %s, %s) returning cm_id;"
-        cursor.execute(query, (cm_name, cm_phone, cm_email, cm_description,))
+        query = "insert into companies(cm_name, cm_phone, cm_email, cm_description, cm_logo) values (%s, %s, %s, %s, %s) returning cm_id;"
+        cursor.execute(query, (cm_name, cm_phone, cm_email, cm_description, cm_logo,))
         cm_id = cursor.fetchone()[0]
         self.conn.commit()
         return cm_id

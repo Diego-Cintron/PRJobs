@@ -10,16 +10,18 @@ class CompanyHandler:
         result['cm_phone'] = row[2]
         result['cm_email'] = row[3]
         result['cm_description'] = row[4]
+        result['cm_logo'] = row[5]
 
         return result
     
-    def build_company_attributes(self, cm_id, cm_name, cm_phone, cm_email, cm_description):
+    def build_company_attributes(self, cm_id, cm_name, cm_phone, cm_email, cm_description, cm_logo):
         result = {}
         result['cm_id'] = cm_id
         result['cm_name'] = cm_name
         result['cm_phone'] = cm_phone
         result['cm_email'] = cm_email
         result['cm_description'] = cm_description
+        result['cm_logo'] = cm_logo
 
         return result
     
@@ -66,33 +68,35 @@ class CompanyHandler:
         if not dao.getCompanyByID(cm_id):
             return jsonify(Error = "Company Not Found"), 404
         else:
-            if len(form) != 4:
-                return jsonify(Error = "Malformed Update Request"), 404
+            if len(form) != 6:
+                return jsonify(Error = "Malformed Update Request"), 406
             else:
                 cm_name = form['cm_name']
                 cm_phone = form['cm_phone']
                 cm_email = form['cm_email']
                 cm_description = form['cm_description']
-                if cm_name and cm_phone and cm_email and cm_description:
-                    dao.update(cm_id, cm_name, cm_phone, cm_email, cm_description)
-                    result = self.build_company_attributes(cm_id, cm_name, cm_phone, cm_email, cm_description)
+                cm_logo = form['cm_logo']
+                if cm_name and cm_phone and cm_email and cm_description and cm_logo:
+                    dao.update(cm_id, cm_name, cm_phone, cm_email, cm_description, cm_logo)
+                    result = self.build_company_attributes(cm_id, cm_name, cm_phone, cm_email, cm_description, cm_logo)
                     return jsonify(Company=result), 200
                 else: 
                     return jsonify(Error = "Unexpected attributes in update request"), 400
 
     # Insert
     def insertCompany(self, form):
-        if len(form) != 4:
+        if len(form) != 5:
             return jsonify(Error = "Malformed post request"), 400
         else:
             cm_name = form['cm_name']
             cm_phone = form['cm_phone']
             cm_email = form['cm_email']
             cm_description = form['cm_description']
-            if cm_name and cm_phone and cm_email and cm_description:
+            cm_logo = form['cm_logo']
+            if cm_name and cm_phone and cm_email and cm_description and cm_logo:
                 dao = CompanyDAO()
-                cm_id = dao.insert(cm_name, cm_phone, cm_email, cm_description)
-                result = self.build_company_attributes(cm_id, cm_name, cm_phone, cm_email, cm_description)
+                cm_id = dao.insert(cm_name, cm_phone, cm_email, cm_description, cm_logo)
+                result = self.build_company_attributes(cm_id, cm_name, cm_phone, cm_email, cm_description, cm_logo)
                 return jsonify(Company=result), 200
             else: 
                 return jsonify(Error = "Unexpected attributes in update request"), 400
