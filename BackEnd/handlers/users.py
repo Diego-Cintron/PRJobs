@@ -92,8 +92,8 @@ class UserHandler:
         if not dao.getUserById(user_id):
             return jsonify(Error = "User Not Found"), 404
         else:
-            if len(form) != 13:
-                return jsonify(Error="Malformed update request"), 404
+            if len(form) != 14:
+                return jsonify(Error="Malformed update request"), 406
             else:
                 user_type = form['user_type']
                 user_birthday = form['user_birthday']
