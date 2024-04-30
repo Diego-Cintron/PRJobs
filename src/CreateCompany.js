@@ -51,7 +51,6 @@ function CreateCompany() {
       });
       errorHandler(response);
       updateUser({ cm_id: cm_id }); // Update currently signed in data
-      alert("UPDATED USER! (delete this alert)");
       navigate(`/postings`);
     } catch (error) {
       console.error("Error updating user data:", error);

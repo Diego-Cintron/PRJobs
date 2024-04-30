@@ -40,7 +40,7 @@ const CreatePost = () => {
       const data = await response.json();
 
       alert("Your post was successfully created.");
-      navigate(`/postings/data.Posting.post_id`);
+      navigate(`/postings/${data.Posting.post_id}`);
     } catch (error) {
       console.error("Error creating posting:", error);
     }
