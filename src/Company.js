@@ -28,8 +28,8 @@ const Company = ({ companyId }) => {
     <div className="company-block">
       <img
         src={
-          company.image_url ||
-          "https://i1.wp.com/www.presenciapr.com/wp-content/uploads/2017/02/meson-110217.jpg"
+          company.cm_logo ||
+          "https://thumbs.dreamstime.com/b/beige-tan-generic-open-office-work-space-cubicals-1932837.jpg"
         }
         height={250}
         width={400}
