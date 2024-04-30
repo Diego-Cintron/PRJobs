@@ -38,7 +38,7 @@ function IndividualPostingPage() {
         method: "DELETE",
       });
       errorHandler(response);
-      navigate(`/postings`);
+      navigate(`/`);
     } catch (error) {
       console.error("Error deleting posting:", error);
     }
