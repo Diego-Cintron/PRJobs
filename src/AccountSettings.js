@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import NavigationBar from "./NavigationBar";
 import { useAuth } from "./AuthContext";
 import { errorHandler } from "./others/apiUtils";
 
@@ -19,7 +20,6 @@ const AccountSettings = () => {
     user_password: "",
   });
   const [updatedData, setUpdatedData] = useState(data);
-
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -82,93 +82,96 @@ const AccountSettings = () => {
   };
 
   return (
-    <div className="user-settings">
-      <script
-        async
-        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2843724221280103"
-        crossorigin="anonymous"
-      ></script>
+    <div>
+      <NavigationBar />
+      <div className="user-settings">
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2843724221280103"
+          crossorigin="anonymous"
+        ></script>
 
-      <h2>Account Settings</h2>
-      <div>
-        <label htmlFor="user_email">Email address</label>
-        <input
-          type="email"
-          id="user_email"
-          name="user_email"
-          value={updatedData.user_email}
-          readOnly
-        />
-      </div>
+        <h2>Account Settings</h2>
+        <div>
+          <label htmlFor="user_email">Email address</label>
+          <input
+            type="email"
+            id="user_email"
+            name="user_email"
+            value={updatedData.user_email}
+            readOnly
+          />
+        </div>
 
-      <div>
-        <label htmlFor="user_fname">First name</label>
-        <input
-          type="text"
-          id="user_fname"
-          name="user_fname"
-          value={updatedData.user_fname}
-          onChange={handleChange}
-        />
-      </div>
+        <div>
+          <label htmlFor="user_fname">First name</label>
+          <input
+            type="text"
+            id="user_fname"
+            name="user_fname"
+            value={updatedData.user_fname}
+            onChange={handleChange}
+          />
+        </div>
 
-      <div>
-        <label htmlFor="user_lname">Last name</label>
-        <input
-          type="text"
-          id="user_lname"
-          name="user_lname"
-          value={updatedData.user_lname}
-          onChange={handleChange}
-        />
-      </div>
+        <div>
+          <label htmlFor="user_lname">Last name</label>
+          <input
+            type="text"
+            id="user_lname"
+            name="user_lname"
+            value={updatedData.user_lname}
+            onChange={handleChange}
+          />
+        </div>
 
-      <div>
-        <label htmlFor="user_birthday">Birthday</label>
-        <input
-          type="date"
-          id="user_birthday"
-          name="user_birthday"
-          value={updatedData.user_birthday}
-          onChange={handleChange}
-        />
-      </div>
+        <div>
+          <label htmlFor="user_birthday">Birthday</label>
+          <input
+            type="date"
+            id="user_birthday"
+            name="user_birthday"
+            value={updatedData.user_birthday}
+            onChange={handleChange}
+          />
+        </div>
 
-      <div>
-        <label htmlFor="user_phone">Phone</label>
-        <input
-          type="tel"
-          id="user_phone"
-          name="user_phone"
-          value={updatedData.user_phone}
-          onChange={handleChange}
-        />
-      </div>
+        <div>
+          <label htmlFor="user_phone">Phone</label>
+          <input
+            type="tel"
+            id="user_phone"
+            name="user_phone"
+            value={updatedData.user_phone}
+            onChange={handleChange}
+          />
+        </div>
 
-      <div>
-        <label htmlFor="user_address">Address</label>
-        <input
-          type="text"
-          id="user_address"
-          name="user_address"
-          value={updatedData.user_address}
-          onChange={handleChange}
-        />
-      </div>
+        <div>
+          <label htmlFor="user_address">Address</label>
+          <input
+            type="text"
+            id="user_address"
+            name="user_address"
+            value={updatedData.user_address}
+            onChange={handleChange}
+          />
+        </div>
 
-      <div>
-        <label htmlFor="user_image">Image URL</label>
-        <input
-          type="text"
-          id="user_image"
-          name="user_image"
-          value={updatedData.user_image}
-          onChange={handleChange}
-        />
-      </div>
+        <div>
+          <label htmlFor="user_image">Image URL</label>
+          <input
+            type="text"
+            id="user_image"
+            name="user_image"
+            value={updatedData.user_image}
+            onChange={handleChange}
+          />
+        </div>
 
-      <div>
-        <button onClick={handleSave}>Save</button>
+        <div>
+          <button onClick={handleSave}>Save</button>
+        </div>
       </div>
     </div>
   );

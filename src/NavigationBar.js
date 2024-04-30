@@ -10,9 +10,6 @@ function NavigationBar() {
           <Link to="/">&#x2302;</Link>
         </li>
         <li>
-          <Link to="/about">About</Link>
-        </li>
-        <li>
           <Link to="/postings">Create</Link>
         </li>
         <li>
@@ -22,10 +19,10 @@ function NavigationBar() {
           <Link to="/company">Company</Link>
         </li>
         <li>
-          <Link to="/messages">&#x1F5EA;</Link>
+          <Link to="/account-settings">My Profile</Link>
         </li>
         <li>
-          <Link to="/account-settings">My Profile</Link>
+          <Link to="/messages">&#x1F5EA;</Link>
         </li>
       </ul>
     </nav>

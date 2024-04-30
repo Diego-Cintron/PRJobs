@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { defaultUserImage, errorHandler } from "./others/apiUtils";
 import { useAuth } from "./AuthContext";
+import NavigationBar from "./NavigationBar";
 import Conversation from "./Conversation";
 import "./PostingStyles.css";
 
@@ -83,65 +84,70 @@ function Messages() {
   };
 
   return (
-    <div className="messagespage">
-      <script
-        async
-        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2843724221280103"
-        crossorigin="anonymous"
-      ></script>
+    <div>
+      <NavigationBar />
+      <div className="messagespage">
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2843724221280103"
+          crossorigin="anonymous"
+        ></script>
 
-      <div className="active-block">
-        <div className="search-section">
-          <h2>New Chat</h2>
-          <input
-            type="text"
-            placeholder="Enter user email"
-            value={searchEmail}
-            onChange={handleSearchInputChange}
-          />
-          <button onClick={() => handleSearchUser(searchEmail)}>Search</button>
+        <div className="active-block">
+          <div className="search-section">
+            <h2>New Chat</h2>
+            <input
+              type="text"
+              placeholder="Enter user email"
+              value={searchEmail}
+              onChange={handleSearchInputChange}
+            />
+            <button onClick={() => handleSearchUser(searchEmail)}>
+              Search
+            </button>
+          </div>
+          <h1>Active Chats</h1>
+          {messages.length === 0 ? (
+            <p>Loading...</p>
+          ) : (
+            messages.map((message) => (
+              <div
+                style={{
+                  border: "1px solid #ccc",
+                  borderRadius: "5px",
+                  padding: "10px",
+                  marginLeft: "10px",
+                  marginBottom: "10px",
+                  cursor: "pointer",
+                  background: "white",
+                  color: "black",
+                }}
+                key={message.msg_id}
+                onClick={() => handleMessageClick(message)}
+              >
+                <h3>
+                  {userId === message.user_id1
+                    ? message.user2_name
+                    : message.user1_name}
+                </h3>
+                <img
+                  src={message.user2_image || defaultUserImage}
+                  alt=""
+                  style={{ maxWidth: "50px" }}
+                />
+                <p>{message.msg_content}</p>
+              </div>
+            ))
+          )}
         </div>
-        <h1>Active Chats</h1>
-        {messages.length === 0 ? (
-          <p>Loading...</p>
-        ) : (
-          messages.map((message) => (
-            <div
-              style={{
-                border: "1px solid #ccc",
-                borderRadius: "5px",
-                padding: "10px",
-                marginLeft: "10px",
-                marginBottom: "10px",
-                cursor: "pointer",
-                background: "white",
-                color: "black",
-              }}
-              key={message.msg_id}
-              onClick={() => handleMessageClick(message)}
-            >
-              <h3>
-                {userId === message.user_id1
-                  ? message.user2_name
-                  : message.user1_name}
-              </h3>
-              <img
-                src={message.user2_image || defaultUserImage}
-                alt=""
-                style={{ maxWidth: "50px" }}
-              />
-              <p>{message.msg_content}</p>
-            </div>
-          ))
-        )}
-      </div>
-      <div className="messagebox">
-        {selectedOtherUser && (
-          <Conversation
-            user_id1={userId} // Currently signed in user
-            user_id2={selectedOtherUser}
-          />
-        )}
+        <div className="messagebox">
+          {selectedOtherUser && (
+            <Conversation
+              user_id1={userId} // Currently signed in user
+              user_id2={selectedOtherUser}
+            />
+          )}
+        </div>
       </div>
     </div>
   );

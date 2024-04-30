@@ -15,7 +15,6 @@ function App() {
   return (
     <AuthProvider>
       <Router>
-        <NavigationBar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/postings" element={<CreatePost />} />

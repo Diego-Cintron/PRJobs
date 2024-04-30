@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { errorHandler } from "./others/apiUtils";
+import NavigationBar from "./NavigationBar";
 
 function UserList() {
   const [users, setUsers] = useState([]);
@@ -39,41 +40,44 @@ function UserList() {
   };
 
   return (
-    <div className="user-list">
-      <script
-        async
-        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2843724221280103"
-        crossorigin="anonymous"
-      ></script>
+    <div>
+      <NavigationBar />
+      <div className="user-list">
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2843724221280103"
+          crossorigin="anonymous"
+        ></script>
 
-      <p>User List</p>
-      <div>
-        <input
-          type="text"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          placeholder="Search by skill"
-        />
-        <button onClick={handleSearch}>Search</button>
-      </div>
-      <table className="user-table">
-        <thead>
-          <tr>
-            <th>Email</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-          </tr>
-        </thead>
-        <tbody>
-          {skilledUsers.map((person) => (
-            <tr key={person.user_id}>
-              <td>{person.user_email}</td>
-              <td>{person.user_fname}</td>
-              <td>{person.user_lname}</td>
+        <p>User List</p>
+        <div>
+          <input
+            type="text"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            placeholder="Search by skill"
+          />
+          <button onClick={handleSearch}>Search</button>
+        </div>
+        <table className="user-table">
+          <thead>
+            <tr>
+              <th>Email</th>
+              <th>First Name</th>
+              <th>Last Name</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {skilledUsers.map((person) => (
+              <tr key={person.user_id}>
+                <td>{person.user_email}</td>
+                <td>{person.user_fname}</td>
+                <td>{person.user_lname}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }
