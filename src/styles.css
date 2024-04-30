@@ -374,13 +374,7 @@ img.map-logo {
 .signin {
   position: flex;
   text-align: left;
-  /* background-color: #00a2ff2c; */
-  background: linear-gradient(#94b9ff8c, #cdffd88c);
-  /* width: 600px;
-  height: 400px;
-  margin-top: 50px;
-  margin-left: 120px;
-  margin-bottom: 50px; */
+  background: linear-gradient(#94b9ff8c, #cdffd877);
 
   width: 80%;
   margin-top: 5%;
@@ -415,6 +409,9 @@ img.PRJobs-logo {
   font-size: smaller;
   text-align: center;
   position: flex;
+
+  color: #000000;
+
 }
 
 /* Forgot Password? */

@@ -1,5 +1,5 @@
 .background {
-    background: linear-gradient(.25turn, #94b9ff, #cdffd8);
+    background: linear-gradient(#94b9ff, #cdffd8);
     /* background: linear-gradient(#ffffff, #9cd6dde5, #94b9ff ); */
     
     height: auto;
@@ -8,6 +8,24 @@
 
     position: absolute;
     left: 0%;
+    top: 0%;
+
+    margin: 0%;
+    padding: 0%;
+    
+}
+
+.background2 {
+    background: darkblue;
+    /* background: linear-gradient(#ffffff, #9cd6dde5, #94b9ff ); */
+    
+    height: auto;
+    width: 100%;
+    /* margin: auto; */
+
+    position: absolute;
+    left: 0%;
+    top: 5%;
 
     margin: 0%;
     padding: 0%;
@@ -16,17 +34,75 @@
 
 img.logo {
     display: flex;
-    margin: 2% auto auto;
+    margin: 1% auto auto;
+
+}
+ 
+.SignUp-title {
+    text-align: center;
+
+    font-size: x-large;
+    font-weight: bolder;
+
+    margin: 1% auto;
+    margin-bottom: 1%;
+
+    color: #1d00ab;
+    
+}
+
+.divider {
+    border-bottom: 2px solid #1d00ab;
+    width: 70%;
+
+    margin: auto;
+
+  }  
+
+.Email, .Password,
+.Availability,
+.Phone, .Skills, .Birthday,
+.UsrType, .ProfilePicture {
+    /* display: flex; */
+    /* width: fit-content; */
+
+    text-align: center;
+
+    background: linear-gradient(.25turn, #cdffd8, #94b9ff);
+    border-radius: 25px;
+
+    padding: 10px 50px;
+    height: auto;
+    max-width: 50%;
+    margin: 1% auto;
+}
+
+.UsrType {
+    border-radius: 15px;
+}
+
+.fullName {
+    column-count: 2;
+    column-width: 200px;
+    column-gap: 5%;
+
+    text-align: center;
+
+    background: linear-gradient(.25turn, #cdffd8, #94b9ff);
+    border-radius: 25px;
+
+    padding: 10px 50px;
+    height: auto;
+    width: 50%;
+    margin: 1% auto;
 
 }
 
-.FName, .LName, 
-.Email, .Password,
-.Address, .Municipality,
-.Phone, .Skills, .Birthday,
-.UsrType {
-    /* display: flex; */
-    /* width: fit-content; */
+.addBlock {
+    container: grid;
+    /* column-count: 2;
+    column-width: 200px;
+    column-gap: 5%; */
 
     text-align: center;
 
@@ -39,11 +115,10 @@ img.logo {
     margin: 1% auto;
 }
 
-/* .FName {
-    margin-top: 4%;
-} */
-
 .Availability {
+    width: fit-content;
+    overflow:auto;
+
     margin: auto;
     text-align: center;
     object-position: right;
@@ -51,9 +126,6 @@ img.logo {
     margin-bottom: 1%;
 }
 
-/* .container {
-    height: 200px;
-} */
 
 /* Formatting in regards to position & display */
 .submit {
@@ -71,6 +143,8 @@ img.logo {
     border: none;
     border-radius: 4px;
     cursor: pointer;
+
+    margin-bottom: 1%;
   }
   
   .submit:hover {

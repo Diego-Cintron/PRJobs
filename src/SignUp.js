@@ -82,10 +82,18 @@ const SignUp = () => {
         alt="PRJobs logo"
       />
 
+      <p className="SignUp-title">
+        Create a new account
+      </p>
+      <p className="divider"></p>
+      <p className="block"></p>
+
+      <div className="fullName">
       <div className="FName"> 
         <label htmlFor="user_fname">First Name:</label>
-        <input
+        <input style={{textAlign: "center"}}
           type="text"
+          placeholder="First Name"
           id="user_fname"
           name="user_fname"
           value={formData.user_fname}
@@ -96,8 +104,9 @@ const SignUp = () => {
 
       <div className="LName">
         <label htmlFor="user_lname">Last Name:</label>
-        <input
+        <input style={{textAlign: "center"}}
           type="text"
+          placeholder="Last Name"
           id="user_lname"
           name="user_lname"
           value={formData.user_lname}
@@ -105,11 +114,13 @@ const SignUp = () => {
           required
         />
       </div>
+      </div>
 
       <div className="Email">
-        <label htmlFor="user_email">Email:</label>
-        <input
+        <label htmlFor="user_email">Email Address:</label>
+        <input style={{textAlign: "center"}}
           type="text"
+          placeholder="example@example.com"
           id="user_email"
           name="user_email"
           value={formData.user_email}
@@ -119,9 +130,10 @@ const SignUp = () => {
       </div>
 
       <div className="Password">
-        <label htmlFor="user_password">Password:</label>
-        <input
+        <label htmlFor="user_password">Create Password:</label>
+        <input style={{textAlign: "center"}}
           type="text"
+          placeholder="Please enter your new password."
           id="user_password"
           name="user_password"
           value={formData.user_password}
@@ -130,10 +142,12 @@ const SignUp = () => {
         />
       </div>
 
+      <div className="addBlock">
       <div className="Address">
         <label htmlFor="user_address">Address:</label>
-        <input
+        <input style={{textAlign: "center"}}
           type="text"
+          placeholder="Please enter your home address."
           id="user_address"
           name="user_address"
           value={formData.user_address}
@@ -144,8 +158,9 @@ const SignUp = () => {
 
       <div className="Municipality">
         <label htmlFor="user_municipality">Municipality:</label>
-        <input
+        <input style={{textAlign: "center"}}
           type="text"
+          placeholder="ex. Bayamon"
           id="user_municipality"
           name="user_municipality"
           value={formData.user_municipality}
@@ -153,23 +168,13 @@ const SignUp = () => {
           required
         />
       </div>
-
-      <div className="Address">
-        <label htmlFor="user_image">Image URL:</label>
-        <input
-          type="text"
-          id="user_image"
-          name="user_image"
-          value={formData.user_image}
-          onChange={handleInputChange}
-          required
-        />
       </div>
 
       <div className="Phone">
         <label htmlFor="user_phone">Phone:</label>
-        <input
+        <input style={{textAlign: "center"}}
           type="text"
+          placeholder="Please enter a mobile number."
           id="user_phone"
           name="user_phone"
           value={formData.user_phone}
@@ -178,15 +183,28 @@ const SignUp = () => {
         />
       </div>
 
+      <div className="ProfilePicture">
+        <label htmlFor="user_image">Profile Picture:</label>
+        <input style={{textAlign: "center"}}
+          type="text"
+          placeholder="Enter image URL."
+          id="user_image"
+          name="user_image"
+          value={formData.user_image}
+          onChange={handleInputChange}
+          required
+        />
+      </div>
+
       <div className="Skills">
         <label htmlFor="user_skills">Skills:</label>
-        <input
+        <input style={{textAlign: "center"}}
           type="text"
           id="user_skills"
           name="user_skills"
           value={formData.user_skills.join(", ")}
           onChange={handleInputChange}
-          placeholder="Enter your skills, separated by commas"
+          placeholder="Enter your skills, separated by commas. Ex. python, frontend, excel "
         />
       </div>
 
@@ -219,8 +237,8 @@ const SignUp = () => {
         </select>
       </div>
 
-      <div className="Address" style={{display: "flex"}}>
-        <p>User Availability:</p>
+      <div className="Availability" style={{display: "flex"}}>
+        <p style={{margin: 10}} >User Availability: </p>
         <label>
           <input
             type="checkbox"
@@ -285,11 +303,9 @@ const SignUp = () => {
           Saturday
         </label>
       </div>
-
-      {/* <div className="container"> */}
-        <button class="submit">Sign Up</button>
-      {/* </div> */}
-
+      
+      <button class="submit">Sign Up</button>
+      
       </div>
     </form>
   );
