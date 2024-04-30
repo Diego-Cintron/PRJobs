@@ -2,7 +2,6 @@ import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { AuthProvider } from "./AuthContext";
 import Home from "./Home";
-import About from "./About";
 import Messages from "./Messages";
 import IndividualPostingPage from "./IndividualPostingPage";
 import UserList from "./UserList";
@@ -19,7 +18,6 @@ function App() {
         <NavigationBar />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
           <Route path="/postings" element={<CreatePost />} />
           <Route path="/postings/:id" element={<IndividualPostingPage />} />
           <Route path="/users" element={<UserList />} />
