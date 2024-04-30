@@ -1,20 +1,21 @@
 import React, { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import { errorHandler, maxDescriptionLength } from "./others/apiUtils";
 import { useAuth } from "./AuthContext";
 import "./PostingStyles.css";
-import { useNavigate } from "react-router-dom";
 
 const CreatePost = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
   const [userId] = useState(user?.user_id || -1);
+  const [companyId] = useState(user?.cm_id || -1);
   const [postData, setPostData] = useState({
     post_title: "",
     post_description: "",
     post_address: "",
     post_municipality: "",
     user_id: userId,
-    cm_id: 1,
+    cm_id: companyId,
   });
 
   const handleSubmit = async (e) => {
@@ -63,6 +64,17 @@ const CreatePost = () => {
         <p>
           Sorry, but you are not registered as a User with the necessary
           permissions to create a new Post.
+        </p>
+      </div>
+    );
+  }
+
+  if (companyId < 2) {
+    return (
+      <div className="createpost-block">
+        <p>
+          Sorry, but you must first create a Company profile before creating a Posting.
+          Click <Link to="/company">here</Link> to go there now.
         </p>
       </div>
     );
