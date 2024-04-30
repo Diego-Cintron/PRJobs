@@ -19,12 +19,7 @@ const UserProfile = () => {
 
   return (
     <div className="user-block">
-      <img
-        src={user.user_image || defaultUserImage}
-        height={100}
-        width={100}
-        alt="User Image"
-      />
+      
       <p className="profilename">
         {user.user_fname} {user.user_lname}
       </p>

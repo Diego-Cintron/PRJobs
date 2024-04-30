@@ -42,16 +42,16 @@ function CreateCompany() {
   const updateUserData = async (cm_id) => {
     try {
       const updatedUserData = { ...user, cm_id: cm_id };
+      const { user_id, ...dataToSend } = updatedUserData;
       const response = await fetch(`/api/users/${user.user_id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(updatedUserData),
+        body: JSON.stringify(dataToSend),
       });
       errorHandler(response);
       updateUser({ cm_id: cm_id }); // Update currently signed in data
-      alert("UPDATED USER! (delete this alert)");
       navigate(`/postings`);
     } catch (error) {
       console.error("Error updating user data:", error);

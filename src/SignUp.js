@@ -3,8 +3,7 @@ import { errorHandler } from "./others/apiUtils";
 import { useNavigate } from "react-router-dom";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import './SignUpStyle.css';
-
+import "./SignUpStyle.css";
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -73,14 +72,18 @@ const SignUp = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className="background"><div/>
+      <div className="background">
+        <div />
 
-      <img className="logo"
-        src={"https://drive.google.com/thumbnail?id=1gDZsJIvwVTYlHBFyqVPtAZSwMhnwx7Mp" }
-        height={200}
-        width={200}
-        alt="PRJobs logo"
-      />
+        <img
+          className="logo"
+          src={
+            "https://drive.google.com/thumbnail?id=1gDZsJIvwVTYlHBFyqVPtAZSwMhnwx7Mp"
+          }
+          height={200}
+          width={200}
+          alt="PRJobs logo"
+        />
 
       <p className="SignUp-title">
         Create a new account
@@ -208,34 +211,34 @@ const SignUp = () => {
         />
       </div>
 
-      <div className="Birthday">
-        <label htmlFor="user_birthday">Birthday: </label>
-        <DatePicker
-          id="user_birthday"
-          name="user_birthday"
-          selected={
-            formData.user_birthday ? new Date(formData.user_birthday) : null
-          }
-          onChange={(date) => handleDateChange(date)}
-          dateFormat="yyyy-MM-dd"
-          required
-        />
-      </div>
+        <div className="Birthday">
+          <label htmlFor="user_birthday">Birthday: </label>
+          <DatePicker
+            id="user_birthday"
+            name="user_birthday"
+            selected={
+              formData.user_birthday ? new Date(formData.user_birthday) : null
+            }
+            onChange={(date) => handleDateChange(date)}
+            dateFormat="yyyy-MM-dd"
+            required
+          />
+        </div>
 
-      <div className="UsrType">
-        <label htmlFor="user_type">User Type: </label>
-        <select
-          id="user_type"
-          name="user_type"
-          value={formData.user_type}
-          onChange={handleInputChange}
-          required
-        >
-          <option value="">Select User Type</option>
-          <option value="searcher">Searcher</option>
-          <option value="poster">Poster</option>
-        </select>
-      </div>
+        <div className="UsrType">
+          <label htmlFor="user_type">User Type: </label>
+          <select
+            id="user_type"
+            name="user_type"
+            value={formData.user_type}
+            onChange={handleInputChange}
+            required
+          >
+            <option value="">Select User Type</option>
+            <option value="searcher">Searcher</option>
+            <option value="poster">Poster</option>
+          </select>
+        </div>
 
       <div className="Availability" style={{display: "flex"}}>
         <p style={{margin: 10}} >User Availability: </p>
