@@ -14,6 +14,9 @@ const UserProfile = () => {
     );
   }
 
+  // Format skills
+  const formattedSkills = user.user_skills.join(", ");
+
   return (
     <div className="user-block">
       <img
@@ -25,8 +28,8 @@ const UserProfile = () => {
       <p className="profilename">
         {user.user_fname} {user.user_lname}
       </p>
-      <p className="email">{user.user_email}</p>
-      <p className="skill">{user.user_skills}</p>
+      <p className="profilename">{user.user_email}</p>
+      <p className="skill">{formattedSkills}</p>
       <p className="map">{user.user_address}</p>
     </div>
   );
