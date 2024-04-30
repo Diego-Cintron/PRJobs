@@ -55,21 +55,51 @@ function Conversation({ user_id1, user_id2 }) {
     }
   };
 
+  const calculateMarginLeft = (name) => {
+    const nameLength = name.length * 8; // Assuming 1 character = 8 pixels
+    return `calc(530px - ${nameLength}px)`;
+  };
+
   return (
     <div className="conversation">
       <div className="username-conversation">
-        <h1>{userName}</h1>
+        <h1>Conversation with: {userName}</h1>
       </div>
       {loading ? (
         <p>Loading...</p>
       ) : (
+        // Map displaying all messages in a conversation
         messages.map((message) => (
           <div className="conversation-block" key={message.msg_id}>
-            <p className="sender-messages">{message.user1_name}</p>
-            <div className="messages">
-              <p> {message.msg_content}</p>
+            <p
+              className={
+                message.user_id1 === user_id1 ? "sender-name" : "receiver-name"
+              }
+              style={{
+                marginLeft:
+                  message.user_id1 === user_id1
+                    ? calculateMarginLeft(message.user1_name)
+                    : "auto",
+              }}
+            >
+              {message.user1_name}
+            </p>
+            <div
+              className={
+                message.user_id1 === user_id1
+                  ? "sent-message"
+                  : "received-message"
+              }
+            >
+              <p>{message.msg_content}</p>
             </div>
-            <p className="time-messages">{message.msg_time}</p>
+            <p
+              className={
+                message.user_id1 === user_id1 ? "sender-time" : "receiver-time"
+              }
+            >
+              {message.msg_time}
+            </p>
           </div>
         ))
       )}

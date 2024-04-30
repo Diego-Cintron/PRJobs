@@ -474,21 +474,19 @@ img.PRJobs-logo {
 }
 
 /* Conversation */
-.conversation{
+.conversation {
   padding: 10px;
-
 }
 
-
-.username-conversation{
+.username-conversation {
   padding: 5px;
 }
 
-.conversation-block{
+.conversation-block {
   padding-left: 5px;
 }
 
-.messages{
+.messages {
   color: #f7f7f7;
   background-color: #27f8c4;
   max-width: 500px;
@@ -497,17 +495,45 @@ img.PRJobs-logo {
   padding: 7px;
 }
 
-.time-messages{
-  font-size: 75%;
-  margin-left: 300px;
+.sender-name {
+  font-size: small;
+  font-weight: 700;
+  color: #686968;
 }
 
-.sender-messages{
+.receiver-name {
   font-size: small;
   font-weight: 700;
 }
 
-.type-message{
+.sent-message {
+  color: #f7f7f7;
+  background-color: #a6a8a8;
   max-width: 500px;
+  min-height: 50px;
+  border-radius: 10px;
+  padding: 7px;
+  text-align: end;
 }
 
+.received-message {
+  color: #000000;
+  background-color: #27f8c4;
+  max-width: 500px;
+  min-height: 50px;
+  border-radius: 10px;
+  padding: 7px;
+}
+
+.sender-time {
+  font-size: 75%;
+}
+
+.receiver-time {
+  font-size: 75%;
+  margin-left: 300px;
+}
+
+.type-message {
+  max-width: 500px;
+}
