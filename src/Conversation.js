@@ -56,21 +56,25 @@ function Conversation({ user_id1, user_id2 }) {
   };
 
   return (
-    <div>
-      <h1>Conversation with: {userName}</h1>
+    <div className="conversation">
+      <div className="username-conversation">
+        <h1>{userName}</h1>
+      </div>
       {loading ? (
         <p>Loading...</p>
       ) : (
         messages.map((message) => (
-          <div key={message.msg_id}>
-            <p>Sender: {message.user1_name}</p>
-            <p>Message: {message.msg_content}</p>
-            <p>Time: {message.msg_time}</p>
+          <div className="conversation-block" key={message.msg_id}>
+            <p className="sender-messages">{message.user1_name}</p>
+            <div className="messages">
+              <p> {message.msg_content}</p>
+            </div>
+            <p className="time-messages">{message.msg_time}</p>
           </div>
         ))
       )}
       {/* Form for sending a new message */}
-      <form onSubmit={handleSendMessage}>
+      <form className="type-message" onSubmit={handleSendMessage}>
         <input
           type="text"
           value={newMessage}
