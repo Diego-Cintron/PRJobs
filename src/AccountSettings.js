@@ -2,10 +2,12 @@ import React, { useState, useEffect } from "react";
 import NavigationBar from "./NavigationBar";
 import { useAuth } from "./AuthContext";
 import { errorHandler } from "./others/apiUtils";
+import { defaultUserImage } from "./others/apiUtils";
 
 const AccountSettings = () => {
   const { user, updateUser } = useAuth();
   const [userId] = useState(user?.user_id || -1);
+  const [cm_id] = useState(user?.cm_id || 1);
   const [data, setData] = useState({
     user_id: userId,
     user_type: "",
@@ -18,6 +20,7 @@ const AccountSettings = () => {
     user_municipality: "",
     user_available: [],
     user_password: "",
+    cm_id: cm_id,
   });
   const [updatedData, setUpdatedData] = useState(data);
 
@@ -64,6 +67,8 @@ const AccountSettings = () => {
 
     try {
       const { user_id, ...dataToSend } = updatedData;
+      console.log(user_id);
+      console.log(dataToSend);
       const response = await fetch(`/api/users/${userId}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
@@ -92,6 +97,12 @@ const AccountSettings = () => {
         ></script>
 
         <h2>Account Settings</h2>
+        <img
+          src={user.user_image || defaultUserImage}
+          height={100}
+          width={100}
+          alt="User Image"
+        />
         <div>
           <label htmlFor="user_email">Email address</label>
           <input
