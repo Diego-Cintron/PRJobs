@@ -30,7 +30,7 @@ const EditPostingModal = ({ posting, onClose }) => {
 
       errorHandler(response);
 
-      window.location.reload();
+      alert("Changes made successfully.")
     } catch (error) {
       console.error("Error updating posting:", error);
     }
