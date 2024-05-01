@@ -13,9 +13,9 @@ function IndividualPostingPage() {
   const { id } = useParams();
   const { user } = useAuth();
   const [userId] = useState(user?.user_id || -1);
+  const [showEditButton] = useState(userId == id); // Show Edit and Delete if User is the one who created the Posting
   const [posting, setPosting] = useState(null);
   const [showEditModal, setShowEditModal] = useState(false);
-  const [showEditButton] = useState(userId === id); // Show Edit and Delete if User is the one who created the Posting
 
   useEffect(() => {
     if (!id) {
