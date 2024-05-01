@@ -64,6 +64,13 @@ const AccountSettings = () => {
         ),
       }));
     }
+    else if (name === "user_skills") {
+      const skillsArray = value.split(",").map((skill) => skill.trim());
+      setUpdatedData((prevState) => ({
+        ...prevState,
+        user_skills: skillsArray,
+      }));
+    } 
   };
 
 
@@ -210,8 +217,9 @@ const AccountSettings = () => {
             type="text"
             id="user_skills"
             name="user_skills"
-            value={updatedData.user_skills}
-            onChange={handleChange}
+            value={updatedData.user_skills.join(", ")}
+            onChange={handleInputChange}
+            placeholder="Enter your skills, separated by commas. Ex. python, frontend, excel "
           />
         </div>
 
