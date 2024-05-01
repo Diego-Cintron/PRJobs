@@ -20,6 +20,8 @@ const AccountSettings = () => {
     user_municipality: "",
     user_available: [],
     user_password: "",
+    user_skills: [],
+    user_image: "",
     cm_id: cm_id,
   });
   const [updatedData, setUpdatedData] = useState(data);
@@ -30,6 +32,8 @@ const AccountSettings = () => {
         const response = await fetch(`/api/users/${userId}`);
         errorHandler(response);
         const userData = await response.json();
+        const userBithday = new Date(userData.User.user_birthday).toISOString().split('T')[0];
+        userData.User.user_birthday = userBithday;
         setData(userData.User);
         setUpdatedData(userData.User);
       } catch (error) {
@@ -47,6 +51,21 @@ const AccountSettings = () => {
       [name]: value,
     });
   };
+
+
+  const handleInputChange = (e) => {
+    const {name, value, type, checked} = e.target;
+    if (type === "checkbox") {
+      setUpdatedData((prevState) => ({
+        ...prevState,
+        user_available: prevState.user_available.map((_, index) =>
+          index === parseInt(name) ? checked : prevState.user_available[index]
+        ),
+      }));
+    }
+  };
+
+
 
   const isDataValid = (data) => {
     return (
@@ -67,8 +86,6 @@ const AccountSettings = () => {
 
     try {
       const { user_id, ...dataToSend } = updatedData;
-      console.log(user_id);
-      console.log(dataToSend);
       const response = await fetch(`/api/users/${userId}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
@@ -86,6 +103,7 @@ const AccountSettings = () => {
     }
   };
 
+
   return (
     <div>
       <NavigationBar />
@@ -98,7 +116,7 @@ const AccountSettings = () => {
 
         <h2>Account Settings</h2>
         <img
-          src={user.user_image || defaultUserImage}
+          src={user?.user_image || defaultUserImage}
           height={100}
           width={100}
           alt="User Image"
@@ -112,6 +130,17 @@ const AccountSettings = () => {
             value={updatedData.user_email}
             readOnly
           />
+        </div>
+
+        <div>
+          <label htmlFor="user_password">Password</label>
+          <input
+            type="password"
+            id="user_password"
+            name="user_password"
+            value={updatedData.user_password}
+            onChange={handleChange}
+            />
         </div>
 
         <div>
@@ -179,6 +208,73 @@ const AccountSettings = () => {
             onChange={handleChange}
           />
         </div>
+
+        <div className="Availability-account-settings" style={{display: "flex"}}>
+        <p style={{margin: 10}} >User Availability: </p>
+        <label>
+          <input
+            type="checkbox"
+            name="0"
+            checked={updatedData.user_available[0]}
+            onChange={handleInputChange}
+          />
+          Sunday
+        </label>
+        <label>
+          <input
+            type="checkbox"
+            name="1"
+            checked={updatedData.user_available[1]}
+            onChange={handleInputChange}
+          />
+          Monday
+        </label>
+        <label>
+          <input
+            type="checkbox"
+            name="2"
+            checked={updatedData.user_available[2]}
+            onChange={handleInputChange}
+          />
+          Tuesday
+        </label>
+        <label>
+          <input
+            type="checkbox"
+            name="3"
+            checked={updatedData.user_available[3]}
+            onChange={handleInputChange}
+          />
+          Wednesday
+        </label>
+        <label>
+          <input
+            type="checkbox"
+            name="4"
+            checked={updatedData.user_available[4]}
+            onChange={handleInputChange}
+          />
+          Thursday
+        </label>
+        <label>
+          <input
+            type="checkbox"
+            name="5"
+            checked={updatedData.user_available[5]}
+            onChange={handleInputChange}
+          />
+          Friday
+        </label>
+        <label>
+          <input
+            type="checkbox"
+            name="6"
+            checked={updatedData.user_available[6]}
+            onChange={handleInputChange}
+          />
+          Saturday
+        </label>
+      </div>
 
         <div>
           <button onClick={handleSave}>Save</button>
