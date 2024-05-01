@@ -132,18 +132,18 @@ function AllPostings() {
   return (
     <div className="page-background">
 
-      <div className="sorting-buttons" style={{margin: "auto", marginTop: "3%"}}>
-        <button className="distance" style={{marginRight: "1%"}}
+      <div className="sorting-buttons" style={{margin: "auto", height: "100%"}}>
+        <button className="distance" style={{marginRight: "1%", marginTop: "3%"}}
          onClick={() => handleSortBy("distance")}>
           Distance
           </button>
 
-        <button className="recently-posted" style={{marginRight: "1%"}}
+        <button className="recently-posted" style={{marginRight: "1%", marginTop: "3%"}}
          onClick={() => handleSortBy("recentlyPosted")}>
           Recently Posted
         </button>
 
-        <button className="expires" style={{marginRight: "1%"}}
+        <button className="expires" style={{marginRight: "1%", marginTop: "3%"}}
          onClick={() => handleSortBy("expiresSoon")}>
           Expires Soon
         </button>
@@ -151,7 +151,7 @@ function AllPostings() {
       </div>
 
       {postings.length === 0 ? (
-        <p>Loading</p>
+        <p style={{margin: "auto", textAlign: "center", backgroundColor: "white"}}>Loading...</p>
       ) : (
         postings.map((posting) => (
           

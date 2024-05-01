@@ -88,7 +88,7 @@ const AccountSettings = () => {
   };
 
   return (
-    <div className="user-block" style={{width: "auto", border: "none"}}>
+    <div className="user-settings-block" style={{width: "auto", border: "none"}}>
 
       <NavigationBar />
       <div className="user-settings">

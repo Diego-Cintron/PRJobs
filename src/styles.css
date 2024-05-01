@@ -95,8 +95,12 @@
 }
 
 .user-block {
-  background-color: #70c5f7;
-  border: 1px solid #000000;
+  /* background-color: #70c5f7; */
+  background: linear-gradient(#ffffff, #9cd6dde5, #94b9ff);
+  /* border: 1px solid #000000; */
+
+  margin-left: 0%;
+  margin-top: 2%;
 }
 
 .company-block {
@@ -108,6 +112,8 @@
   align-items: center;
   justify-content: center;
   padding: 20px;
+
+  margin-top: 2%;
 }
 
 /* background gradient */
@@ -368,7 +374,10 @@ img.map-logo {
   width: 80%;
   /* height: 200%; */
   margin: auto;
-  margin-top: 1%;
+  margin-top: 2%;
+
+  justify-content: center;
+  align-items: center;
 }
 
 .signin {
@@ -380,6 +389,9 @@ img.map-logo {
   margin-top: 5%;
   margin-left: 11%;
   margin-bottom: 5%;
+
+  /* justify-content: center;
+  align-items: center; */
 
   border-radius: 35px;
   padding: 10px 20px 9%;

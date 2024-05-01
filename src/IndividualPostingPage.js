@@ -46,7 +46,7 @@ function IndividualPostingPage() {
   };
 
   if (!posting) {
-    return <div>Loading...</div>;
+    return <div style={{textAlign: "center"}}>Loading...</div>;
   }
 
   const handleEditButtonClick = () => {

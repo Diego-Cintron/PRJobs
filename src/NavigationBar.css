@@ -1,6 +1,6 @@
 nav {
     
-    display:flex;
+    /* display:flex; */
     background: linear-gradient(#CDFFD8, #94B9FF);
     /* background: linear-gradient(0.25turn, #cdffd8, #94b9ff); */
     padding: 10px 20px;
@@ -8,7 +8,6 @@ nav {
     font-size: large;
     /* border-radius: 35px; */
     align-items: stretch;
-
 
     /* !!! Keeps Nav Bar without blank spaces at start/end */
     position: fixed;
