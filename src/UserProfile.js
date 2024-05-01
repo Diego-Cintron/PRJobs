@@ -15,7 +15,7 @@ const UserProfile = () => {
   }
 
   // Format skills
-  const formattedSkills = user.user_skills.join(", ");
+  const formattedSkills = user.user_skills ? user.user_skills.join(", ") : "No skills found.";
 
   return (
     <div className="user-block">
