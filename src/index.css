@@ -63,7 +63,16 @@ button:focus-visible {
     color: #747bff;
   }
   button {
-    background-color: #f9f9f9;
+    background-color: #0f0074;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 10px;
+  }
+  button:hover {
+    background-color: #0056b3
   }
 }
 
@@ -74,16 +83,28 @@ button:focus-visible {
 
 .user-table th,
 .user-table td {
-  border: 1px solid #dddddd;
+  border: 1px solid #000000;
   padding: 8px;
   text-align: center;
 }
 
 .user-table th {
-  background-color: #f2f2f2;
+  background-color: #98c2e4;
   font-weight: bold;
 }
 
 .user-list {
-  border: 3px solid #000000;
+  color: #000000;
+  justify-content: space-around;
+  border-radius: 35px;
+  align-items: stretch;
+  min-height: 100vh;
+  background: linear-gradient(#cdffd8, #94b9ff);
+  padding: 50px;
+}
+
+.standard-paragraph {
+  color: #000000;
+  font-size: large;
+  margin-bottom: 0;
 }

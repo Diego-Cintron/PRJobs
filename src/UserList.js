@@ -55,7 +55,7 @@ function UserList() {
           crossorigin="anonymous"
         ></script>
 
-        <p>Search for skills</p>
+        <p className="standard-paragraph">Search for skills</p>
         <div>
           <input
             type="text"

@@ -62,7 +62,7 @@ const SignIn = () => {
           onChange={(e) => setPassword(e.target.value)}
         />
         <p className="forgot">Forgot Password?</p>
-        <button className="edit-button" onClick={handleSignIn}>
+        <button onClick={handleSignIn}>
           Sign In
         </button>
         {error && <p style={{ color: "red" }}>{error}</p>}

@@ -63,21 +63,6 @@
   cursor: pointer;
 }
 
-.distance:hover {
-  background-color: #0056b3;
-  color: white;
-}
-
-.recently-posted:hover {
-  background-color: #0056b3;
-  color: white;
-}
-
-.expires:hover {
-  background-color: #0056b3;
-  color: white;
-}
-
 .input-style,
 .textarea-style {
   width: 300px; /* Adjust the width as needed */
