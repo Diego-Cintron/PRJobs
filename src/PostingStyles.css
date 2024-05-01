@@ -1,11 +1,93 @@
+.page-background {
+  background: linear-gradient(#cdffd8, #94b9ff);
+  /* background: linear-gradient(#ffffff, #9cd6dde5, #94b9ff ); */
+  
+  height: auto;
+  width: 100%;
+  /* margin: auto; */
+
+  position: absolute;
+  left: 0%;
+  top: 0%;
+
+  margin: 0%;
+  padding: 0%;
+  
+}
+
+.postings {
+  text-align: center;
+  margin: 1% 20% auto;
+  padding: 20px;
+  border-radius: 5px;
+
+  margin-bottom: 1%;
+
+  background-color: rgba(238, 238, 238, 0.692);
+  border: 2px solid #00b8a9;
+  
+  cursor: pointer;
+
+}
+
+.post-title {
+  text-align: left;
+  margin-left: 10%;
+
+  margin-bottom: 1%;
+}
+
+.post-date {
+  text-align: left;
+  margin-left: 10%;
+  margin-bottom: 5%;
+  margin-top: 1%;
+
+  font-size: smaller;
+  color: #555;
+}
+
+.description {
+  min-width: 80%;
+
+}
+
+.sorting-buttons {
+  margin: auto;
+  background-color:#94b9ff;
+
+  text-align: center;
+  padding: 20px;
+  border-radius: 5px;
+  
+  cursor: pointer;
+}
+
+.distance:hover {
+  background-color: #0056b3;
+  color: white;
+}
+
+.recently-posted:hover {
+  background-color: #0056b3;
+  color: white;
+}
+
+.expires:hover {
+  background-color: #0056b3;
+  color: white;
+}
+
 .input-style,
 .textarea-style {
   width: 300px; /* Adjust the width as needed */
 }
+
 .label-div {
   display: flex;
   flex-direction: column;
   margin-bottom: 20px; /* Adjust spacing between label and input */
+  
 }
 
 .modal-overlay {

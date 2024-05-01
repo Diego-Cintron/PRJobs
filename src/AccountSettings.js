@@ -3,6 +3,7 @@ import NavigationBar from "./NavigationBar";
 import { useAuth } from "./AuthContext";
 import { errorHandler } from "./others/apiUtils";
 import { defaultUserImage } from "./others/apiUtils";
+import "./AccountSettingsStyles.css"
 
 const AccountSettings = () => {
   const { user, updateUser } = useAuth();
@@ -105,7 +106,8 @@ const AccountSettings = () => {
 
 
   return (
-    <div>
+    <div className="user-block" style={{width: "auto", border: "none"}}>
+
       <NavigationBar />
       <div className="user-settings">
         <script
@@ -115,15 +117,17 @@ const AccountSettings = () => {
         ></script>
 
         <h2>Account Settings</h2>
-        <img
+        <img className="user-image" style={{objectFit: "fill", height: "200px", width: "200px"}}
           src={user?.user_image || defaultUserImage}
           height={100}
           width={100}
           alt="User Image"
         />
+
+        <p className="divider"> </p>
         <div>
           <label htmlFor="user_email">Email address</label>
-          <input
+          <input style={{textAlign: "center"}}
             type="email"
             id="user_email"
             name="user_email"
@@ -143,20 +147,17 @@ const AccountSettings = () => {
             />
         </div>
 
-        <div>
-          <label htmlFor="user_fname">First name</label>
-          <input
+        <p className="divider"> </p> 
+        <b>Name </b>
+        <div className="full-name" style={{display: "flex"}}> 
+          <input 
             type="text"
             id="user_fname"
             name="user_fname"
             value={updatedData.user_fname}
             onChange={handleChange}
           />
-        </div>
-
-        <div>
-          <label htmlFor="user_lname">Last name</label>
-          <input
+          <input 
             type="text"
             id="user_lname"
             name="user_lname"
@@ -165,9 +166,10 @@ const AccountSettings = () => {
           />
         </div>
 
+        <p className="divider"> </p>
         <div>
           <label htmlFor="user_birthday">Birthday</label>
-          <input
+          <input style={{textAlign: "center"}}
             type="date"
             id="user_birthday"
             name="user_birthday"
@@ -176,9 +178,10 @@ const AccountSettings = () => {
           />
         </div>
 
+        <p className="divider"> </p>
         <div>
           <label htmlFor="user_phone">Phone</label>
-          <input
+          <input style={{textAlign: "center"}}
             type="tel"
             id="user_phone"
             name="user_phone"
@@ -187,9 +190,10 @@ const AccountSettings = () => {
           />
         </div>
 
+        <p className="divider"> </p>
         <div>
           <label htmlFor="user_address">Address</label>
-          <input
+          <input style={{textAlign: "center"}}
             type="text"
             id="user_address"
             name="user_address"
@@ -198,9 +202,22 @@ const AccountSettings = () => {
           />
         </div>
 
+        <p className="divider"> </p>
         <div>
-          <label htmlFor="user_image">Image URL</label>
-          <input
+          <label  htmlFor="user_skills">Skills</label>
+          <input style={{textAlign: "center", overflow: "auto"}}
+            type="text"
+            id="user_skills"
+            name="user_skills"
+            value={updatedData.user_skills}
+            onChange={handleChange}
+          />
+        </div>
+
+        <p className="divider"> </p>
+        <div>
+          <label htmlFor="user_image">Profile Photo</label>
+          <input style={{textAlign: "center"}}
             type="text"
             id="user_image"
             name="user_image"
@@ -277,9 +294,10 @@ const AccountSettings = () => {
       </div>
 
         <div>
-          <button onClick={handleSave}>Save</button>
+          <button class="save" onClick={handleSave}>Save</button>
         </div>
       </div>
+
     </div>
   );
 };
