@@ -26,7 +26,11 @@ function Conversation({ user_id1, user_id2 }) {
       );
       errorHandler(messagesResponse);
       const messagesData = await messagesResponse.json();
-      setMessages(messagesData.Messages);
+      // Sort messages by msg_time in ascending order
+      const sortedMessages = messagesData.Messages.sort((a, b) => {
+        return new Date(a.msg_time) - new Date(b.msg_time);
+      });
+      setMessages(sortedMessages);
       setLoading(false);
     } catch (error) {
       console.error("Error fetching conversation data:", error);
