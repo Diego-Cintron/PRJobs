@@ -5,6 +5,7 @@ import { useAuth } from "./AuthContext";
 import { geocodeAddress } from "./others/Api";
 import { calculateDistance } from "./others/Haversine";
 import "./PostingStyles.css";
+import config from "./others/config";
 
 function AllPostings() {
   const { user } = useAuth();
@@ -129,37 +130,62 @@ function AllPostings() {
   };
 
   return (
-    <div>
-      <div className="sorting-buttons">
-        <button onClick={() => handleSortBy("distance")}>Distance</button>
-        <button onClick={() => handleSortBy("recentlyPosted")}>
+    <div className="page-background">
+
+      <div className="sorting-buttons" style={{margin: "auto", marginTop: "3%"}}>
+        <button className="distance" style={{marginRight: "1%"}}
+         onClick={() => handleSortBy("distance")}>
+          Distance
+          </button>
+
+        <button className="recently-posted" style={{marginRight: "1%"}}
+         onClick={() => handleSortBy("recentlyPosted")}>
           Recently Posted
         </button>
-        <button onClick={() => handleSortBy("expiresSoon")}>
+
+        <button className="expires" style={{marginRight: "1%"}}
+         onClick={() => handleSortBy("expiresSoon")}>
           Expires Soon
         </button>
+
       </div>
+
       {postings.length === 0 ? (
         <p>Loading</p>
       ) : (
         postings.map((posting) => (
-          <div
-            style={{
-              border: "1px solid #ccc",
-              borderRadius: "5px",
-              padding: "10px",
-              marginLeft: "10px",
-              marginBottom: "10px",
-              cursor: "pointer",
-              background: "white",
-              color: "black",
-            }}
+          
+          <div className="postings" 
+          
             key={posting.post_id}
             onClick={() => handlePostingClick(posting.post_id)}
           >
-            <h3>{posting.post_title}</h3>
-            <p>{posting.post_description}</p>
+            <h3 className="post-title">{posting.post_title}</h3>
+
+            <p className="post-date">
+              {posting.post_uploaded}
+            </p>
+
+            <p className="description" 
+            style={{margin: "auto", width: "100px", padding: "20px", minHeight: "200px", borderRadius: "25px"}}>
+              {posting.post_description}</p>
+
+            {/* Google Maps embedded map */}
+            <div style={{ height: "200px", width: "50%", margin: "auto", padding: "20px" }}>
+              <iframe
+                title="Posting Location"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                src={`https://www.google.com/maps/embed/v1/place?key=${
+                  config.googleMapsApiKey
+                }&q=${encodeURIComponent(posting.post_address)}`}
+                allowFullScreen
+              ></iframe>
+            </div>
+
             <div>
+
               <h4>Distance to User:</h4>
               <p>
                 {isNaN(calculateDistanceToUser(posting))
@@ -168,6 +194,7 @@ function AllPostings() {
                 km
               </p>
             </div>
+            
           </div>
         ))
       )}
