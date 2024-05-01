@@ -21,6 +21,8 @@ const AccountSettings = () => {
     user_municipality: "",
     user_available: [],
     user_password: "",
+    user_skills: "", // Providing default empty string
+    user_image: "",
     cm_id: cm_id,
   });
   const [updatedData, setUpdatedData] = useState(data);
@@ -31,6 +33,8 @@ const AccountSettings = () => {
         const response = await fetch(`/api/users/${userId}`);
         errorHandler(response);
         const userData = await response.json();
+        const userBithday = new Date(userData.User.user_birthday).toISOString().split('T')[0];
+        userData.User.user_birthday = userBithday;
         setData(userData.User);
         setUpdatedData(userData.User);
       } catch (error) {
@@ -47,6 +51,25 @@ const AccountSettings = () => {
       ...updatedData,
       [name]: value,
     });
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    if (type === "checkbox") {
+      setUpdatedData((prevState) => ({
+        ...prevState,
+        user_available: prevState.user_available.map((_, index) =>
+          index === parseInt(name) ? checked : prevState.user_available[index]
+        ),
+      }));
+    }
+    else if (name === "user_skills") {
+      const skillsArray = value.split(",").map((skill) => skill.trim());
+      setUpdatedData((prevState) => ({
+        ...prevState,
+        user_skills: skillsArray,
+      }));
+    }
   };
 
   const isDataValid = (data) => {
@@ -68,8 +91,6 @@ const AccountSettings = () => {
 
     try {
       const { user_id, ...dataToSend } = updatedData;
-      console.log(user_id);
-      console.log(dataToSend);
       const response = await fetch(`/api/users/${userId}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
@@ -87,6 +108,7 @@ const AccountSettings = () => {
     }
   };
 
+
   return (
     <div className="user-settings-block" style={{width: "auto", border: "none"}}>
 
@@ -99,8 +121,8 @@ const AccountSettings = () => {
         ></script>
 
         <h2>Account Settings</h2>
-        <img className="user-image" style={{objectFit: "fill", height: "200px", width: "200px"}}
-          src={user.user_image || defaultUserImage}
+        <img className="user-image" style={{ objectFit: "fill", height: "200px", width: "200px" }}
+          src={user?.user_image || defaultUserImage}
           height={100}
           width={100}
           alt="User Image"
@@ -109,7 +131,7 @@ const AccountSettings = () => {
         <p className="divider"> </p>
         <div>
           <label htmlFor="user_email">Email address</label>
-          <input style={{textAlign: "center"}}
+          <input style={{ textAlign: "center" }}
             type="email"
             id="user_email"
             name="user_email"
@@ -118,17 +140,29 @@ const AccountSettings = () => {
           />
         </div>
 
-        <p className="divider"> </p> 
+        <p className="divider"> </p>
+        <div>
+          <label htmlFor="user_password">Password</label>
+          <input
+            type="password"
+            id="user_password"
+            name="user_password"
+            value={updatedData.user_password}
+            onChange={handleChange}
+          />
+        </div>
+
+        <p className="divider"> </p>
         <b>Name </b>
-        <div className="full-name" style={{display: "flex"}}> 
-          <input 
+        <div className="full-name" style={{ display: "flex" }}>
+          <input
             type="text"
             id="user_fname"
             name="user_fname"
             value={updatedData.user_fname}
             onChange={handleChange}
           />
-          <input 
+          <input
             type="text"
             id="user_lname"
             name="user_lname"
@@ -140,7 +174,7 @@ const AccountSettings = () => {
         <p className="divider"> </p>
         <div>
           <label htmlFor="user_birthday">Birthday</label>
-          <input style={{textAlign: "center"}}
+          <input style={{ textAlign: "center" }}
             type="date"
             id="user_birthday"
             name="user_birthday"
@@ -152,7 +186,7 @@ const AccountSettings = () => {
         <p className="divider"> </p>
         <div>
           <label htmlFor="user_phone">Phone</label>
-          <input style={{textAlign: "center"}}
+          <input style={{ textAlign: "center" }}
             type="tel"
             id="user_phone"
             name="user_phone"
@@ -164,7 +198,7 @@ const AccountSettings = () => {
         <p className="divider"> </p>
         <div>
           <label htmlFor="user_address">Address</label>
-          <input style={{textAlign: "center"}}
+          <input style={{ textAlign: "center" }}
             type="text"
             id="user_address"
             name="user_address"
@@ -175,20 +209,26 @@ const AccountSettings = () => {
 
         <p className="divider"> </p>
         <div>
-          <label  htmlFor="user_skills">Skills</label>
-          <input style={{textAlign: "center", overflow: "auto"}}
-            type="text"
-            id="user_skills"
-            name="user_skills"
-            value={updatedData.user_skills}
-            onChange={handleChange}
-          />
+          <label htmlFor="user_skills">Skills</label>
+          {/* Check if user has no skills*/}
+          {updatedData.user_skills ? (
+            <input style={{ textAlign: "center", overflow: "auto" }}
+              type="text"
+              id="user_skills"
+              name="user_skills"
+              value={updatedData.user_skills.join(", ")}
+              onChange={handleInputChange}
+            placeholder="Enter your skills, separated by commas. Ex. python, frontend, excel "
+            />
+          ) : (
+            <p>No skills available</p>
+          )}
         </div>
 
         <p className="divider"> </p>
         <div>
           <label htmlFor="user_image">Profile Photo</label>
-          <input style={{textAlign: "center"}}
+          <input style={{ textAlign: "center" }}
             type="text"
             id="user_image"
             name="user_image"
@@ -197,8 +237,76 @@ const AccountSettings = () => {
           />
         </div>
 
+        <p className="divider"> </p>
+        <div className="Availability-account-settings" style={{ display: "flex" }}>
+          <b style={{ textAlign: "center", margin: 10 }}>User Availability:</b>
+          <label>
+            <input
+              type="checkbox"
+              name="0"
+              checked={updatedData.user_available[0]}
+              onChange={handleInputChange}
+            />
+            Sunday
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              name="1"
+              checked={updatedData.user_available[1]}
+              onChange={handleInputChange}
+            />
+            Monday
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              name="2"
+              checked={updatedData.user_available[2]}
+              onChange={handleInputChange}
+            />
+            Tuesday
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              name="3"
+              checked={updatedData.user_available[3]}
+              onChange={handleInputChange}
+            />
+            Wednesday
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              name="4"
+              checked={updatedData.user_available[4]}
+              onChange={handleInputChange}
+            />
+            Thursday
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              name="5"
+              checked={updatedData.user_available[5]}
+              onChange={handleInputChange}
+            />
+            Friday
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              name="6"
+              checked={updatedData.user_available[6]}
+              onChange={handleInputChange}
+            />
+            Saturday
+          </label>
+        </div>
+
         <div>
-          <button class="save" onClick={handleSave}>Save</button>
+          <button className="save" onClick={handleSave}>Save</button>
         </div>
       </div>
 

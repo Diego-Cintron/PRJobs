@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { errorHandler } from "./others/apiUtils";
+import { useAuth } from "./AuthContext";
 import NavigationBar from "./NavigationBar";
 import EditPostingModal from "./EditPostingModal";
 import UserProfile from "./UserProfile";
@@ -10,9 +11,11 @@ import config from "./others/config";
 function IndividualPostingPage() {
   const navigate = useNavigate();
   const { id } = useParams();
+  const { user } = useAuth();
+  const [userId] = useState(user?.user_id || -1);
+  const [showEditButton] = useState(userId == id); // Show Edit and Delete if User is the one who created the Posting
   const [posting, setPosting] = useState(null);
   const [showEditModal, setShowEditModal] = useState(false);
-  const [showEditButton] = useState(true);
 
   useEffect(() => {
     if (!id) {

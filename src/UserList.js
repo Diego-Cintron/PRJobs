@@ -39,6 +39,12 @@ function UserList() {
     }
   };
 
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      handleSearch();
+    }
+  };
+
   return (
     <div>
       <NavigationBar />
@@ -49,12 +55,13 @@ function UserList() {
           crossorigin="anonymous"
         ></script>
 
-        <p>User List</p>
+        <p>Search for skills</p>
         <div>
           <input
             type="text"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
+            onKeyPress={handleKeyPress}
             placeholder="Search by skill"
           />
           <button onClick={handleSearch}>Search</button>
@@ -65,6 +72,7 @@ function UserList() {
               <th>Email</th>
               <th>First Name</th>
               <th>Last Name</th>
+              <th>Skills</th>
             </tr>
           </thead>
           <tbody>
@@ -73,6 +81,12 @@ function UserList() {
                 <td>{person.user_email}</td>
                 <td>{person.user_fname}</td>
                 <td>{person.user_lname}</td>
+                <td>
+                  {person.user_skills && person.user_skills.map((skill, index) => (
+                   <span key={index}>{skill}{index !== person.user_skills.length - 1 ? ', ' : ''}</span>
+                  ))}
+                </td>
+
               </tr>
             ))}
           </tbody>
