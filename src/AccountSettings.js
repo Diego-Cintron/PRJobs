@@ -136,6 +136,7 @@ const AccountSettings = () => {
           />
         </div>
 
+        <p className="divider"> </p>
         <div>
           <label htmlFor="user_password">Password</label>
           <input
@@ -226,8 +227,9 @@ const AccountSettings = () => {
           />
         </div>
 
+        <p className="divider"> </p>
         <div className="Availability-account-settings" style={{display: "flex"}}>
-        <p style={{margin: 10}} >User Availability: </p>
+        <p style={{textAlign: "center", margin: 10}} >User Availability: </p>
         <label>
           <input
             type="checkbox"
