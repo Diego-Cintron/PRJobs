@@ -438,11 +438,9 @@ img.PRJobs-logo {
   color: #000000;
   display: flex;
   justify-content: space-around;
-  border-radius: 35px;
   align-items: stretch;
-  min-height: 100vh;
   background: linear-gradient(#cdffd8, #94b9ff);
-  padding: 50px;
+  
 }
 
 /* Messages */

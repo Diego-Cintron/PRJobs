@@ -63,14 +63,20 @@ const CreatePost = () => {
 
   if (user.user_type !== "poster") {
     return (
-      <div>
+      <div className="background" 
+      style={{height: "100%", width: "100%"}}>
+
         <NavigationBar />
-        <div className="createpost-block">
-          <p>
+        <div>
+          <p 
+          style={{margin: "auto", marginTop: "5%", textAlign: "center",
+           backgroundColor: "rgba(238, 238, 238, 0.692)", border: "2px solid #00b8a9", padding: "2%", borderRadius: "25px", 
+           marginLeft: "20%", marginRight: "20%"}}>
             Sorry, but you are not registered as a User with the necessary
             permissions to create a new Post.
           </p>
         </div>
+        
       </div>
     );
   }

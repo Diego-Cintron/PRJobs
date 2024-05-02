@@ -11,9 +11,13 @@ function AuthorizeEditCompany() {
   // Check if User is NOT a Poster
   if (user.user_type !== "poster") {
     return (
-      <div>
+      <div className="background" 
+      style={{height: "100%", width: "100%"}}>
+
         <NavigationBar />
-        <div className="createpost-block">
+        <div style={{margin: "auto", marginTop: "5%", textAlign: "center",
+           backgroundColor: "rgba(238, 238, 238, 0.692)", border: "2px solid #00b8a9", padding: "1%", borderRadius: "25px", 
+           marginLeft: "20%", marginRight: "20%"}}>
           <p>
             You do not have the necessary permissions to edit or configure
             Company profiles.
