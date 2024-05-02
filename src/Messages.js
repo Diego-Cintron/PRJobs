@@ -11,6 +11,7 @@ function Messages() {
   const [messages, setMessages] = useState([]);
   const [selectedOtherUser, setSelectedOtherUser] = useState(null);
   const [searchEmail, setSearchEmail] = useState("");
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetchMessages();
@@ -51,6 +52,7 @@ function Messages() {
         }
       });
       setMessages(uniqueCorrespondences);
+      setLoading(false); 
     } catch (error) {
       console.error("Error fetching messages:", error);
     }
@@ -107,8 +109,10 @@ function Messages() {
             </button>
           </div>
           <h1>Active Chats</h1>
-          {messages.length === 0 ? (
+          {loading ? (
             <p>Loading...</p>
+          ) : messages.length === 0 ? (
+            <p>No messages found.</p>
           ) : (
             messages.map((message) => (
               <div
