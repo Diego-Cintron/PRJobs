@@ -1,0 +1,38 @@
+.edit-block {
+    background: linear-gradient(#cdffd8, #94b9ff);
+    
+    min-height: 100%;
+    width: 100%;
+
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    right: 0%;
+
+    margin: 0%;
+    padding: 0%;
+
+}
+
+.format {
+    background-color: rgba(255, 255, 255, 0.568);
+    border-radius: 35px;
+
+    margin: auto;
+    text-align: center;
+
+    padding: 3%;
+
+    margin-top: 5%;
+    margin-left: 30%;
+    margin-right: 30%;
+}
+
+.divider {
+    border-bottom: 1px solid #1d00ab;
+    width: 100%;
+
+    margin: auto;
+
+    margin-bottom: 2%;
+} 

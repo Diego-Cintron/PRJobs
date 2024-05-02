@@ -69,8 +69,12 @@ function CreateCompany() {
   };
 
   return (
-    <div className="company-block">
+    <div className="create-block">
+      
+      <div className="format-create">
       <h2>Create a Company profile</h2>
+      <p className="divider"></p>
+
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="cm_name">Company Name:</label>
@@ -126,10 +130,14 @@ function CreateCompany() {
             required
           />
         </div>
+
+        <p className="divider"></p>
         <div>
           <button type="submit">Submit</button>
         </div>
       </form>
+      </div>
+
     </div>
   );
 }

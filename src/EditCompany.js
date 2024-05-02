@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { errorHandler } from "./others/apiUtils";
 import { useAuth } from "./AuthContext";
-import "./styles.css";
+import "./EditCompanyStyling.css";
 
 const EditCompany = ({ cm_id }) => {
   const { user } = useAuth();
@@ -57,12 +57,16 @@ const EditCompany = ({ cm_id }) => {
   };
 
   return (
-    <div className="company-block">
+    <div className="edit-block">
+
+      <div className="format">
       <h2>Edit Company</h2>
+      <p className="divider"></p>
+
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="cm_name">Company Name:</label>
-          <input
+          <input style={{textAlign: "center", color: "gray"}}
             type="text"
             id="cm_name"
             name="cm_name"
@@ -73,7 +77,7 @@ const EditCompany = ({ cm_id }) => {
         </div>
         <div>
           <label htmlFor="cm_email">Email:</label>
-          <input
+          <input style={{textAlign: "center", color: "gray"}}
             type="email"
             id="cm_email"
             name="cm_email"
@@ -84,7 +88,7 @@ const EditCompany = ({ cm_id }) => {
         </div>
         <div>
           <label htmlFor="cm_description">Description:</label>
-          <textarea
+          <textarea style={{textAlign: "center", color: "gray"}}
             id="cm_description"
             name="cm_description"
             value={companyData.cm_description}
@@ -94,7 +98,7 @@ const EditCompany = ({ cm_id }) => {
         </div>
         <div>
           <label htmlFor="cm_phone">Phone:</label>
-          <input
+          <input style={{textAlign: "center", color: "gray"}}
             type="text"
             id="cm_phone"
             name="cm_phone"
@@ -105,7 +109,7 @@ const EditCompany = ({ cm_id }) => {
         </div>
         <div>
           <label htmlFor="cm_logo">Logo URL:</label>
-          <input
+          <input style={{textAlign: "center", color: "gray"}}
             type="text"
             id="cm_logo"
             name="cm_logo"
@@ -114,10 +118,15 @@ const EditCompany = ({ cm_id }) => {
             required
           />
         </div>
+
+        <p className="divider"></p>
         <div>
           <button type="submit">Update</button>
         </div>
       </form>
+
+      </div>
+
     </div>
   );
 }
