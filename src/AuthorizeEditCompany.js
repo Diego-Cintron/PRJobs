@@ -32,7 +32,7 @@ function AuthorizeEditCompany() {
     return (
       <div>
         <NavigationBar />
-        <CreateCompany />;
+        <CreateCompany />
       </div>
     );
   }
