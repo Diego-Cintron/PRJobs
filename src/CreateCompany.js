@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { errorHandler } from "./others/apiUtils";
 import { useAuth } from "./AuthContext";
-import "./styles.css";
+import "./CreateCompanyStyling.css";
 
 function CreateCompany() {
   const { user, updateUser } = useAuth();
@@ -72,14 +72,15 @@ function CreateCompany() {
     <div className="create-block">
       
       <div className="format-create">
-      <h2>Create a Company profile</h2>
+      <h2>Create a Company Profile</h2>
       <p className="divider"></p>
 
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="cm_name">Company Name:</label>
-          <input
-            type="text"
+          <input style={{textAlign: "center"}}
+            type="text" 
+            placeholder="Please enter the name of your company."
             id="cm_name"
             name="cm_name"
             value={companyData.cm_name}
@@ -89,8 +90,9 @@ function CreateCompany() {
         </div>
         <div>
           <label htmlFor="cm_email">Email:</label>
-          <input
+          <input style={{textAlign: "center"}}
             type="email"
+            placeholder="Enter a valid email through which job searchers may contact you."
             id="cm_email"
             name="cm_email"
             value={companyData.cm_email}
@@ -100,8 +102,9 @@ function CreateCompany() {
         </div>
         <div>
           <label htmlFor="cm_description">Description:</label>
-          <textarea
+          <textarea style={{textAlign: "center"}}
             id="cm_description"
+            placeholder="Please enter a company description."
             name="cm_description"
             value={companyData.cm_description}
             onChange={handleInputChange}
@@ -110,8 +113,9 @@ function CreateCompany() {
         </div>
         <div>
           <label htmlFor="cm_phone">Phone:</label>
-          <input
+          <input style={{textAlign: "center"}}
             type="text"
+            placeholder="ex. 787-123-4556"
             id="cm_phone"
             name="cm_phone"
             value={companyData.cm_phone}
@@ -121,8 +125,9 @@ function CreateCompany() {
         </div>
         <div>
           <label htmlFor="cm_logo">Logo URL:</label>
-          <input
+          <input style={{textAlign: "center"}}
             type="text"
+            placeholder="Enter the image URL of your company logo."
             id="cm_logo"
             name="cm_logo"
             value={companyData.cm_logo}
@@ -133,7 +138,7 @@ function CreateCompany() {
 
         <p className="divider"></p>
         <div>
-          <button type="submit">Submit</button>
+          <button type="submit">Create Company</button>
         </div>
       </form>
       </div>
