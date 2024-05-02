@@ -15,11 +15,21 @@ const UserProfile = () => {
   }
 
   // Format skills
-  const formattedSkills = user.user_skills ? user.user_skills.join(", ") : "No skills found.";
+  const formattedSkills = user.user_skills
+    ? user.user_skills.join(", ")
+    : "No skills found.";
 
   return (
     <div className="user-block">
-      
+      <img
+        className="user-image"
+        style={{ objectFit: "fill", height: "200px", width: "200px" }}
+        src={user?.user_image || defaultUserImage}
+        height={100}
+        width={100}
+        alt="User Image"
+      />
+
       <p className="profilename">
         {user.user_fname} {user.user_lname}
       </p>

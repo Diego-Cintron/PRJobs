@@ -438,18 +438,20 @@ img.PRJobs-logo {
   display: flex;
   justify-content: space-around;
   align-items: stretch;
+  padding: 50px;
+  min-height: 100vh;
   background: linear-gradient(#cdffd8, #94b9ff);
-  
 }
 
 /* Messages */
 .messagespage {
-  margin-top: 4%;
+  margin-top: 50px;
 
   width: 100%;
   display: flex;
   
   height: auto;
+  min-height: 100vh;
 
 }
 

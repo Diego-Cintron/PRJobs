@@ -63,20 +63,26 @@ const CreatePost = () => {
 
   if (user.user_type !== "poster") {
     return (
-      <div className="background" 
-      style={{height: "100%", width: "100%"}}>
-
+      <div className="background" style={{ height: "100%", width: "100%" }}>
         <NavigationBar />
         <div>
-          <p 
-          style={{margin: "auto", marginTop: "5%", textAlign: "center",
-           backgroundColor: "rgba(238, 238, 238, 0.692)", border: "2px solid #00b8a9", padding: "2%", borderRadius: "25px", 
-           marginLeft: "20%", marginRight: "20%"}}>
+          <p
+            style={{
+              margin: "auto",
+              marginTop: "5%",
+              textAlign: "center",
+              backgroundColor: "rgba(238, 238, 238, 0.692)",
+              border: "2px solid #00b8a9",
+              padding: "2%",
+              borderRadius: "25px",
+              marginLeft: "20%",
+              marginRight: "20%",
+            }}
+          >
             Sorry, but you are not registered as a User with the necessary
             permissions to create a new Post.
           </p>
         </div>
-        
       </div>
     );
   }
@@ -96,14 +102,18 @@ const CreatePost = () => {
   }
 
   return (
-    <div>
+    <div className="page-background">
       <NavigationBar />
-      <div className="createpost-block">
+
+      <div className="format">
+        <h2>Create New Posting</h2>
+        <p className="divider"></p>
+        
         <form onSubmit={handleSubmit}>
           <div className="label-div">
-            <h1>Create New Posting</h1>
             <label htmlFor="post_title">Title:</label>
             <input
+              style={{ textAlign: "center", color: "gray" }}
               type="text"
               id="post_title"
               name="post_title"
@@ -111,12 +121,12 @@ const CreatePost = () => {
               onChange={(e) =>
                 setPostData({ ...postData, post_title: e.target.value })
               }
-              className="input-style"
             />
           </div>
           <div className="label-div">
             <label htmlFor="post_description">Description:</label>
             <textarea
+              style={{ textAlign: "center", color: "gray", resize: "none" }}
               id="post_description"
               name="post_description"
               rows={Math.ceil(maxDescriptionLength / 50)}
@@ -124,13 +134,12 @@ const CreatePost = () => {
               onChange={(e) =>
                 setPostData({ ...postData, post_description: e.target.value })
               }
-              className="textarea-style"
-              style={{ resize: "none" }}
             />
           </div>
           <div className="label-div">
             <label htmlFor="post_address">Address:</label>
             <input
+              style={{ textAlign: "center", color: "gray" }}
               type="text"
               id="post_address"
               name="post_address"
@@ -138,22 +147,25 @@ const CreatePost = () => {
               onChange={(e) =>
                 setPostData({ ...postData, post_address: e.target.value })
               }
-              className="input-style"
             />
           </div>
           <div className="label-div">
             <label htmlFor="post_municipality">Municipality:</label>
             <input
+              style={{ textAlign: "center", color: "gray" }}
               type="text"
               id="post_municipality"
               name="post_municipality"
               value={postData.post_municipality}
               onChange={(e) =>
-                setPostData({ ...postData, post_municipality: e.target.value })
+                setPostData({
+                  ...postData,
+                  post_municipality: e.target.value,
+                })
               }
-              className="input-style"
             />
           </div>
+          <p className="divider"></p>
           <button type="submit">Create Posting</button>
         </form>
       </div>

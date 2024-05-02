@@ -65,7 +65,7 @@ function IndividualPostingPage() {
       <NavigationBar />
       <div className="container">
         <UserProfile />
-        <div>
+        <div style={{maxWidth:"50%"}}>
           <h2>Individual Posting</h2>
           <h3>Title: {posting.post_title}</h3>
           <p>Description: {posting.post_description}</p>

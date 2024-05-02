@@ -1,18 +1,16 @@
 .page-background {
   background: linear-gradient(#cdffd8, #94b9ff);
-  /* background: linear-gradient(#ffffff, #9cd6dde5, #94b9ff ); */
-  
-  height: auto;
+
+  min-height: 100%;
   width: 100%;
-  /* margin: auto; */
 
   position: absolute;
   left: 0%;
   top: 0%;
+  right: 0%;
 
   margin: 0%;
   padding: 0%;
-  
 }
 
 .postings {
@@ -25,9 +23,8 @@
 
   background-color: rgba(238, 238, 238, 0.692);
   border: 2px solid #00b8a9;
-  
-  cursor: pointer;
 
+  cursor: pointer;
 }
 
 .post-title {
@@ -49,17 +46,16 @@
 
 .description {
   min-width: 80%;
-
 }
 
 .sorting-buttons {
   margin: auto;
-  background-color:#94b9ff;
+  background-color: #94b9ff;
 
   text-align: center;
   padding: 20px;
   border-radius: 5px;
-  
+
   cursor: pointer;
 }
 
@@ -72,7 +68,6 @@
   display: flex;
   flex-direction: column;
   margin-bottom: 20px; /* Adjust spacing between label and input */
-  
 }
 
 .modal-overlay {
