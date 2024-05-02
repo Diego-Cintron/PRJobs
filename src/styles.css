@@ -432,7 +432,6 @@ img.PRJobs-logo {
 }
 
 /* Homepage */
-
 .homepage-block,
 .createpost-block {
   color: #000000;
@@ -445,9 +444,13 @@ img.PRJobs-logo {
 
 /* Messages */
 .messagespage {
+  margin-top: 4%;
+
   width: 100%;
   display: flex;
-  min-height: 90vh;
+  
+  height: auto;
+
 }
 
 .active-block {
@@ -455,7 +458,7 @@ img.PRJobs-logo {
   display: inline-block;
   align-items: stretch;
   justify-content: space-around;
-  min-width: 40vh;
+  min-width: 20%;
   padding: 10px;
   border-radius: 10px;
 }
@@ -466,7 +469,7 @@ img.PRJobs-logo {
   background: linear-gradient(#cdffd8, #94b9ff);
   align-items: stretch;
   justify-content: space-around;
-  min-width: 150vh;
+  min-width: 78%;
 }
 
 .company-block {

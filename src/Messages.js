@@ -3,7 +3,7 @@ import { defaultUserImage, errorHandler } from "./others/apiUtils";
 import { useAuth } from "./AuthContext";
 import NavigationBar from "./NavigationBar";
 import Conversation from "./Conversation";
-import "./PostingStyles.css";
+import "./styles.css";
 
 function Messages() {
   const { user } = useAuth();
@@ -86,7 +86,8 @@ function Messages() {
   };
 
   return (
-    <div>
+    <div className="messages-bg">
+
       <NavigationBar />
       <div className="messagespage">
         <script
