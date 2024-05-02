@@ -21,7 +21,7 @@ const Company = ({ companyId }) => {
   }, [companyId]);
 
   if (!company) {
-    return <div>Loading...</div>;
+    return <div style={{margin: "auto", textAlign: "center"}}>Loading...</div>;
   }
 
   return (
