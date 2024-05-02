@@ -79,6 +79,7 @@ button:focus-visible {
 .user-table {
   width: 100%;
   border-collapse: collapse;
+  
 }
 
 .user-table th,

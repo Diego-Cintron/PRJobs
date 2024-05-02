@@ -55,18 +55,18 @@ function UserList() {
           crossorigin="anonymous"
         ></script>
 
-        <p className="standard-paragraph">Search for skills</p>
+        <p className="standard-paragraph">Search for Skills</p>
         <div>
           <input
             type="text"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             onKeyPress={handleKeyPress}
-            placeholder="Search by skill"
+            placeholder="Search Users by Skill"
           />
           <button onClick={handleSearch}>Search</button>
         </div>
-        <table className="user-table">
+        <table className="user-table" style={{background: "white"}}>
           <thead>
             <tr>
               <th>Email</th>
